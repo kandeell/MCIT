@@ -1,0 +1,97 @@
+/* UsrMCITContractEnhancedCSS - Designer-friendly visual layer.
+   Scope: UsrPage_1fdg3ul MainContainer only.  No DOM manipulation required. */
+.usr-mcit-contract-page {
+    --mcit-violet: #5b21a5;
+    --mcit-deep: #35135d;
+    --mcit-lavender: #f8f7ff;
+    --mcit-border: #e3e5ee;
+    --mcit-muted: #667085;
+    --mcit-shadow: 0 7px 26px rgba(49, 22, 95, .055);
+    font-family: "Rubik", "Segoe UI", Arial, sans-serif;
+    color: #27253a;
+    background: linear-gradient(180deg,#faf9ff 0%, #fff 360px);
+    min-width: 0;
+}
+.usr-mcit-contract-page .usr-mcit-overview-grid {
+    column-gap: 18px;
+    row-gap: 16px;
+    align-items: start;
+}
+.usr-mcit-contract-page .usr-mcit-card,
+.usr-mcit-contract-page .usr-mcit-insights-card,
+.usr-mcit-contract-page .usr-mcit-balances-content {
+    background: #fff;
+    border: 1px solid var(--mcit-border);
+    border-radius: 16px;
+    box-shadow: var(--mcit-shadow);
+    min-width: 0;
+    transition: box-shadow .18s ease, border-color .18s ease;
+}
+.usr-mcit-contract-page .usr-mcit-card:hover,
+.usr-mcit-contract-page .usr-mcit-insights-card:hover {
+    border-color: #d8ccef;
+    box-shadow: 0 10px 28px rgba(49, 22, 95, .075);
+}
+.usr-mcit-contract-page .usr-mcit-details-card,
+.usr-mcit-contract-page .usr-mcit-contacts-card { align-self: stretch; }
+.usr-mcit-contract-page .usr-mcit-contract-fields {
+    column-gap: 18px;
+    row-gap: 14px;
+}
+.usr-mcit-contract-page .usr-mcit-description-card {
+    border: 1px solid #ede9f5;
+    border-radius: 12px;
+    background: #fcfbff;
+}
+.usr-mcit-contract-page .usr-mcit-balance-grid {
+    gap: 14px;
+    align-items: stretch;
+}
+.usr-mcit-contract-page .usr-mcit-metric {
+    background: #fff;
+    border: 1px solid var(--mcit-border);
+    border-radius: 14px;
+    min-height: 145px;
+    padding: 15px;
+    box-shadow: 0 2px 10px rgba(49, 22, 95, .035);
+}
+.usr-mcit-contract-page .usr-mcit-metric-initial { border-top: 3px solid #20a078; }
+.usr-mcit-contract-page .usr-mcit-metric-available-used { border-top: 3px solid #ac56a2; }
+.usr-mcit-contract-page .usr-mcit-metric-restored-used { border-top: 3px solid #7156c8; }
+.usr-mcit-contract-page .usr-mcit-composition-card {
+    background: #faf9ff;
+    border: 1px solid #e6e1f1;
+    border-radius: 14px;
+}
+.usr-mcit-contract-page .crt-input,
+.usr-mcit-contract-page .crt-number-input,
+.usr-mcit-contract-page .crt-combo-box {
+    border-radius: 9px;
+}
+.usr-mcit-contract-page .crt-button:focus-visible,
+.usr-mcit-contract-page button:focus-visible {
+    outline: 2px solid #7553c0;
+    outline-offset: 2px;
+}
+.usr-mcit-contract-page .crt-label,
+.usr-mcit-contract-page .crt-input-label {
+    letter-spacing: .005em;
+}
+.usr-mcit-contract-page .crt-data-grid,
+.usr-mcit-contract-page .crt-datagrid {
+    border: 1px solid #ebe8f4;
+    border-radius: 12px;
+    overflow: hidden;
+}
+.usr-mcit-contract-page .crt-tabs {
+    border-bottom: 1px solid #e8e2f3;
+}
+@media (max-width: 980px) {
+    .usr-mcit-contract-page .usr-mcit-overview-grid { gap: 12px; }
+    .usr-mcit-contract-page .usr-mcit-card { border-radius: 12px; }
+    .usr-mcit-contract-page .usr-mcit-balance-grid { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .usr-mcit-contract-page .usr-mcit-card,
+    .usr-mcit-contract-page .usr-mcit-insights-card { transition: none; }
+}

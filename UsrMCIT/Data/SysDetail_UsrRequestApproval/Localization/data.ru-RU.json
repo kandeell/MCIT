@@ -1,0 +1,18 @@
+{
+  "PackageData": [
+    {
+      "Row": [
+        {
+          "SchemaColumnUId": "ae0e45ca-c495-4fe7-a39d-3ab7278e1617",
+          "ColumnName": "Id",
+          "Value": "794a3ff8-beb0-45e1-94dd-d629317cc16b"
+        },
+        {
+          "SchemaColumnUId": "49ad8ee2-65a6-4cdd-b8f6-85c2f10a54dc",
+          "ColumnName": "Caption",
+          "Value": "Деталь MCIT Technical Queue"
+        }
+      ]
+    }
+  ]
+}

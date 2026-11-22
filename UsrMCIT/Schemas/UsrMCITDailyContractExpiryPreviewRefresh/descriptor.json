@@ -1,0 +1,9 @@
+﻿{
+  "Descriptor": {
+    "UId": "301274fd-d15b-434f-b71d-80b8312cce3e",
+    "Name": "UsrMCITDailyContractExpiryPreviewRefresh",
+    "ModifiedOnUtc": "\/Date(1795072577000)\/",
+    "ManagerName": "ProcessSchemaManager",
+    "Caption": "MCIT Daily Contract Expiry Preview Refresh"
+  }
+}
