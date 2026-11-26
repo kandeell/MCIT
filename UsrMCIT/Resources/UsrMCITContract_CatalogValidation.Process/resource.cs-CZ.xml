@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Resources Culture="cs-CZ">
+	<Group Type="String">
+		<Items>
+			<Item Name="BaseElements.ReadAddOn.Parameters.AggregationColumnName.Caption" Value="Název sloupce agregační funkce" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.CanReadUncommitedData.Caption" Value="Čtení nepředaných dat" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ConsiderTimeInFilter.Caption" Value="Zohledněte čas ve filtru" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.DataSourceFilters.Caption" Value="Zdroj dat filtrů" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.EntityColumnMetaPathes.Caption" Value="Sloupce ke čtení" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.FunctionType.Caption" Value="Typ agregované funkce" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.IgnoreDisplayValues.Caption" Value="Nenačítat zobrazené hodnoty ve sloupcích číselníků" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.NumberOfRecords.Caption" Value="Počet záznamů k přečtení" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.OrderInfo.Caption" Value="Řazení sloupců" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ReadSomeTopRecords.Caption" Value="Číst prvních" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultCompositeObjectList.Caption" Value="Sbírka záznamů" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultCount.Caption" Value="Počet záznamů" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultDateTimeFunction.Caption" Value="Výsledek funkce (Datum/Čas)" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultEntity.Caption" Value="První položka výsledné kolekce" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultEntityCollection.Caption" Value="Výsledková kolekce" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultFloatFunction.Caption" Value="Výsledek funkce (Desetinné číslo)" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultIntegerFunction.Caption" Value="Výsledek funkce (Integer)" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultRowsCount.Caption" Value="Počet přečtených záznamů" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultType.Caption" Value="Typ výsledku" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.AggregationColumnName.Caption" Value="Název sloupce agregační funkce" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.CanReadUncommitedData.Caption" Value="Čtení nepředaných dat" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ConsiderTimeInFilter.Caption" Value="Zohledněte čas ve filtru" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.DataSourceFilters.Caption" Value="Zdroj dat filtrů" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.EntityColumnMetaPathes.Caption" Value="Sloupce ke čtení" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.FunctionType.Caption" Value="Typ agregované funkce" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.IgnoreDisplayValues.Caption" Value="Nenačítat zobrazené hodnoty ve sloupcích číselníků" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.NumberOfRecords.Caption" Value="Počet záznamů k přečtení" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.OrderInfo.Caption" Value="Řazení sloupců" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ReadSomeTopRecords.Caption" Value="Číst prvních" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultCompositeObjectList.Caption" Value="Sbírka záznamů" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultCount.Caption" Value="Počet záznamů" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultDateTimeFunction.Caption" Value="Výsledek funkce (Datum/Čas)" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultEntity.Caption" Value="První položka výsledné kolekce" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultEntityCollection.Caption" Value="Výsledková kolekce" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultFloatFunction.Caption" Value="Výsledek funkce (Desetinné číslo)" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultIntegerFunction.Caption" Value="Výsledek funkce (Integer)" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultRowsCount.Caption" Value="Počet přečtených záznamů" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultType.Caption" Value="Typ výsledku" />
+			<Item Name="Caption" Value="Contract catalog validation" />
+		</Items>
+	</Group>
+</Resources>

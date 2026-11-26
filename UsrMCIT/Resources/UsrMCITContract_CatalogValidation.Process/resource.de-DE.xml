@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Resources Culture="de-DE">
+	<Group Type="String">
+		<Items>
+			<Item Name="BaseElements.ReadAddOn.Parameters.AggregationColumnName.Caption" Value="Name der Aggregatsfunktionsspalte" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.CanReadUncommitedData.Caption" Value="Nicht committete Daten lesen" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ConsiderTimeInFilter.Caption" Value="Zeit im Filter berücksichtigen" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.DataSourceFilters.Caption" Value="Datenquelle der Filter" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.EntityColumnMetaPathes.Caption" Value="Zu lesende Spalten" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.FunctionType.Caption" Value="Aggregatesfunktionstyp" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.IgnoreDisplayValues.Caption" Value="Angezeigte Werte von Nachschlagewert-Spalten nicht lesen" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.NumberOfRecords.Caption" Value="Anzahl zu lesender Sätze" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.OrderInfo.Caption" Value="Spaltensortiierung" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ReadSomeTopRecords.Caption" Value="Zuerst lesen" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultCompositeObjectList.Caption" Value="Datensatz-Auswahl" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultCount.Caption" Value="Anzahl Sätze" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultDateTimeFunction.Caption" Value="Funktionsresultat (Datum/Zeit)" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultEntity.Caption" Value="Erstes Item der Ergebniskollektion" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultEntityCollection.Caption" Value="Ergenissammlung" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultFloatFunction.Caption" Value="Funktionsresultat (Dezimal)" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultIntegerFunction.Caption" Value="Funktionsresultat (Ganzzahl)" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultRowsCount.Caption" Value="Anzahl gelesener Sätze" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultType.Caption" Value="Ergebnistyp" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.AggregationColumnName.Caption" Value="Name der Aggregatsfunktionsspalte" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.CanReadUncommitedData.Caption" Value="Nicht committete Daten lesen" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ConsiderTimeInFilter.Caption" Value="Zeit im Filter berücksichtigen" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.DataSourceFilters.Caption" Value="Datenquelle der Filter" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.EntityColumnMetaPathes.Caption" Value="Zu lesende Spalten" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.FunctionType.Caption" Value="Aggregatesfunktionstyp" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.IgnoreDisplayValues.Caption" Value="Angezeigte Werte von Nachschlagewert-Spalten nicht lesen" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.NumberOfRecords.Caption" Value="Anzahl zu lesender Sätze" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.OrderInfo.Caption" Value="Spaltensortiierung" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ReadSomeTopRecords.Caption" Value="Zuerst lesen" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultCompositeObjectList.Caption" Value="Datensatz-Auswahl" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultCount.Caption" Value="Anzahl Sätze" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultDateTimeFunction.Caption" Value="Funktionsresultat (Datum/Zeit)" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultEntity.Caption" Value="Erstes Item der Ergebniskollektion" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultEntityCollection.Caption" Value="Ergenissammlung" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultFloatFunction.Caption" Value="Funktionsresultat (Dezimal)" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultIntegerFunction.Caption" Value="Funktionsresultat (Ganzzahl)" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultRowsCount.Caption" Value="Anzahl gelesener Sätze" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultType.Caption" Value="Ergebnistyp" />
+			<Item Name="Caption" Value="Contract catalog validation" />
+		</Items>
+	</Group>
+</Resources>

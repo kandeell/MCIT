@@ -559,10 +559,41 @@ define("UsrMCITWizardRuntime", ["@creatio-devkit/common"], function(sdk) {
         const id = vmContextRequestIds.get(ctx);
         if (validGuid(id)) { return String(id).toLowerCase(); }
         if (typeof location !== "undefined") {
-            const match = location.hash.match(/\/edit\/([0-9a-f-]{36})/i);
+            const match = String(location.hash || "").match(/\/edit\/([0-9a-f-]{36})/i);
             if (match && validGuid(match[1])) { return match[1].toLowerCase(); }
         }
         return null;
+    }
+    // Recover the saved request from the page's actual data-source binding.
+    // Do not treat a new, unsaved page GUID as proof of a persisted request.
+    async function vmResolveSavedRequest(ctx, requireDraft = false) {
+        const boundId = selectedId(await ctx.WZ_RecordId);
+        const candidate = validGuid(boundId) ? boundId : vmRequestKey(ctx);
+        if (!validGuid(candidate)) {
+            throw new Error("Save the request header as Draft before adding VM items.");
+        }
+        const saved = await readRecord("UsrVMRequest", candidate,
+            ["Id", "UsrContract", "UsrStatus"]);
+        if (!saved) {
+            throw new Error("The request ID is not a saved UsrVMRequest record. Save the draft first.");
+        }
+        if (requireDraft) {
+            let state = vmExtractName(saved.UsrStatus).toLowerCase();
+            if (state !== "draft") {
+                const statusId = selectedId(saved.UsrStatus);
+                if (validGuid(statusId)) {
+                    const status = await readRecord("UsrMCITRequestStatus", statusId,
+                        ["Id", "Name"]);
+                    state = String(status?.Name || "").trim().toLowerCase();
+                }
+            }
+            if (state !== "draft") {
+                throw new Error("VM items can only be changed while the request is Draft.");
+            }
+        }
+        const id = String(selectedId(saved.Id)).toLowerCase();
+        vmContextRequestIds.set(ctx, id);
+        return id;
     }
     function vmState(ctx) {
         const key = vmRequestKey(ctx);
@@ -771,9 +802,17 @@ define("UsrMCITWizardRuntime", ["@creatio-devkit/common"], function(sdk) {
         if (active.length>1) {
             throw new Error("More than one active configuration is valid for the same contract. Resolve overlap first.");
         }
-        // Draft v1 is usable ONLY for preparing a draft, not for posting or submission.
-        const version=active[0] || candidates.find(row=>statusOf(row)==="draft");
-        if (!version) { throw new Error("No effective Active or Draft Configuration Version for this Contract."); }
+        const effectiveResponse=await new sdk.HttpClientService().post(
+            "rest/UsrMCITEffectiveConfigurationService/ResolveForNewRequest",
+            {contractId});
+        const effectiveId=selectedId(effectiveResponse?.body?.ResolveForNewRequestResult ?? effectiveResponse?.body);
+        if (!validGuid(effectiveId)) {
+            throw new Error("An authorized effective configuration could not be established.");
+        }
+        const version=active.find(row=>selectedId(row.Id).toLowerCase()===effectiveId.toLowerCase());
+        if (!version) {
+            throw new Error("The active configuration is not visible or does not match the server selection.");
+        }
         for (const f of ["UsrCPUPerPoint","UsrRAMGBPerPoint","UsrStorageGBPerPoint"]) {
             if (!(Number(version[f])>0)) {
                 throw new Error("Contract Configuration "+f+" must be greater than zero.");
@@ -910,8 +949,7 @@ define("UsrMCITWizardRuntime", ["@creatio-devkit/common"], function(sdk) {
         };
     }
     async function vmLoadSavedItems(ctx, force=false) {
-        const key=vmRequestKey(ctx);
-        if (!key) { throw new Error("Save the request header before reading VM items."); }
+        const key=await vmResolveSavedRequest(ctx);
         if (vmLoadedKeys.has(key) && !force) { return vmState(ctx); }
         let rows;
         try {
@@ -930,8 +968,13 @@ define("UsrMCITWizardRuntime", ["@creatio-devkit/common"], function(sdk) {
         return vmState(ctx);
     }
     async function vmSaveItem(ctx,item,editIndex,cfg) {
-        const key=vmRequestKey(ctx);
-        if (!key) { throw new Error("Save the request before adding a VM Item."); }
+        const key=await vmResolveSavedRequest(ctx,true);
+        const parent=await readRecord("UsrVMRequest",key,["Id","UsrContract"]);
+        const selectedContract=selectedId(await ctx.WZ_Contract);
+        if (!validGuid(selectedContract) ||
+            String(selectedId(parent?.UsrContract)||"").toLowerCase()!==selectedContract.toLowerCase()) {
+            throw new Error("Saved request and selected Contract do not match. Reload the draft.");
+        }
         const calculated=vmCostAndResources(item.points,item,cfg);
         const dto={
             UsrRequest:key,
@@ -981,9 +1024,9 @@ define("UsrMCITWizardRuntime", ["@creatio-devkit/common"], function(sdk) {
         return true;
     }
     async function vmDeleteItem(ctx,index) {
+        const key=await vmResolveSavedRequest(ctx,true);
         const item=vmState(ctx)[index];
         if (!validGuid(item?.id)) {throw new Error("Item is not a saved record.");}
-        const key=vmRequestKey(ctx);
         const owner=await readRecord("UsrVMRequestItem",item.id,["Id","UsrRequest"]);
         if (String(selectedId(owner?.UsrRequest)||"").toLowerCase()!==key.toLowerCase()) {throw new Error("VM Item ownership mismatch.");}
         const model=await sdk.Model.create("UsrVMRequestItem");
@@ -1307,6 +1350,7 @@ define("UsrMCITWizardRuntime", ["@creatio-devkit/common"], function(sdk) {
         if (!validGuid(selectedId(await ctx.WZ_Contract))) {
             vmPageNotice(ctx,"Select and save a Contract before adding VM items."); return;
         }
+        await vmResolveSavedRequest(ctx,true);
         await vmLoadSavedItems(ctx);
         await vmLoadLookupOptions();
         let cfg = await vmLoadContractConfig(ctx,true);
@@ -1577,7 +1621,9 @@ define("UsrMCITWizardRuntime", ["@creatio-devkit/common"], function(sdk) {
                 vmRenderItems(ctx);
             }catch(saveError){
                 console.error("MCIT VM Item database save",saveError);
-                error.textContent=saveError.message||"Could not save VM Item.";
+                error.textContent="VM Item was not saved: "+
+                    (saveError?.message||"Creatio rejected the save. Check the browser console and object rights.");
+                error.scrollIntoView?.({behavior:"smooth",block:"nearest"});
                 saveButton.disabled=false;
                 saveButton.textContent=current?"Update VM Item":"Add VM Item · إضافة الخادم للطلب";
             }
@@ -2068,10 +2114,6 @@ define("UsrMCITWizardRuntime", ["@creatio-devkit/common"], function(sdk) {
     // Do not call executeProcessByName here: this is a Signal-started process,
     // and starting it explicitly could create a duplicate workflow instance.
     //
-    // IMPORTANT: TEST ONLY. The current process does not verify/post Point Ledger
-    // transactions atomically. Disable this switch for production until a
-    // server-side submission service/guard verifies ledger, documents and rights.
-    const WZ_ALLOW_TEST_SIGNAL_SUBMIT_WITHOUT_LEDGER = true;
     const wzSubmitInFlight = new WeakSet();
 
     async function wzFindStatusByName(name){
@@ -2552,9 +2594,6 @@ define("UsrMCITWizardRuntime", ["@creatio-devkit/common"], function(sdk) {
             const config=await vmLoadContractConfig(ctx,true);
             if(config.draft){
                 throw new Error("The selected Contract Configuration is Draft. Activate the approved version before Final Submit.");
-            }
-            if(!WZ_ALLOW_TEST_SIGNAL_SUBMIT_WITHOUT_LEDGER){
-                throw new Error("Production submission is blocked until server-side Point Ledger, documents and authorization checks are implemented. Test Signal mode is disabled.");
             }
             // Check the exact stored lookup record, not a display label from the UI.
             const saved=await readRecord("UsrVMRequest",id,["Id","UsrStatus"]);

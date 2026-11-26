@@ -154,16 +154,45 @@
 			<Item Name="BaseElements.ChangeDataUserTask3.Parameters.IsMatchConditions.Caption" Value="If object meets the following conditions" />
 			<Item Name="BaseElements.ChangeDataUserTask3.Parameters.IsMatchConditions.DisplayValue" Value="true" />
 			<Item Name="BaseElements.ChangeDataUserTask3.Parameters.RecordColumnValues.Caption" Value="Set column values" />
+			<Item Name="BaseElements.CheckCommitmentOutcome.Caption" Value="Commitment succeeded?" />
+			<Item Name="BaseElements.CheckCommitmentPolicy.Caption" Value="Commitment policy enabled?" />
+			<Item Name="BaseElements.CheckRetryCommitmentOutcome.Caption" Value="Retry commitment succeeded?" />
+			<Item Name="BaseElements.CheckRetryCommitmentPolicy.Caption" Value="Commitment policy enabled for retry?" />
+			<Item Name="BaseElements.CommitApprovedExistingVMResize.Caption" Value="Apply approved existing VM resize" />
+			<Item Name="BaseElements.CommitApprovedProvisioning.Caption" Value="Commit approved provisioning atomically" />
+			<Item Name="BaseElements.ConditionalFlow_CheckCommitmentOutcome_ChangeDataUserTask2.Caption" Value="Committed" />
+			<Item Name="BaseElements.ConditionalFlow_CheckCommitmentPolicy_CommitApprovedProvisioning.Caption" Value="Posting enabled" />
+			<Item Name="BaseElements.ConditionalFlow_CheckRetryCommitmentOutcome_MarkRetryRequestCompleted.Caption" Value="Committed" />
+			<Item Name="BaseElements.ConditionalFlow_CheckRetryCommitmentPolicy_CommitApprovedExistingVMResize.Caption" Value="Isolated resize enabled" />
+			<Item Name="BaseElements.ConditionalFlow_CheckRetryCommitmentPolicy_RetryApprovedCommitment.Caption" Value="Posting enabled" />
+			<Item Name="BaseElements.ConditionalFlow_ExclusiveGateway1_CheckCommitmentPolicy.Caption" Value="All Provisioned" />
+			<Item Name="BaseElements.ConditionalFlow_RouteExistingVMRequest_ChangeDataUserTask3.Caption" Value="Existing VM: await manual provisioning" />
 			<Item Name="BaseElements.ConditionalSequenceFlow1.Caption" Value="Provisioned" />
 			<Item Name="BaseElements.ConditionalSequenceFlow2.Caption" Value="Provisioning Failed" />
 			<Item Name="BaseElements.ConditionalSequenceFlow3.Caption" Value="All Provisioned" />
+			<Item Name="BaseElements.DefaultFlow_CheckCommitmentOutcome_ChangeDataUserTask3.Caption" Value="Commitment failed" />
+			<Item Name="BaseElements.DefaultFlow_CheckCommitmentPolicy_ChangeDataUserTask2.Caption" Value="Posting disabled" />
+			<Item Name="BaseElements.DefaultFlow_CheckRetryCommitmentOutcome_EndRetryCommitment.Caption" Value="Commitment failed" />
+			<Item Name="BaseElements.DefaultFlow_CheckRetryCommitmentPolicy_EndRetryDisabled.Caption" Value="Posting disabled" />
+			<Item Name="BaseElements.DefaultFlow_RouteExistingVMRequest_ReadDataUserTask2.Caption" Value="New VM: existing provisioning" />
 			<Item Name="BaseElements.DefaultSequenceFlow1.Caption" Value="Not All Provisioned" />
+			<Item Name="BaseElements.EndRetryCommitment.Caption" Value="Commitment retry finished" />
+			<Item Name="BaseElements.EndRetryDisabled.Caption" Value="Commitment retry disabled" />
 			<Item Name="BaseElements.ExclusiveGateway1.Caption" Value="All VMs Provisioned?" />
 			<Item Name="BaseElements.LinkEntityToProcessUserTask1.Caption" Value="Link VM Manual Provisioning to Request" />
 			<Item Name="BaseElements.LinkEntityToProcessUserTask1.Parameters.EntityId.Caption" Value="Object" />
 			<Item Name="BaseElements.LinkEntityToProcessUserTask1.Parameters.EntityId.DisplayValue" Value="[#Read VM Request.First item of resulting collection.Id#]" />
 			<Item Name="BaseElements.LinkEntityToProcessUserTask1.Parameters.EntitySchemaId.Caption" Value="Object schema" />
 			<Item Name="BaseElements.LinkEntityToProcessUserTask1.Parameters.EntitySchemaId.DisplayValue" Value="VM Request" />
+			<Item Name="BaseElements.ManualCommitmentRetryStart.Caption" Value="Manual commitment retry" />
+			<Item Name="BaseElements.MarkRetryRequestCompleted.Caption" Value="Complete committed retry request" />
+			<Item Name="BaseElements.MarkRetryRequestCompleted.Parameters.ConsiderTimeInFilter.Caption" Value="Consider time in the filter" />
+			<Item Name="BaseElements.MarkRetryRequestCompleted.Parameters.ConsiderTimeInFilter.DisplayValue" Value="false" />
+			<Item Name="BaseElements.MarkRetryRequestCompleted.Parameters.DataSourceFilters.Caption" Value="Data source filters" />
+			<Item Name="BaseElements.MarkRetryRequestCompleted.Parameters.EntitySchemaUId.Caption" Value="Object" />
+			<Item Name="BaseElements.MarkRetryRequestCompleted.Parameters.IgnoreErrors.Caption" Value="Continue execution on errors" />
+			<Item Name="BaseElements.MarkRetryRequestCompleted.Parameters.IsMatchConditions.Caption" Value="If object meets the following conditions" />
+			<Item Name="BaseElements.MarkRetryRequestCompleted.Parameters.RecordColumnValues.Caption" Value="Set column values" />
 			<Item Name="BaseElements.ReadDataUserTask1.Caption" Value="Read VM Request" />
 			<Item Name="BaseElements.ReadDataUserTask1.Parameters.AggregationColumnName.Caption" Value="Name of aggregate function column" />
 			<Item Name="BaseElements.ReadDataUserTask1.Parameters.CanReadUncommitedData.Caption" Value="Read uncommitted data" />
@@ -259,6 +288,8 @@
 			<Item Name="BaseElements.ReadDataUserTask4.Parameters.ResultIntegerFunction.Caption" Value="Function result (Integer)" />
 			<Item Name="BaseElements.ReadDataUserTask4.Parameters.ResultRowsCount.Caption" Value="Number of records read" />
 			<Item Name="BaseElements.ReadDataUserTask4.Parameters.ResultType.Caption" Value="Type of result" />
+			<Item Name="BaseElements.RetryApprovedCommitment.Caption" Value="Retry atomic commitment without provisioning" />
+			<Item Name="BaseElements.RouteExistingVMRequest.Caption" Value="Route existing VM request" />
 			<Item Name="BaseElements.StartSignal1.Parameters.RecordId.Caption" Value="Unique identifier of record" />
 			<Item Name="BaseElements.SubProcess1.Caption" Value="MCIT Provision One VM Item 1" />
 			<Item Name="BaseElements.SubProcess1.Parameters.CompletedIterationsCount.Caption" Value="Number of completed instances" />
@@ -277,6 +308,23 @@
 			<Item Name="LaneSets.LaneSet1.Lanes.Lane1.Caption" Value="Lane 1" />
 			<Item Name="NotificationCaption.Caption" Value="Process instance caption" />
 			<Item Name="NotificationCaption.DisplayValue" Value="[#Process name#]" />
+			<Item Name="Parameters.AllowedResizeTestContractId.Caption" Value="Isolated resize test contract" />
+			<Item Name="Parameters.CommitmentError.Caption" Value="Commitment failure" />
+			<Item Name="Parameters.CommitmentPolicyEnabled.Caption" Value="Commit after provisioning (disabled until approval)" />
+			<Item Name="Parameters.CommitmentPolicyEnabled.DisplayValue" Value="false" />
+			<Item Name="Parameters.CommitmentRequestId.Caption" Value="Provisioned request ID" />
+			<Item Name="Parameters.CommitmentRequestId.DisplayValue" Value="Record Id" />
+			<Item Name="Parameters.CommitmentSucceeded.Caption" Value="Atomic commitment succeeded" />
+			<Item Name="Parameters.CommitmentSucceeded.DisplayValue" Value="false" />
+			<Item Name="Parameters.DowngradeRestorationEnabled.Caption" Value="Enable downgrade restoration after approval" />
+			<Item Name="Parameters.DowngradeRestorationEnabled.DisplayValue" Value="false" />
+			<Item Name="Parameters.ResizeMonetaryPostingEnabled.Caption" Value="Enable isolated resize monetary charge" />
+			<Item Name="Parameters.ResizeMonetaryPostingEnabled.DisplayValue" Value="false" />
+			<Item Name="Parameters.ResizePostingEnabled.Caption" Value="Enable isolated resize posting" />
+			<Item Name="Parameters.ResizePostingEnabled.DisplayValue" Value="false" />
+			<Item Name="Parameters.RetryCommitmentSucceeded.Caption" Value="Retry commitment succeeded" />
+			<Item Name="Parameters.RetryCommitmentSucceeded.DisplayValue" Value="false" />
+			<Item Name="Parameters.RetryRequestId.Caption" Value="Provisioned request to retry" />
 		</Items>
 	</Group>
 </Resources>

@@ -7,7 +7,7 @@
 			<Item Name="BaseElements.ConditionalSequenceFlow2.Caption" Value="Valid Inputs" />
 			<Item Name="BaseElements.ConditionalSequenceFlow3.Caption" Value="Valid" />
 			<Item Name="BaseElements.ConditionalSequenceFlow4.Caption" Value="Contract Found" />
-			<Item Name="BaseElements.ConditionalSequenceFlow5.Caption" Value="Success" />
+			<Item Name="BaseElements.ConditionalSequenceFlow5.Caption" Value="Conditional flow 8" />
 			<Item Name="BaseElements.ConditionalSequenceFlow6.Caption" Value="Posting Requested" />
 			<Item Name="BaseElements.ConditionalSequenceFlow7.Caption" Value="Conditional flow 7" />
 			<Item Name="BaseElements.ConditionalSequenceFlow8.Caption" Value="Conditional flow 8" />
@@ -27,9 +27,9 @@
 			<Item Name="BaseElements.FormulaTask10.Caption" Value="Initialize Remaining Points" />
 			<Item Name="BaseElements.FormulaTask11.Caption" Value="Calculate Available Consumption" />
 			<Item Name="BaseElements.FormulaTask12.Caption" Value="Set Insufficient Points Error" />
-			<Item Name="BaseElements.FormulaTask13.Caption" Value="PreviewReady" />
+			<Item Name="BaseElements.FormulaTask13.Caption" Value="Set Preview Available Points" />
 			<Item Name="BaseElements.FormulaTask14.Caption" Value="Set Preview Restored Points" />
-			<Item Name="BaseElements.FormulaTask15.Caption" Value="Set Posting Unavailable Erro" />
+			<Item Name="BaseElements.FormulaTask15.Caption" Value="Set Preview Ready" />
 			<Item Name="BaseElements.FormulaTask2.Caption" Value="Calculate Available Balance" />
 			<Item Name="BaseElements.FormulaTask3.Caption" Value="Set Available Funding Total" />
 			<Item Name="BaseElements.FormulaTask4.Caption" Value="Set Restored Funding Total" />

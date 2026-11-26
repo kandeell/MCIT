@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Resources Culture="th-TH">
+	<Group Type="String">
+		<Items>
+			<Item Name="BaseElements.ReadAddOn.Parameters.AggregationColumnName.Caption" Value="ชื่อของคอลัมน์ฟังชั่นรวม" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.CanReadUncommitedData.Caption" Value="อ่านข้อมูลที่ไม่มีข้อผูกมัด" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ConsiderTimeInFilter.Caption" Value="พิจารณาเวลาที่ใช้ในการกรอง" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.DataSourceFilters.Caption" Value="แหล่งข้อมูลของตัวกรอง" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.EntityColumnMetaPathes.Caption" Value="คอลัมน์ที่จะอ่าน" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.FunctionType.Caption" Value="ประเภทฟังชั่นราวม" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.IgnoreDisplayValues.Caption" Value="อย่าอ่านค่าที่แสดงของคอลัมน์การค้นหา" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.NumberOfRecords.Caption" Value="จำนวนของบันทึกที่จะอ่าน" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.OrderInfo.Caption" Value="ลำดับของคอลัมน์" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ReadSomeTopRecords.Caption" Value="อ่านก่อน" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultCompositeObjectList.Caption" Value="การรวบรวมบันทึก" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultCount.Caption" Value="จำนวนของบันทึก" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultDateTimeFunction.Caption" Value="Function result (Date/Time)" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultEntity.Caption" Value="รายการแรกของคอลเลคชั่นที่ส่งผล" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultEntityCollection.Caption" Value="คอลเลกชั่นที่ส่งผล" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultFloatFunction.Caption" Value="Function result (Decimal)" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultIntegerFunction.Caption" Value="Function result (Integer)" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultRowsCount.Caption" Value="จำนวนของบันทึกที่อ่านแล้ว" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultType.Caption" Value="ประเภทของผลลัพธ์" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.AggregationColumnName.Caption" Value="ชื่อของคอลัมน์ฟังชั่นรวม" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.CanReadUncommitedData.Caption" Value="อ่านข้อมูลที่ไม่มีข้อผูกมัด" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ConsiderTimeInFilter.Caption" Value="พิจารณาเวลาที่ใช้ในการกรอง" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.DataSourceFilters.Caption" Value="แหล่งข้อมูลของตัวกรอง" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.EntityColumnMetaPathes.Caption" Value="คอลัมน์ที่จะอ่าน" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.FunctionType.Caption" Value="ประเภทฟังชั่นราวม" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.IgnoreDisplayValues.Caption" Value="อย่าอ่านค่าที่แสดงของคอลัมน์การค้นหา" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.NumberOfRecords.Caption" Value="จำนวนของบันทึกที่จะอ่าน" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.OrderInfo.Caption" Value="ลำดับของคอลัมน์" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ReadSomeTopRecords.Caption" Value="อ่านก่อน" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultCompositeObjectList.Caption" Value="การรวบรวมบันทึก" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultCount.Caption" Value="จำนวนของบันทึก" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultDateTimeFunction.Caption" Value="Function result (Date/Time)" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultEntity.Caption" Value="รายการแรกของคอลเลคชั่นที่ส่งผล" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultEntityCollection.Caption" Value="คอลเลกชั่นที่ส่งผล" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultFloatFunction.Caption" Value="Function result (Decimal)" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultIntegerFunction.Caption" Value="Function result (Integer)" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultRowsCount.Caption" Value="จำนวนของบันทึกที่อ่านแล้ว" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultType.Caption" Value="ประเภทของผลลัพธ์" />
+			<Item Name="Caption" Value="Contract catalog validation" />
+		</Items>
+	</Group>
+</Resources>

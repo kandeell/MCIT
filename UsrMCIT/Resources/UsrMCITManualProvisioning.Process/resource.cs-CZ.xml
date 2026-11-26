@@ -77,8 +77,6 @@
 			<Item Name="BaseElements.ChangeDataUserTask1.Parameters.IgnoreErrors.Caption" Value="Continue execution on errors" />
 			<Item Name="BaseElements.ChangeDataUserTask1.Parameters.IsMatchConditions.Caption" Value="Zda objekt odpovídá následujícím podmínkám" />
 			<Item Name="BaseElements.ChangeDataUserTask1.Parameters.RecordColumnValues.Caption" Value="Nastavte hodnoty sloupců" />
-			<Item Name="BaseElements.LinkEntityToProcessUserTask1.Parameters.EntityId.Caption" Value="Objekt" />
-			<Item Name="BaseElements.LinkEntityToProcessUserTask1.Parameters.EntitySchemaId.Caption" Value="Schéma objektu" />
 			<Item Name="Caption" Value="MCIT VM Manual Provisioning" />
 		</Items>
 	</Group>

@@ -1,4 +1,38 @@
-define("UsrPage_00ohmlw", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHEMA_ARGS*/()/**SCHEMA_ARGS*/ {
+define("UsrPage_00ohmlw", /**SCHEMA_DEPS*/["@creatio-devkit/common"]/**SCHEMA_DEPS*/, function/**SCHEMA_ARGS*/(sdk)/**SCHEMA_ARGS*/ {
+    // Additive read-only preview. Existing native controls and request flows are untouched.
+    const MCIT_EMPTY_ID = "00000000-0000-0000-0000-000000000000";
+
+    function mcitVMId(value) {
+        if (typeof value === "string") {
+            return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(value) ? value : null;
+        }
+        if (value && typeof value === "object") {
+            return mcitVMId(value.value || value.Id || value.id);
+        }
+        return null;
+    }
+
+    async function mcitVMFilter(column, id) {
+        const filter = new sdk.FilterGroup();
+        filter.logicalOperation = sdk.LogicalOperation.And;
+        await filter.addSchemaColumnFilterWithParameter(sdk.ComparisonType.Equal, column, id || MCIT_EMPTY_ID);
+        // Assign a new plain object so Freedom UI's filterAttributes detects the update.
+        const result = Object.assign({}, filter);
+        result.items = filter.items;
+        return result;
+    }
+
+    async function mcitUpdateVMPreview(context, rawId) {
+        const id = mcitVMId(rawId);
+        // Keep child grids hidden until both filters are ready; never show all add-ons.
+        context.MCIT_VMPreviewVisible = false;
+        const itemFilter = await mcitVMFilter("Id", id);
+        const addonFilter = await mcitVMFilter("UsrRequestItem", id);
+        context.MCIT_VMPreviewItemFilter = itemFilter;
+        context.MCIT_VMPreviewAddOnFilter = addonFilter;
+        context.MCIT_VMPreviewVisible = Boolean(id);
+    }
+
 	return {
 		viewConfigDiff: /**SCHEMA_VIEW_CONFIG_DIFF*/[
 			{
@@ -1505,8 +1539,124 @@ define("UsrPage_00ohmlw", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHEMA_
 				"parentName": "Timeline_wyrhh6j",
 				"propertyName": "filters",
 				"index": 3
-			}
-		]/**SCHEMA_VIEW_CONFIG_DIFF*/,
+			},
+            // MCIT VM preview: additive content inside the existing VM Items tab.
+            {
+                "operation": "insert",
+                "name": "MCIT_VMPreviewHelp",
+                "values": {
+                    "type": "crt.Label",
+                    "caption": "Select a VM item in the table above to preview its configuration and add-ons.",
+                    "labelType": "body-large",
+                    "visible": true
+                },
+                "parentName": "TabContainer_0imyljb",
+                "propertyName": "items",
+                "index": 2
+            },
+            {
+                "operation": "insert",
+                "name": "MCIT_VMPreviewPanel",
+                "values": {
+                    "type": "crt.FlexContainer",
+                    "direction": "column",
+                    "wrap": "nowrap",
+                    "items": [],
+                    "fitContent": true,
+                    "visible": "$MCIT_VMPreviewVisible",
+                    "color": "transparent",
+                    "borderRadius": "none",
+                    "padding": {"top": "medium", "bottom": "none", "left": "none", "right": "none"},
+                    "gap": "small"
+                },
+                "parentName": "TabContainer_0imyljb",
+                "propertyName": "items",
+                "index": 3
+            },
+            {
+                "operation": "insert",
+                "name": "MCIT_VMPreviewConfigurationTitle",
+                "values": {
+                    "type": "crt.Label",
+                    "caption": "Selected VM Configuration",
+                    "labelType": "headline-2",
+                    "visible": true
+                },
+                "parentName": "MCIT_VMPreviewPanel",
+                "propertyName": "items",
+                "index": 0
+            },
+            {
+                "operation": "insert",
+                "name": "MCIT_VMPreviewConfigurationGrid",
+                "values": {
+                    "type": "crt.DataGrid",
+                    "items": "$MCIT_VMPreviewConfigurationGrid",
+                    "primaryColumnName": "MCIT_VMPreviewConfigurationDS_Id",
+                    "fitContent": true,
+                    "placeholder": false,
+                    "features": {
+                        "rows": {"selection": {"enable": false, "multiple": false}},
+                        "editable": {"enable": false, "itemsCreation": false, "floatingEditPanel": false},
+                        "header": {"visible": true}
+                    },
+                    "columns": [
+                        {"id": "215e7989-5aa8-4bb1-9961-2a49997253e1", "code": "MCIT_VMPreviewConfigurationDS_UsrName", "caption": "VM Name", "dataValueType": 28},
+                        {"id": "215e7989-5aa8-4bb1-9961-2a49997253e2", "code": "MCIT_VMPreviewConfigurationDS_UsrCPU", "caption": "vCPU", "dataValueType": 4},
+                        {"id": "215e7989-5aa8-4bb1-9961-2a49997253e3", "code": "MCIT_VMPreviewConfigurationDS_UsrRAMGB", "caption": "RAM (GB)", "dataValueType": 31},
+                        {"id": "215e7989-5aa8-4bb1-9961-2a49997253e4", "code": "MCIT_VMPreviewConfigurationDS_UsrStorageGB", "caption": "Storage (GB)", "dataValueType": 31},
+                        {"id": "215e7989-5aa8-4bb1-9961-2a49997253e5", "code": "MCIT_VMPreviewConfigurationDS_UsrConfigVersion", "caption": "Configuration Version", "dataValueType": 10},
+                        {"id": "215e7989-5aa8-4bb1-9961-2a49997253e6", "code": "MCIT_VMPreviewConfigurationDS_UsrTotalPointsSnapshot", "caption": "Points Snapshot", "dataValueType": 31},
+                        {"id": "215e7989-5aa8-4bb1-9961-2a49997253e7", "code": "MCIT_VMPreviewConfigurationDS_UsrTotalAmountSnapshot", "caption": "Financial Amount", "dataValueType": 31},
+                        {"id": "215e7989-5aa8-4bb1-9961-2a49997253e8", "code": "MCIT_VMPreviewConfigurationDS_UsrCurrency", "caption": "Currency", "dataValueType": 10}
+                    ]
+                },
+                "parentName": "MCIT_VMPreviewPanel",
+                "propertyName": "items",
+                "index": 1
+            },
+            {
+                "operation": "insert",
+                "name": "MCIT_VMPreviewAddOnTitle",
+                "values": {
+                    "type": "crt.Label",
+                    "caption": "Add-ons for Selected VM",
+                    "labelType": "headline-2",
+                    "visible": true
+                },
+                "parentName": "MCIT_VMPreviewPanel",
+                "propertyName": "items",
+                "index": 2
+            },
+            {
+                "operation": "insert",
+                "name": "MCIT_VMPreviewAddOnGrid",
+                "values": {
+                    "type": "crt.DataGrid",
+                    "items": "$MCIT_VMPreviewAddOnGrid",
+                    "primaryColumnName": "MCIT_VMPreviewAddOnDS_Id",
+                    "fitContent": true,
+                    "placeholder": false,
+                    "features": {
+                        "rows": {"selection": {"enable": false, "multiple": false}},
+                        "editable": {"enable": false, "itemsCreation": false, "floatingEditPanel": false},
+                        "header": {"visible": true}
+                    },
+                    "columns": [
+                        {"id": "c7360692-7f43-493a-b158-c788f0114121", "code": "MCIT_VMPreviewAddOnDS_UsrAddOn", "caption": "Add-on", "dataValueType": 10},
+                        {"id": "c7360692-7f43-493a-b158-c788f0114122", "code": "MCIT_VMPreviewAddOnDS_UsrQuantity", "caption": "Quantity", "dataValueType": 31},
+                        {"id": "c7360692-7f43-493a-b158-c788f0114123", "code": "MCIT_VMPreviewAddOnDS_UsrUnitPriceSnapshot", "caption": "Unit Price", "dataValueType": 31},
+                        {"id": "c7360692-7f43-493a-b158-c788f0114124", "code": "MCIT_VMPreviewAddOnDS_UsrTotalAmountSnapshot", "caption": "Total Amount", "dataValueType": 31},
+                        {"id": "c7360692-7f43-493a-b158-c788f0114125", "code": "MCIT_VMPreviewAddOnDS_UsrCurrency", "caption": "Currency", "dataValueType": 10},
+                        {"id": "c7360692-7f43-493a-b158-c788f0114126", "code": "MCIT_VMPreviewAddOnDS_UsrUnitSnapshot", "caption": "Unit", "dataValueType": 28}
+                    ]
+                },
+                "parentName": "MCIT_VMPreviewPanel",
+                "propertyName": "items",
+                "index": 3
+            }
+
+        ]/**SCHEMA_VIEW_CONFIG_DIFF*/,
 		viewModelConfigDiff: /**SCHEMA_VIEW_MODEL_CONFIG_DIFF*/[
 			{
 				"operation": "merge",
@@ -1902,8 +2052,57 @@ define("UsrPage_00ohmlw", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHEMA_
 				"values": {
 					"modelConfig": {}
 				}
-			}
-		]/**SCHEMA_VIEW_MODEL_CONFIG_DIFF*/,
+			},
+            // Selected VM preview attributes, isolated from the existing grid bindings.
+            {
+                "operation": "merge",
+                "path": ["attributes"],
+                "values": {
+                    "MCIT_VMPreviewVisible": {"value": false},
+                    "MCIT_VMPreviewItemFilter": {"value": null},
+                    "MCIT_VMPreviewAddOnFilter": {"value": null},
+                    "MCIT_VMPreviewConfigurationGrid": {
+                        "isCollection": true,
+                        "modelConfig": {
+                            "path": "MCIT_VMPreviewConfigurationDS",
+                            "filterAttributes": [{"name": "MCIT_VMPreviewItemFilter", "loadOnChange": true}]
+                        },
+                        "viewModelConfig": {
+                            "attributes": {
+                                "MCIT_VMPreviewConfigurationDS_Id": {"modelConfig": {"path": "MCIT_VMPreviewConfigurationDS.Id"}},
+                                "MCIT_VMPreviewConfigurationDS_UsrName": {"modelConfig": {"path": "MCIT_VMPreviewConfigurationDS.UsrName"}},
+                                "MCIT_VMPreviewConfigurationDS_UsrCPU": {"modelConfig": {"path": "MCIT_VMPreviewConfigurationDS.UsrCPU"}},
+                                "MCIT_VMPreviewConfigurationDS_UsrRAMGB": {"modelConfig": {"path": "MCIT_VMPreviewConfigurationDS.UsrRAMGB"}},
+                                "MCIT_VMPreviewConfigurationDS_UsrStorageGB": {"modelConfig": {"path": "MCIT_VMPreviewConfigurationDS.UsrStorageGB"}},
+                                "MCIT_VMPreviewConfigurationDS_UsrConfigVersion": {"modelConfig": {"path": "MCIT_VMPreviewConfigurationDS.UsrConfigVersion"}},
+                                "MCIT_VMPreviewConfigurationDS_UsrTotalPointsSnapshot": {"modelConfig": {"path": "MCIT_VMPreviewConfigurationDS.UsrTotalPointsSnapshot"}},
+                                "MCIT_VMPreviewConfigurationDS_UsrTotalAmountSnapshot": {"modelConfig": {"path": "MCIT_VMPreviewConfigurationDS.UsrTotalAmountSnapshot"}},
+                                "MCIT_VMPreviewConfigurationDS_UsrCurrency": {"modelConfig": {"path": "MCIT_VMPreviewConfigurationDS.UsrCurrency"}}
+                            }
+                        }
+                    },
+                    "MCIT_VMPreviewAddOnGrid": {
+                        "isCollection": true,
+                        "modelConfig": {
+                            "path": "MCIT_VMPreviewAddOnDS",
+                            "filterAttributes": [{"name": "MCIT_VMPreviewAddOnFilter", "loadOnChange": true}]
+                        },
+                        "viewModelConfig": {
+                            "attributes": {
+                                "MCIT_VMPreviewAddOnDS_Id": {"modelConfig": {"path": "MCIT_VMPreviewAddOnDS.Id"}},
+                                "MCIT_VMPreviewAddOnDS_UsrAddOn": {"modelConfig": {"path": "MCIT_VMPreviewAddOnDS.UsrAddOn"}},
+                                "MCIT_VMPreviewAddOnDS_UsrQuantity": {"modelConfig": {"path": "MCIT_VMPreviewAddOnDS.UsrQuantity"}},
+                                "MCIT_VMPreviewAddOnDS_UsrUnitPriceSnapshot": {"modelConfig": {"path": "MCIT_VMPreviewAddOnDS.UsrUnitPriceSnapshot"}},
+                                "MCIT_VMPreviewAddOnDS_UsrTotalAmountSnapshot": {"modelConfig": {"path": "MCIT_VMPreviewAddOnDS.UsrTotalAmountSnapshot"}},
+                                "MCIT_VMPreviewAddOnDS_UsrCurrency": {"modelConfig": {"path": "MCIT_VMPreviewAddOnDS.UsrCurrency"}},
+                                "MCIT_VMPreviewAddOnDS_UsrUnitSnapshot": {"modelConfig": {"path": "MCIT_VMPreviewAddOnDS.UsrUnitSnapshot"}}
+                            }
+                        }
+                    }
+                }
+            }
+
+        ]/**SCHEMA_VIEW_MODEL_CONFIG_DIFF*/,
 		modelConfigDiff: /**SCHEMA_MODEL_CONFIG_DIFF*/[
 			{
 				"operation": "merge",
@@ -1994,9 +2193,70 @@ define("UsrPage_00ohmlw", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHEMA_
 						]
 					}
 				}
-			}
-		]/**SCHEMA_MODEL_CONFIG_DIFF*/,
-		handlers: /**SCHEMA_HANDLERS*/[]/**SCHEMA_HANDLERS*/,
+			},
+            // Preview-only data sources. Does not alter the existing VM Items data source.
+            {
+                "operation": "merge",
+                "path": ["dataSources"],
+                "values": {
+                    "MCIT_VMPreviewConfigurationDS": {
+                        "type": "crt.EntityDataSource",
+                        "scope": "viewElement",
+                        "config": {
+                            "entitySchemaName": "UsrVMRequestItem",
+                            "attributes": {
+                                "UsrName": {"path": "UsrName"},
+                                "UsrCPU": {"path": "UsrCPU"},
+                                "UsrRAMGB": {"path": "UsrRAMGB"},
+                                "UsrStorageGB": {"path": "UsrStorageGB"},
+                                "UsrConfigVersion": {"path": "UsrConfigVersion"},
+                                "UsrTotalPointsSnapshot": {"path": "UsrTotalPointsSnapshot"},
+                                "UsrTotalAmountSnapshot": {"path": "UsrTotalAmountSnapshot"},
+                                "UsrCurrency": {"path": "UsrCurrency"}
+                            }
+                        }
+                    },
+                    "MCIT_VMPreviewAddOnDS": {
+                        "type": "crt.EntityDataSource",
+                        "scope": "viewElement",
+                        "config": {
+                            "entitySchemaName": "UsrVMRequestItemAddOn",
+                            "attributes": {
+                                "UsrAddOn": {"path": "UsrAddOn"},
+                                "UsrQuantity": {"path": "UsrQuantity"},
+                                "UsrUnitPriceSnapshot": {"path": "UsrUnitPriceSnapshot"},
+                                "UsrTotalAmountSnapshot": {"path": "UsrTotalAmountSnapshot"},
+                                "UsrCurrency": {"path": "UsrCurrency"},
+                                "UsrUnitSnapshot": {"path": "UsrUnitSnapshot"}
+                            }
+                        }
+                    }
+                }
+            }
+
+        ]/**SCHEMA_MODEL_CONFIG_DIFF*/,
+		handlers: /**SCHEMA_HANDLERS*/[
+            {
+                "request": "crt.HandleViewModelInitRequest",
+                "handler": async (request, next) => {
+                    await next?.handle(request);
+                    const selected = await request.$context.DataGrid_jhhb7ui_ActiveRow;
+                    await mcitUpdateVMPreview(request.$context, selected);
+                }
+            },
+            {
+                "request": "crt.HandleViewModelAttributeChangeRequest",
+                "handler": async (request, next) => {
+                    if (request.attributeName === "DataGrid_jhhb7ui_ActiveRow") {
+                        await mcitUpdateVMPreview(request.$context, request.value);
+                    } else if (request.attributeName === "Id_8xo8pas") {
+                        // Clear any old VM selection if a different request is loaded in place.
+                        await mcitUpdateVMPreview(request.$context, null);
+                    }
+                    return next?.handle(request);
+                }
+            }
+        ]/**SCHEMA_HANDLERS*/,
 		converters: /**SCHEMA_CONVERTERS*/{}/**SCHEMA_CONVERTERS*/,
 		validators: /**SCHEMA_VALIDATORS*/{}/**SCHEMA_VALIDATORS*/
 	};

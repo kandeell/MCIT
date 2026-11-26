@@ -1,0 +1,9 @@
+﻿{
+  "Descriptor": {
+    "UId": "b03a2420-16fb-4f0c-ac71-2eff93598283",
+    "Name": "UsrMCITContract_CatalogValidation",
+    "ModifiedOnUtc": "\/Date(1795438308000)\/",
+    "ManagerName": "ProcessSchemaManager",
+    "Caption": "Contract catalog validation"
+  }
+}

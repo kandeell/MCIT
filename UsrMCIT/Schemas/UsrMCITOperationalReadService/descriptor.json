@@ -1,0 +1,9 @@
+﻿{
+  "Descriptor": {
+    "UId": "1d397091-ec61-4c63-8b39-2d660cbd64f5",
+    "Name": "UsrMCITOperationalReadService",
+    "ModifiedOnUtc": "\/Date(1795541636000)\/",
+    "ManagerName": "SourceCodeSchemaManager",
+    "Caption": "MCIT operational read service"
+  }
+}

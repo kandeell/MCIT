@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Resources Culture="en-US">
+	<Group Type="String">
+		<Items>
+			<Item Name="BaseElements.ActivateDueVersion.Caption" Value="Activate due configuration" />
+			<Item Name="BaseElements.ActivateDueVersion.Parameters.ActivationTime.Caption" Value="ActivationTime" />
+			<Item Name="BaseElements.ActivateDueVersion.Parameters.ConfigurationVersion.Caption" Value="Configuration version" />
+			<Item Name="BaseElements.ActivateDueVersion.Parameters.ConfigurationVersion.DisplayValue" Value="Scheduled configuration version" />
+			<Item Name="BaseElements.ActivateDueVersion.Parameters.ResultMessage.Caption" Value="ResultMessage" />
+			<Item Name="BaseElements.ActivateDueVersion.Parameters.Success.Caption" Value="Success" />
+			<Item Name="BaseElements.ActivateDueVersion.Parameters.ValidationPassed.Caption" Value="Validation passed" />
+			<Item Name="BaseElements.CheckScheduledVersionInput.Caption" Value="Version supplied?" />
+			<Item Name="BaseElements.ConditionalFlow_CheckScheduledVersionInput_ActivateDueVersion.Caption" Value="Version supplied" />
+			<Item Name="BaseElements.DefaultFlow_CheckScheduledVersionInput_ReportMissingVersion.Caption" Value="Version missing" />
+			<Item Name="BaseElements.EndScheduledActivation.Caption" Value="Scheduled activation complete" />
+			<Item Name="BaseElements.ReportMissingVersion.Caption" Value="Report missing version" />
+			<Item Name="BaseElements.StartScheduledActivation.Caption" Value="Scheduled activation requested" />
+			<Item Name="Caption" Value="MCIT scheduled configuration activation" />
+			<Item Name="Parameters.ConfigurationVersion.Caption" Value="Scheduled configuration version" />
+			<Item Name="Parameters.ResultMessage.Caption" Value="Result message" />
+			<Item Name="Parameters.ResultMessage.DisplayValue" Value="ResultMessage" />
+			<Item Name="Parameters.Success.Caption" Value="Activation succeeded" />
+			<Item Name="Parameters.Success.DisplayValue" Value="Success" />
+		</Items>
+	</Group>
+</Resources>

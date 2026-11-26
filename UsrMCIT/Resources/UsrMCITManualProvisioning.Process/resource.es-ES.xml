@@ -77,8 +77,6 @@
 			<Item Name="BaseElements.ChangeDataUserTask1.Parameters.IgnoreErrors.Caption" Value="Continuar la ejecución en errores" />
 			<Item Name="BaseElements.ChangeDataUserTask1.Parameters.IsMatchConditions.Caption" Value="Si el objeto cumple las siguientes condiciones" />
 			<Item Name="BaseElements.ChangeDataUserTask1.Parameters.RecordColumnValues.Caption" Value="Establecer valores de columna" />
-			<Item Name="BaseElements.LinkEntityToProcessUserTask1.Parameters.EntityId.Caption" Value="Objeto" />
-			<Item Name="BaseElements.LinkEntityToProcessUserTask1.Parameters.EntitySchemaId.Caption" Value="Esquema de objetos" />
 			<Item Name="Caption" Value="MCIT VM Manual Provisioning" />
 		</Items>
 	</Group>

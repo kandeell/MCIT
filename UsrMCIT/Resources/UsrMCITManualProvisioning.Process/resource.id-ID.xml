@@ -77,8 +77,6 @@
 			<Item Name="BaseElements.ChangeDataUserTask1.Parameters.IgnoreErrors.Caption" Value="Lanjutkan eksekusi pada kesalahan" />
 			<Item Name="BaseElements.ChangeDataUserTask1.Parameters.IsMatchConditions.Caption" Value="Jika objek memenuhi kondisi berikut" />
 			<Item Name="BaseElements.ChangeDataUserTask1.Parameters.RecordColumnValues.Caption" Value="Atur nilai kolom" />
-			<Item Name="BaseElements.LinkEntityToProcessUserTask1.Parameters.EntityId.Caption" Value="Objek" />
-			<Item Name="BaseElements.LinkEntityToProcessUserTask1.Parameters.EntitySchemaId.Caption" Value="Skema objek" />
 			<Item Name="Caption" Value="MCIT VM Manual Provisioning" />
 		</Items>
 	</Group>

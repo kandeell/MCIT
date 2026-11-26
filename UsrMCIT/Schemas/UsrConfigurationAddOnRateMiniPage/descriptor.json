@@ -1,0 +1,13 @@
+﻿{
+  "Descriptor": {
+    "UId": "6498ec40-1eb3-419a-bfd5-de126d9475ea",
+    "Name": "UsrConfigurationAddOnRateMiniPage",
+    "ModifiedOnUtc": "\/Date(1795455263000)\/",
+    "Parent": {
+      "UId": "ecdcc8ff-272c-4957-9381-7d74ce17e140",
+      "Name": "BaseMiniPageTemplate"
+    },
+    "ManagerName": "ClientUnitSchemaManager",
+    "Caption": "Configuration Add-on Rate modal page"
+  }
+}

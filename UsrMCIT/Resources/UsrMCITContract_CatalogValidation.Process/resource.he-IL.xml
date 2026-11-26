@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Resources Culture="he-IL">
+	<Group Type="String">
+		<Items>
+			<Item Name="BaseElements.ReadAddOn.Parameters.AggregationColumnName.Caption" Value="שם עמודת פונקציית אגרגציה" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.CanReadUncommitedData.Caption" Value="קרא נתונים שלא אושרו" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ConsiderTimeInFilter.Caption" Value="שקול זמן במסנן" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.DataSourceFilters.Caption" Value="מקור נתונים של פילטרים" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.EntityColumnMetaPathes.Caption" Value="עמודות לקרוא" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.FunctionType.Caption" Value="סוג פונקציה מצטברת" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.IgnoreDisplayValues.Caption" Value="אל תקרא ערכים המוצגים של עמודות חיפוש" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.NumberOfRecords.Caption" Value="מספר רשומות לקריאה" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.OrderInfo.Caption" Value="סדר עמודות" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ReadSomeTopRecords.Caption" Value="קרא ראשון" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultCompositeObjectList.Caption" Value="אוסף רשומות" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultCount.Caption" Value="מספר רשומות" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultDateTimeFunction.Caption" Value="תוצאת פונקציה (תאריך/שעה)" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultEntity.Caption" Value="הפריט הראשון של האוסף התוצאו" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultEntityCollection.Caption" Value="אוסף תוצאות" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultFloatFunction.Caption" Value="תוצאת פונקציה (שבר)" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultIntegerFunction.Caption" Value="תוצאת פונקציה (מספר שלם)" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultRowsCount.Caption" Value="מספר הרשומות שנקראו" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultType.Caption" Value="Result type" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.AggregationColumnName.Caption" Value="שם עמודת פונקציית אגרגציה" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.CanReadUncommitedData.Caption" Value="קרא נתונים שלא אושרו" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ConsiderTimeInFilter.Caption" Value="שקול זמן במסנן" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.DataSourceFilters.Caption" Value="מקור נתונים של פילטרים" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.EntityColumnMetaPathes.Caption" Value="עמודות לקרוא" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.FunctionType.Caption" Value="סוג פונקציה מצטברת" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.IgnoreDisplayValues.Caption" Value="אל תקרא ערכים המוצגים של עמודות חיפוש" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.NumberOfRecords.Caption" Value="מספר רשומות לקריאה" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.OrderInfo.Caption" Value="סדר עמודות" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ReadSomeTopRecords.Caption" Value="קרא ראשון" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultCompositeObjectList.Caption" Value="אוסף רשומות" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultCount.Caption" Value="מספר רשומות" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultDateTimeFunction.Caption" Value="תוצאת פונקציה (תאריך/שעה)" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultEntity.Caption" Value="הפריט הראשון של האוסף התוצאו" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultEntityCollection.Caption" Value="אוסף תוצאות" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultFloatFunction.Caption" Value="תוצאת פונקציה (שבר)" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultIntegerFunction.Caption" Value="תוצאת פונקציה (מספר שלם)" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultRowsCount.Caption" Value="מספר הרשומות שנקראו" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultType.Caption" Value="Result type" />
+			<Item Name="Caption" Value="Contract catalog validation" />
+		</Items>
+	</Group>
+</Resources>

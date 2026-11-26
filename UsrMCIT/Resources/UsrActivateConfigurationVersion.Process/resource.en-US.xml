@@ -2,7 +2,15 @@
 <Resources Culture="en-US">
 	<Group Type="String">
 		<Items>
+			<Item Name="BaseElements.CheckValidationResult.Caption" Value="Configuration valid?" />
+			<Item Name="BaseElements.CommitConfigurationActivation.Caption" Value="Commit configuration activation" />
+			<Item Name="BaseElements.ConditionalFlow_CheckValidationResult_ReadDataUserTask1.Caption" Value="Rates valid" />
+			<Item Name="BaseElements.ConditionalSequenceFlow1.Caption" Value="Rates invalid" />
+			<Item Name="BaseElements.ConditionalSequenceFlow2.Caption" Value="Version eligible" />
+			<Item Name="BaseElements.DefaultFlow_CheckValidationResult_SetInvalidConfigurationMessage.Caption" Value="Rates invalid" />
+			<Item Name="BaseElements.DefaultFlow_ExclusiveGateway2_SetInvalidConfigurationMessage.Caption" Value="Version ineligible" />
 			<Item Name="BaseElements.DefaultSequenceFlow1.Caption" Value="Version eligible" />
+			<Item Name="BaseElements.DefaultSequenceFlow2.Caption" Value="Rates valid" />
 			<Item Name="BaseElements.FormulaTask1.Caption" Value="Capture activation time" />
 			<Item Name="BaseElements.ReadDataUserTask1.Caption" Value="Read selected configuration" />
 			<Item Name="BaseElements.ReadDataUserTask1.Parameters.AggregationColumnName.Caption" Value="Name of aggregate function column" />
@@ -46,6 +54,11 @@
 			<Item Name="BaseElements.ReadDataUserTask3.Parameters.ResultIntegerFunction.Caption" Value="Function result (Integer)" />
 			<Item Name="BaseElements.ReadDataUserTask3.Parameters.ResultRowsCount.Caption" Value="Number of records read" />
 			<Item Name="BaseElements.ReadDataUserTask3.Parameters.ResultType.Caption" Value="Type of result" />
+			<Item Name="BaseElements.SetInvalidConfigurationMessage.Caption" Value="Set invalid configuration message" />
+			<Item Name="BaseElements.ValidateSelectedConfiguration.Caption" Value="Validate selected configuration" />
+			<Item Name="BaseElements.ValidateSelectedConfiguration.Parameters.ConfigurationVersionParameter.Caption" Value="Configuration version" />
+			<Item Name="BaseElements.ValidateSelectedConfiguration.Parameters.ConfigurationVersionParameter.DisplayValue" Value="[#Configuration version#]" />
+			<Item Name="BaseElements.ValidateSelectedConfiguration.Parameters.ValidParameter.Caption" Value="Valid" />
 			<Item Name="Caption" Value="Activate Configuration Version" />
 			<Item Name="LaneSets.LaneSet1.Caption" Value="LaneSet 1" />
 			<Item Name="LaneSets.LaneSet1.Lanes.Lane1.Caption" Value="Lane 1" />
@@ -53,9 +66,13 @@
 			<Item Name="NotificationCaption.DisplayValue" Value="[#Process name#]" />
 			<Item Name="Parameters.ActivationTime.Caption" Value="ActivationTime" />
 			<Item Name="Parameters.ConfigurationVersion.Caption" Value="Configuration version" />
+			<Item Name="Parameters.ForceActivationRollback.Caption" Value="Force activation rollback" />
+			<Item Name="Parameters.ForceActivationRollback.DisplayValue" Value="false" />
 			<Item Name="Parameters.ResultMessage.Caption" Value="ResultMessage" />
 			<Item Name="Parameters.Success.Caption" Value="Success" />
 			<Item Name="Parameters.Success.DisplayValue" Value="[#Boolean value.False#]" />
+			<Item Name="Parameters.ValidationPassed.Caption" Value="Validation passed" />
+			<Item Name="Parameters.ValidationPassed.DisplayValue" Value="[#Validate selected configuration.Valid#]" />
 		</Items>
 	</Group>
 </Resources>

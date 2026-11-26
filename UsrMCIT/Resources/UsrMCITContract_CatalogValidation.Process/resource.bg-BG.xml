@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Resources Culture="bg-BG">
+	<Group Type="String">
+		<Items>
+			<Item Name="BaseElements.ReadAddOn.Parameters.AggregationColumnName.Caption" Value="Име на колоната с агрегатна функция" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.CanReadUncommitedData.Caption" Value="Прочети некачените данни" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ConsiderTimeInFilter.Caption" Value="Помисли за времето във филтъра" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.DataSourceFilters.Caption" Value="Филтри за източници на данни" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.EntityColumnMetaPathes.Caption" Value="Колони за четене" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.FunctionType.Caption" Value="Тип агрегатна функция" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.IgnoreDisplayValues.Caption" Value="Не чети показаните стойности на търсещите колони" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.NumberOfRecords.Caption" Value="Брой записи за четене" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.OrderInfo.Caption" Value="Ред на колоните" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ReadSomeTopRecords.Caption" Value="Прочети първо" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultCompositeObjectList.Caption" Value="Колекция от записи" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultCount.Caption" Value="Брой записи" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultDateTimeFunction.Caption" Value="Резултат от функцията (Дата/Час)" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultEntity.Caption" Value="Първи елемент от получената колекция" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultEntityCollection.Caption" Value="Получена колекция" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultFloatFunction.Caption" Value="Резултат от функцията (Десетично число)" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultIntegerFunction.Caption" Value="Резултат от функцията (Цяло число)" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultRowsCount.Caption" Value="Брой прочетени записи" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultType.Caption" Value="Тип резултат" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.AggregationColumnName.Caption" Value="Име на колоната с агрегатна функция" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.CanReadUncommitedData.Caption" Value="Прочети некачените данни" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ConsiderTimeInFilter.Caption" Value="Помисли за времето във филтъра" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.DataSourceFilters.Caption" Value="Филтри за източници на данни" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.EntityColumnMetaPathes.Caption" Value="Колони за четене" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.FunctionType.Caption" Value="Тип агрегатна функция" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.IgnoreDisplayValues.Caption" Value="Не чети показаните стойности на търсещите колони" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.NumberOfRecords.Caption" Value="Брой записи за четене" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.OrderInfo.Caption" Value="Ред на колоните" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ReadSomeTopRecords.Caption" Value="Прочети първо" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultCompositeObjectList.Caption" Value="Колекция от записи" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultCount.Caption" Value="Брой записи" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultDateTimeFunction.Caption" Value="Резултат от функцията (Дата/Час)" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultEntity.Caption" Value="Първи елемент от получената колекция" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultEntityCollection.Caption" Value="Получена колекция" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultFloatFunction.Caption" Value="Резултат от функцията (Десетично число)" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultIntegerFunction.Caption" Value="Резултат от функцията (Цяло число)" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultRowsCount.Caption" Value="Брой прочетени записи" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultType.Caption" Value="Тип резултат" />
+			<Item Name="Caption" Value="Contract catalog validation" />
+		</Items>
+	</Group>
+</Resources>

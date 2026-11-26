@@ -1,4 +1,241 @@
 define("UsrFinanceConfig_ListPage", /**SCHEMA_DEPS*/["@creatio-devkit/common"]/**SCHEMA_DEPS*/, function/**SCHEMA_ARGS*/(sdk)/**SCHEMA_ARGS*/ {
+
+    // MCIT Finance Configuration Resource Rate editor.
+    // UI-only addition: loads real Creatio lookups on demand and saves through sdk.Model.
+    // No changes to config-version statuses, ledger, BPMN, or points posting.
+    const mcitRateGuid = /^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$/i;
+    const mcitRateId = value => String(value?.value ?? value?.Id ?? value ?? "");
+    const mcitRateSchemas = {
+        versions: ["UsrContractConfigVersion"],
+        types: ["UsrMCITResourceType"],
+        units: ["UsrPricingUnitLookup", "UsrPricingUnit", "UsrMCITPricingUnit",
+            "UsrMCITPricingUnitLookup", "UsrResourcePricingUnit", "UsrResourceUnit",
+            "UsrMCITUnitOfMeasure", "UnitOfMeasure"],
+        currencies: ["Currency", "UsrCurrency", "UsrMCITCurrency"]
+    };
+
+    async function mcitRateOptions(kind) {
+        // Query each candidate separately: one uninstalled lookup or unsupported
+        // display column cannot prevent the other valid lookup candidates from loading.
+        const fields = kind === "versions" ? [["Id", "UsrName"], ["Id", "Name"]] :
+            kind === "types" ? [["Id", "Name"], ["Id", "UsrName"], ["Id", "UsrCode", "Name"]] :
+            [["Id", "Name"], ["Id", "UsrName"]];
+        for (const schema of mcitRateSchemas[kind]) {
+            for (const attributes of fields) {
+                try {
+                    const model = await sdk.Model.create(schema);
+                    const rows = await model.load({
+                        attributes,
+                        options: {pagingConfig: {rowsOffset: 0, rowCount: 500}}
+                    });
+                    const options = (rows || []).map(row => ({
+                        id: mcitRateId(row.Id),
+                        label: String(row.UsrName ?? row.Name ?? row.UsrCode ?? "").trim()
+                    })).filter(row => mcitRateGuid.test(row.id) && row.label);
+                    if (options.length) return options;
+                } catch (error) {
+                    console.debug("MCIT Resource Rate lookup candidate unavailable",
+                        kind, schema, attributes, error?.message || error);
+                }
+            }
+        }
+        return [];
+    }
+
+    function mcitRateStyles() {
+        if (document.getElementById("usr-mcit-resource-rate-editor-css")) return;
+        const style = document.createElement("style");
+        style.id = "usr-mcit-resource-rate-editor-css";
+        style.textContent = `
+          .usr-mcit-rate-mask{position:fixed;inset:0;z-index:2147483000;
+            background:rgba(24,18,43,.55);display:flex;align-items:center;
+            justify-content:center;padding:18px;box-sizing:border-box}
+          .usr-mcit-rate-dialog{box-sizing:border-box;width:min(690px,100%);
+            max-height:94vh;overflow:auto;background:#fff;color:#1a2945;
+            border-radius:14px;box-shadow:0 25px 70px #190e3450;
+            font:13px/1.5 Arial,sans-serif}
+          .usr-mcit-rate-head{padding:18px 22px;display:flex;align-items:center;
+            justify-content:space-between;gap:10px;border-bottom:1px solid #e6e8ef}
+          .usr-mcit-rate-head strong{font-size:17px}
+          .usr-mcit-rate-fields{padding:19px 22px;display:grid;
+            grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
+          .usr-mcit-rate-field{display:flex;flex-direction:column;gap:6px;
+            color:#4a5670;font-size:12px;font-weight:700}
+          .usr-mcit-rate-field.wide{grid-column:1/-1}
+          .usr-mcit-rate-field select,.usr-mcit-rate-field input{box-sizing:border-box;
+            background:#fff;border:1px solid #dbe0e9;border-radius:8px;
+            width:100%;min-width:0;padding:9px 10px;color:#1a2945;
+            font:13px Arial,sans-serif}
+          .usr-mcit-rate-error{white-space:pre-line;display:none;margin:0 22px 12px;
+            border:1px solid #edc6ca;background:#fff6f7;border-radius:8px;
+            padding:10px;color:#a92c39}
+          .usr-mcit-rate-note{grid-column:1/-1;font-weight:400;
+            font-size:11px;color:#77839b}
+          .usr-mcit-rate-actions{padding:15px 22px;border-top:1px solid #e8eaf0;
+            display:flex;justify-content:flex-end;gap:9px}
+          .usr-mcit-rate-mask button{border:1px solid #d8dce7;border-radius:8px;
+            padding:9px 15px;cursor:pointer;background:#fff;color:#1c2e4e}
+          .usr-mcit-rate-mask button.primary{background:#681acc;color:#fff;
+            border-color:#681acc;font-weight:700}
+          .usr-mcit-rate-mask button:disabled{opacity:.55;cursor:default}
+          @media(max-width:560px){.usr-mcit-rate-fields{grid-template-columns:1fr}
+            .usr-mcit-rate-field.wide{grid-column:auto}}
+        `;
+        document.head.appendChild(style);
+    }
+
+    async function usrOpenRateEditor(ctx) {
+        if (typeof document === "undefined") return;
+        document.getElementById("usr-mcit-resource-rate-editor")?.remove();
+        mcitRateStyles();
+        const node = (tag, className, text) => {
+            const element = document.createElement(tag);
+            if (className) element.className = className;
+            if (text !== undefined) element.textContent = text;
+            return element;
+        };
+        const mask = node("div", "usr-mcit-rate-mask");
+        mask.id = "usr-mcit-resource-rate-editor";
+        const dialog = node("section", "usr-mcit-rate-dialog");
+        dialog.setAttribute("role", "dialog");
+        dialog.setAttribute("aria-modal", "true");
+        dialog.setAttribute("aria-label", "Add Resource Rate");
+        const head = node("div", "usr-mcit-rate-head");
+        const closeButton = node("button", "", "Close");
+        closeButton.type = "button";
+        head.append(node("strong", "", "Add Resource Rate"), closeButton);
+        const fields = node("div", "usr-mcit-rate-fields");
+        const error = node("div", "usr-mcit-rate-error");
+        error.setAttribute("role", "alert");
+        const actions = node("div", "usr-mcit-rate-actions");
+        const cancel = node("button", "", "Cancel");
+        cancel.type = "button";
+        const save = node("button", "primary", "Save Rate");
+        save.type = "button";
+        save.disabled = true;
+        actions.append(cancel, save);
+        dialog.append(head, fields, error, actions);
+        mask.appendChild(dialog);
+        document.body.appendChild(mask);
+        const close = () => mask.remove();
+        closeButton.addEventListener("click", close);
+        cancel.addEventListener("click", close);
+        mask.addEventListener("click", evt => {if (evt.target === mask) close();});
+        mask.addEventListener("keydown", evt => {if (evt.key === "Escape") close();});
+        const report = message => {
+            error.textContent = String(message);
+            error.style.display = "block";
+        };
+        function field(label, type, wide = false) {
+            const wrap = node("label", "usr-mcit-rate-field" + (wide ? " wide" : ""));
+            const control = node(type === "select" ? "select" : "input");
+            if (type !== "select") control.type = type;
+            wrap.append(node("span", "", label + " *"), control);
+            fields.appendChild(wrap);
+            return control;
+        }
+        const name = field("Rate name", "text", true);
+        name.maxLength = 200;
+        name.placeholder = "e.g. Trial — Additional RAM";
+        const versions = field("Configuration version", "select");
+        const types = field("Resource type", "select");
+        const units = field("Pricing unit", "select");
+        const currencies = field("Currency", "select");
+        const amount = field("Amount per unit", "number");
+        const points = field("Points per unit", "number");
+        [amount, points].forEach(input => {
+            input.min = "0";
+            input.step = "any";
+            input.value = "0";
+        });
+        fields.appendChild(node("div", "usr-mcit-rate-note",
+            "Only saved Creatio lookup values are selectable. Save creates one resource rate; " +
+            "it does not deduct points or submit a request."));
+        const controls = {versions, types, units, currencies};
+        try {
+            const optionsByKind = await Promise.all(Object.keys(controls).map(mcitRateOptions));
+            if (!mask.isConnected) return;
+            const missing = [];
+            Object.entries(controls).forEach(([kind, control], index) => {
+                const placeholder = node("option", "", "Select " + kind);
+                placeholder.value = "";
+                control.appendChild(placeholder);
+                optionsByKind[index].forEach(option => {
+                    const row = node("option", "", option.label);
+                    row.value = option.id;
+                    control.appendChild(row);
+                });
+                if (!optionsByKind[index].length) missing.push(kind);
+            });
+            if (missing.length) {
+                report("Missing or inaccessible lookup records: " + missing.join(", ") +
+                    ". Check the corresponding Creatio lookup and read permissions.");
+                return;
+            }
+            // Honor the version already chosen in the Resource Rates filter, if present.
+            try {
+                const selected = await ctx?.UsrResourceRateVersionFilterValue;
+                const raw = Array.isArray(selected) ? selected[0] : selected;
+                const id = mcitRateId(raw);
+                if (mcitRateGuid.test(id) && [...versions.options].some(o => o.value === id))
+                    versions.value = id;
+            } catch (_) { /* Filter is optional. */ }
+            save.disabled = false;
+        } catch (lookupError) {
+            console.error("MCIT Resource Rate lookup loading failed", lookupError);
+            report("Could not load rate editor choices: " + (lookupError?.message || lookupError));
+            return;
+        }
+        save.addEventListener("click", async () => {
+            if (save.disabled) return;
+            error.style.display = "none";
+            const selections = [versions.value, types.value, units.value, currencies.value];
+            const price = Number(amount.value);
+            const pointRate = Number(points.value);
+            if (!name.value.trim() || selections.some(id => !mcitRateGuid.test(id)) ||
+                amount.value.trim() === "" || points.value.trim() === "" ||
+                !Number.isFinite(price) || !Number.isFinite(pointRate) ||
+                price < 0 || pointRate < 0) {
+                report("Enter a rate name, choose all lookups, and supply non-negative amounts and points.");
+                return;
+            }
+            save.disabled = true;
+            save.textContent = "Saving…";
+            try {
+                const model = await sdk.Model.create("UsrConfigResourceRate");
+                const inserted = await model.insert({
+                    UsrName: name.value.trim(),
+                    UsrConfigVersion: versions.value,
+                    UsrResourceType: types.value,
+                    UsrPricingUnitLookup: units.value,
+                    UsrCurrency: currencies.value,
+                    UsrAmountPerUnit: price,
+                    UsrPointsPerUnit: pointRate
+                });
+                if (inserted === false || inserted?.success === false ||
+                    inserted?.isSuccess === false || inserted?.rowsAffected === 0) {
+                    throw new Error("Creatio did not confirm the insert. Check object permissions and required columns.");
+                }
+                close();
+                try {
+                    await ctx?.executeRequest?.({
+                        type:"crt.LoadDataRequest", $context:ctx,
+                        dataSourceName:"UsrResourceRateDS",
+                        config:{loadType:"reload", useLastLoadParameters:true}
+                    });
+                } catch (refreshError) {
+                    console.info("Rate may have saved; refresh the grid to verify", refreshError);
+                }
+            } catch (saveError) {
+                console.error("MCIT Resource Rate save failed", saveError);
+                report("Could not save Resource Rate: " + (saveError?.message || saveError));
+                save.disabled = false;
+                save.textContent = "Save Rate";
+            }
+        });
+        name.focus();
+    }
+
 	return {
 		viewConfigDiff: /**SCHEMA_VIEW_CONFIG_DIFF*/[
 			{

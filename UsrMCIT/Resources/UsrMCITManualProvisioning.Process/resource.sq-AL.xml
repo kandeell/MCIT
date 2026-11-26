@@ -77,8 +77,6 @@
 			<Item Name="BaseElements.ChangeDataUserTask1.Parameters.IgnoreErrors.Caption" Value="Vazhdoni ekzekutimin nëse ndodhin gabime" />
 			<Item Name="BaseElements.ChangeDataUserTask1.Parameters.IsMatchConditions.Caption" Value="Nëse objekti përmbush kushtet vijuese" />
 			<Item Name="BaseElements.ChangeDataUserTask1.Parameters.RecordColumnValues.Caption" Value="Përcakto vlerat e kolonës" />
-			<Item Name="BaseElements.LinkEntityToProcessUserTask1.Parameters.EntityId.Caption" Value="Objekti" />
-			<Item Name="BaseElements.LinkEntityToProcessUserTask1.Parameters.EntitySchemaId.Caption" Value="Skema e objektit" />
 			<Item Name="Caption" Value="MCIT VM Manual Provisioning" />
 		</Items>
 	</Group>

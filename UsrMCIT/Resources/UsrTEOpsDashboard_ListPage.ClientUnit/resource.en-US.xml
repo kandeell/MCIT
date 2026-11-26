@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Resources Culture="en-US">
+	<Group Type="String">
+		<Items>
+			<Item Name="Caption" Value="TE OPS Dashboard" />
+			<Item Name="LocalizableStrings.Button_ju6rdk4_caption.Value" Value="Refresh " />
+			<Item Name="LocalizableStrings.Button_wnf25g3_caption.Value" Value="Export Report" />
+			<Item Name="LocalizableStrings.ChartWidget_bh4b4i2_series_0.Value" Value="Request Approval" />
+			<Item Name="LocalizableStrings.ChartWidget_bh4b4i2_title.Value" Value="Active Work by Stage" />
+			<Item Name="LocalizableStrings.ChartWidget_bh4b4i2_xAxis.Value" Value="Requests" />
+			<Item Name="LocalizableStrings.ChartWidget_bh4b4i2_yAxis.Value" Value="Stage" />
+			<Item Name="LocalizableStrings.ChartWidget_rtt5ovt_series_0.Value" Value="Request Approval" />
+			<Item Name="LocalizableStrings.ChartWidget_rtt5ovt_title.Value" Value="SLA Compliance" />
+			<Item Name="LocalizableStrings.IndicatorWidget_1regrgv_hint.Value" Value="Components.IndicatorWidget.Hint" />
+			<Item Name="LocalizableStrings.IndicatorWidget_1regrgv_title.Value" Value="New metric" />
+			<Item Name="LocalizableStrings.IndicatorWidget_6s73fre_hint.Value" Value="Components.IndicatorWidget.Hint" />
+			<Item Name="LocalizableStrings.IndicatorWidget_6s73fre_title.Value" Value="New metric" />
+			<Item Name="LocalizableStrings.IndicatorWidget_bztltdz_hint.Value" Value="Components.IndicatorWidget.Hint" />
+			<Item Name="LocalizableStrings.IndicatorWidget_bztltdz_title.Value" Value="New metric" />
+			<Item Name="LocalizableStrings.IndicatorWidget_f84onl3_hint.Value" Value="Components.IndicatorWidget.Hint" />
+			<Item Name="LocalizableStrings.IndicatorWidget_f84onl3_title.Value" Value="New metric" />
+			<Item Name="LocalizableStrings.IndicatorWidget_ixrs0j1_hint.Value" Value="Components.IndicatorWidget.Hint" />
+			<Item Name="LocalizableStrings.IndicatorWidget_ixrs0j1_title.Value" Value="New metric" />
+			<Item Name="LocalizableStrings.IndicatorWidget_mvf1ffd_hint.Value" Value="Components.IndicatorWidget.Hint" />
+			<Item Name="LocalizableStrings.IndicatorWidget_mvf1ffd_title.Value" Value="New metric" />
+			<Item Name="LocalizableStrings.IndicatorWidget_ro1odmp_hint.Value" Value="Components.IndicatorWidget.Hint" />
+			<Item Name="LocalizableStrings.IndicatorWidget_ro1odmp_title.Value" Value="New metric" />
+			<Item Name="LocalizableStrings.IndicatorWidget_ttl859j_hint.Value" Value="Components.IndicatorWidget.Hint" />
+			<Item Name="LocalizableStrings.IndicatorWidget_ttl859j_title.Value" Value="New metric" />
+			<Item Name="LocalizableStrings.IndicatorWidget_xfngg3i_hint.Value" Value="Components.IndicatorWidget.Hint" />
+			<Item Name="LocalizableStrings.IndicatorWidget_xfngg3i_title.Value" Value="New metric" />
+			<Item Name="LocalizableStrings.Label_w5djqsr_caption.Value" Value="Label" />
+		</Items>
+	</Group>
+</Resources>

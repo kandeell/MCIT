@@ -18,8 +18,11 @@
 			<Item Name="Columns.UsrRequestType.Caption" Value="Request Type" />
 			<Item Name="Columns.UsrRequestedDeliveryDate.Caption" Value="RequestedDeliveryDate" />
 			<Item Name="Columns.UsrRequester.Caption" Value="Requester" />
+			<Item Name="Columns.UsrResizeAdditionalPointsPreview.Caption" Value="Resize additional points preview" />
+			<Item Name="Columns.UsrResizeReductionPointsPreview.Caption" Value="Resize reduction points preview" />
 			<Item Name="Columns.UsrStatus.Caption" Value="Status" />
 			<Item Name="Columns.UsrSubmittedOn.Caption" Value="SubmittedOn" />
+			<Item Name="Columns.UsrTargetVirtualMachine.Caption" Value="Target virtual machine" />
 		</Items>
 	</Group>
 </Resources>

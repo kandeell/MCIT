@@ -232,6 +232,8 @@
 			<Item Name="BaseElements.ChangeDataUserTask9.Parameters.IsMatchConditions.Caption" Value="If object meets the following conditions" />
 			<Item Name="BaseElements.ChangeDataUserTask9.Parameters.IsMatchConditions.DisplayValue" Value="true" />
 			<Item Name="BaseElements.ChangeDataUserTask9.Parameters.RecordColumnValues.Caption" Value="Set column values" />
+			<Item Name="BaseElements.CheckAllocationPreview.Caption" Value="Allocation preview ready?" />
+			<Item Name="BaseElements.ConditionalFlow_CheckAllocationPreview_AddDataUserTask2.Caption" Value="Preview ready" />
 			<Item Name="BaseElements.ConditionalSequenceFlow1.Caption" Value="Submitted" />
 			<Item Name="BaseElements.ConditionalSequenceFlow12.Caption" Value="Technical Approval Record Found" />
 			<Item Name="BaseElements.ConditionalSequenceFlow14.Caption" Value="Technical Rejection Record Found" />
@@ -241,6 +243,7 @@
 			<Item Name="BaseElements.ConditionalSequenceFlow5.Caption" Value="Positive" />
 			<Item Name="BaseElements.ConditionalSequenceFlow7.Caption" Value=" Financial Rejection Record Found?." />
 			<Item Name="BaseElements.ConditionalSequenceFlow9.Caption" Value="Financial Approval Record Found?" />
+			<Item Name="BaseElements.DefaultFlow_CheckAllocationPreview_EndInvalidAllocationPreview.Caption" Value="Preview invalid" />
 			<Item Name="BaseElements.DefaultSequenceFlow1.Caption" Value="Approval Record Not Found" />
 			<Item Name="BaseElements.DefaultSequenceFlow2.Caption" Value="Not Submitted" />
 			<Item Name="BaseElements.DefaultSequenceFlow3.Caption" Value="Financial Approval Record Not Found" />
@@ -388,6 +391,7 @@
 			<Item Name="BaseElements.EmailTemplateUserTask2.Parameters.Subject.Value" Value="MCIT Portal — VM Request Rejected (Technical Review)" />
 			<Item Name="BaseElements.EmailTemplateUserTask2.Parameters.UsrUsrContractConfigVersion.Caption" Value="Contract Configuration Version" />
 			<Item Name="BaseElements.EmailTemplateUserTask2.Parameters.UsrUsrVirtualMachine.Caption" Value="Virtual Machine" />
+			<Item Name="BaseElements.EndInvalidAllocationPreview.Caption" Value="End invalid allocation preview" />
 			<Item Name="BaseElements.ExclusiveGateway1.Caption" Value="Validate Request Status" />
 			<Item Name="BaseElements.ExclusiveGateway4.Caption" Value="Financial Approval Record Found?" />
 			<Item Name="BaseElements.ExclusiveGateway5.Caption" Value="Technical Approval Record Found?" />
@@ -397,6 +401,45 @@
 			<Item Name="BaseElements.LinkEntityToProcessUserTask1.Parameters.EntityId.DisplayValue" Value="[#StartSignal1.Unique identifier of record#]" />
 			<Item Name="BaseElements.LinkEntityToProcessUserTask1.Parameters.EntitySchemaId.Caption" Value="Object schema" />
 			<Item Name="BaseElements.LinkEntityToProcessUserTask1.Parameters.EntitySchemaId.DisplayValue" Value="VM Request" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Caption" Value="Preview points allocation" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.AllocationQuantity.Caption" Value="AllocationQuantity" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.AvailableAllocatedTotal.Caption" Value="AvailableAllocatedTotal" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.AvailableBalance.Caption" Value="AvailableBalance" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.AvailableFundingTotal.Caption" Value="AvailableFundingTotal" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.AvailablePointsUsed.Caption" Value="AvailablePointsUsed" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.AvailableToConsume.Caption" Value="AvailableToConsume" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.ConsumptionSucceeded.Caption" Value="ConsumptionSucceeded" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.ContractId.Caption" Value="ContractId" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.ContractId.DisplayValue" Value="First item of resulting collection.Contract" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.ErrorMessage.Caption" Value="Parameter 1" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.InputsValid.Caption" Value="InputsValid" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.OperationId.Caption" Value="OperationId" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.OperationId.DisplayValue" Value="Record Id" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.PointsRequired.Caption" Value="PointsRequired" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.PointsRequired.DisplayValue" Value="First item of resulting collection.Estimated points" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.PostingEnabled.Caption" Value="PostingEnabled" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.PostingEnabled.DisplayValue" Value="false" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.PreviewAvailablePoints.Caption" Value="PreviewAvailablePoints" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.PreviewReady.Caption" Value="PreviewReady" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.PreviewRestoredPoints.Caption" Value="PreviewRestoredPoints" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.RemainingPoints.Caption" Value="RemainingPoints" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.RequestId.Caption" Value="RequestId" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.RequestId.DisplayValue" Value="Record Id" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.RequestItemId.Caption" Value="RequestItemId" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.RestoredAllocatedTotal.Caption" Value="RestoredAllocatedTotal" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.RestoredBalance.Caption" Value="RestoredBalance" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.RestoredFundingTotal.Caption" Value="RestoredFundingTotal" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.RestoredPointsUsed.Caption" Value="RestoredPointsUsed" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.RestoredToConsume.Caption" Value="RestoredToConsume" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.SourceAllocatedTotal.Caption" Value="SourceAllocatedTotal" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.SourceCursorDate.Caption" Value="SourceCursorDate" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.SourceCursorId.Caption" Value="SourceCursorId" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.SourceQuantity.Caption" Value="SourceQuantity" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.SourceRemaining.Caption" Value="SourceRemaining" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.SourceTransactionId.Caption" Value="SourceTransactionId" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.TotalBalance.Caption" Value="TotalBalance" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.UsageTransactionId.Caption" Value="UsageTransactionId" />
+			<Item Name="BaseElements.PreviewPointsAllocation.Parameters.VirtualMachineId.Caption" Value="VirtualMachineId" />
 			<Item Name="BaseElements.ReadDataUserTask1.Caption" Value="Read VM Request" />
 			<Item Name="BaseElements.ReadDataUserTask1.Parameters.AggregationColumnName.Caption" Value="Name of aggregate function column" />
 			<Item Name="BaseElements.ReadDataUserTask1.Parameters.CanReadUncommitedData.Caption" Value="Read uncommitted data" />
@@ -508,6 +551,12 @@
 			<Item Name="LaneSets.LaneSet1.Lanes.Lane1.Caption" Value="Lane 1" />
 			<Item Name="NotificationCaption.Caption" Value="Process instance caption" />
 			<Item Name="NotificationCaption.DisplayValue" Value="[#Process name#]" />
+			<Item Name="Parameters.AllocationPreviewAvailable.Caption" Value="Preview available points" />
+			<Item Name="Parameters.AllocationPreviewAvailable.DisplayValue" Value="PreviewAvailablePoints" />
+			<Item Name="Parameters.AllocationPreviewReady.Caption" Value="Allocation preview ready" />
+			<Item Name="Parameters.AllocationPreviewReady.DisplayValue" Value="PreviewReady" />
+			<Item Name="Parameters.AllocationPreviewRestored.Caption" Value="Preview restored points" />
+			<Item Name="Parameters.AllocationPreviewRestored.DisplayValue" Value="PreviewRestoredPoints" />
 			<Item Name="Parameters.RequestId.Caption" Value="Request ID" />
 		</Items>
 	</Group>

@@ -1,0 +1,9 @@
+﻿{
+  "Descriptor": {
+    "UId": "1cf2e21f-794d-46df-88ed-e91e21a1abb9",
+    "Name": "UsrMCITConfigurationHistoryGuard",
+    "ModifiedOnUtc": "\/Date(1795611099000)\/",
+    "ManagerName": "SourceCodeSchemaManager",
+    "Caption": "MCIT configuration history guard"
+  }
+}

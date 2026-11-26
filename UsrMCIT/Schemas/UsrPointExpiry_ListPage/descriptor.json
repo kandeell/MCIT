@@ -1,0 +1,13 @@
+﻿{
+  "Descriptor": {
+    "UId": "5ee52e11-99ca-42a0-8a6e-e70cfee1a9ba",
+    "Name": "UsrPointExpiry_ListPage",
+    "ModifiedOnUtc": "\/Date(1795557810000)\/",
+    "Parent": {
+      "UId": "b7b898d0-8c77-4953-c097-23fa6800da02",
+      "Name": "ListPageV3Template"
+    },
+    "ManagerName": "ClientUnitSchemaManager",
+    "Caption": "Point Expiry list page"
+  }
+}

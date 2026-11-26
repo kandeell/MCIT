@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Resources Culture="fr-FR">
+	<Group Type="String">
+		<Items>
+			<Item Name="BaseElements.ReadAddOn.Parameters.AggregationColumnName.Caption" Value="Nom de la colonne de la fonction agrégée" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.CanReadUncommitedData.Caption" Value="Lire les données non validées" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ConsiderTimeInFilter.Caption" Value="Considérez l'heure dans le filtre" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.DataSourceFilters.Caption" Value="Sources de données des filtres" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.EntityColumnMetaPathes.Caption" Value="Colonnes à lire" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.FunctionType.Caption" Value="Type fonction Agrégat" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.IgnoreDisplayValues.Caption" Value="Ne pas lire les valeurs des colonnes de la table de référence" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.NumberOfRecords.Caption" Value="Nombre d'enregistrements à lire" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.OrderInfo.Caption" Value="Ordre des colonnes" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ReadSomeTopRecords.Caption" Value="Lire d'abord" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultCompositeObjectList.Caption" Value="Collection d'enregistrements" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultCount.Caption" Value="Nombre d'enregistrements" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultDateTimeFunction.Caption" Value="Résultat de la fonction (Date/Heure)" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultEntity.Caption" Value="Premier élément de la collection résultante" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultEntityCollection.Caption" Value="Collection résultante" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultFloatFunction.Caption" Value="Résultat de la fonction (Décimal)" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultIntegerFunction.Caption" Value="Résultat de la fonction (Entier)" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultRowsCount.Caption" Value="Nombre d'enregistrements lus" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultType.Caption" Value="Type de résultat" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.AggregationColumnName.Caption" Value="Nom de la colonne de la fonction agrégée" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.CanReadUncommitedData.Caption" Value="Lire les données non validées" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ConsiderTimeInFilter.Caption" Value="Considérez l'heure dans le filtre" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.DataSourceFilters.Caption" Value="Sources de données des filtres" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.EntityColumnMetaPathes.Caption" Value="Colonnes à lire" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.FunctionType.Caption" Value="Type fonction Agrégat" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.IgnoreDisplayValues.Caption" Value="Ne pas lire les valeurs des colonnes de la table de référence" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.NumberOfRecords.Caption" Value="Nombre d'enregistrements à lire" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.OrderInfo.Caption" Value="Ordre des colonnes" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ReadSomeTopRecords.Caption" Value="Lire d'abord" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultCompositeObjectList.Caption" Value="Collection d'enregistrements" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultCount.Caption" Value="Nombre d'enregistrements" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultDateTimeFunction.Caption" Value="Résultat de la fonction (Date/Heure)" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultEntity.Caption" Value="Premier élément de la collection résultante" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultEntityCollection.Caption" Value="Collection résultante" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultFloatFunction.Caption" Value="Résultat de la fonction (Décimal)" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultIntegerFunction.Caption" Value="Résultat de la fonction (Entier)" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultRowsCount.Caption" Value="Nombre d'enregistrements lus" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultType.Caption" Value="Type de résultat" />
+			<Item Name="Caption" Value="Contract catalog validation" />
+		</Items>
+	</Group>
+</Resources>

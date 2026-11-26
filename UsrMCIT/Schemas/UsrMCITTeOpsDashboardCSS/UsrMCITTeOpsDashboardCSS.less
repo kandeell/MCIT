@@ -1,0 +1,35 @@
+/* TE OPS only. Paste into LESS tab of UsrMCITTeOpsDashboardCSS. */
+.mcit-teops-dashboard {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    padding: 24px !important;
+    background: #f6f7f9 !important;
+    font-family: Rubik, Arial, sans-serif;
+    color: #172033;
+    gap: 20px !important;
+}
+.mcit-teops-dashboard .mcit-teops-header { gap: 16px !important; align-items: center !important; }
+.mcit-teops-dashboard .mcit-teops-title { gap: 4px !important; }
+.mcit-teops-dashboard .mcit-teops-actions { gap: 8px !important; align-items: center !important; }
+.mcit-teops-dashboard .mcit-teops-actions button { border: 1px solid #e2e6ef; border-radius: 10px; background: #fff; color: #293344; padding: 8px 14px; font-weight: 500; }
+.mcit-teops-dashboard .mcit-teops-notice { padding: 12px 16px !important; background: #fff4f3 !important; border: 1px solid #f5c7c5; border-radius: 12px; color: #991b1b; }
+.mcit-teops-dashboard .mcit-teops-metrics { gap: 12px !important; }
+.mcit-teops-dashboard .mcit-teops-card { box-sizing: border-box; min-height: 100px; padding: 16px 18px !important; border: 1px solid #e2e6ef; border-radius: 16px; background: #fff !important; gap: 6px !important; min-width: 0; }
+.mcit-teops-dashboard .mcit-teops-card > :first-child { color: #687583 !important; font-size: 13px !important; font-weight: 500 !important; }
+.mcit-teops-dashboard .mcit-teops-card > :last-child { font-size: 28px !important; font-weight: 700 !important; line-height: 1.2 !important; }
+.mcit-teops-dashboard .mcit-teops-purple { color: #5b21a5; }
+.mcit-teops-dashboard .mcit-teops-violet { color: #7025dc; }
+.mcit-teops-dashboard .mcit-teops-blue { color: #2563eb; }
+.mcit-teops-dashboard .mcit-teops-amber { color: #d97706; }
+.mcit-teops-dashboard .mcit-teops-red { color: #dc2626; }
+.mcit-teops-dashboard .mcit-teops-green { color: #179357; }
+.mcit-teops-dashboard .mcit-teops-deep-green { color: #065f46; }
+.mcit-teops-dashboard .mcit-teops-card > :last-child * { color: inherit; }
+.mcit-teops-dashboard .mcit-teops-charts { gap: 16px !important; }
+.mcit-teops-dashboard .mcit-teops-chart { min-width: 0; min-height: 270px; padding: 18px !important; border: 1px solid #e2e6ef; border-radius: 16px; background: #fff !important; gap: 12px !important; }
+.mcit-teops-dashboard .mcit-teops-chart crt-chart-widget { min-height: 200px; }
+@media (max-width: 900px) {
+    .mcit-teops-dashboard { padding: 14px !important; gap: 14px !important; }
+    .mcit-teops-dashboard .mcit-teops-card { padding: 12px !important; }
+}

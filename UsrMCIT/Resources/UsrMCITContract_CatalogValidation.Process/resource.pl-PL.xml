@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Resources Culture="pl-PL">
+	<Group Type="String">
+		<Items>
+			<Item Name="BaseElements.ReadAddOn.Parameters.AggregationColumnName.Caption" Value="Nazwa kolumny funkcji agregującej" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.CanReadUncommitedData.Caption" Value="Przeczytaj niezatwierdzone dane" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ConsiderTimeInFilter.Caption" Value="Uwzględnij czas w filtrze" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.DataSourceFilters.Caption" Value="Źródło danych filtrów" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.EntityColumnMetaPathes.Caption" Value="Kolumny do odczytu" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.FunctionType.Caption" Value="Typ funkcji agregującej" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.IgnoreDisplayValues.Caption" Value="Nie odczytuj wyświetlanych wartości kolumn słowników" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.NumberOfRecords.Caption" Value="Liczba rekordów do odczytania" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.OrderInfo.Caption" Value="Kolejność kolumn" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ReadSomeTopRecords.Caption" Value="Najpierw odczyt" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultCompositeObjectList.Caption" Value="Zbiór rekordów" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultCount.Caption" Value="Liczba rekordów" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultDateTimeFunction.Caption" Value="Wynik funkcji (Data/Godzina)" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultEntity.Caption" Value="Pierwsza pozycja wynikowego zestawu" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultEntityCollection.Caption" Value="Powstała kolekcja" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultFloatFunction.Caption" Value="Wynik funkcji (dziesiętny)" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultIntegerFunction.Caption" Value="Wynik funkcji (liczba całkowita)" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultRowsCount.Caption" Value="Liczba odczytanych rekordów" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultType.Caption" Value="Typ wyniku" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.AggregationColumnName.Caption" Value="Nazwa kolumny funkcji agregującej" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.CanReadUncommitedData.Caption" Value="Przeczytaj niezatwierdzone dane" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ConsiderTimeInFilter.Caption" Value="Uwzględnij czas w filtrze" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.DataSourceFilters.Caption" Value="Źródło danych filtrów" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.EntityColumnMetaPathes.Caption" Value="Kolumny do odczytu" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.FunctionType.Caption" Value="Typ funkcji agregującej" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.IgnoreDisplayValues.Caption" Value="Nie odczytuj wyświetlanych wartości kolumn słowników" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.NumberOfRecords.Caption" Value="Liczba rekordów do odczytania" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.OrderInfo.Caption" Value="Kolejność kolumn" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ReadSomeTopRecords.Caption" Value="Najpierw odczyt" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultCompositeObjectList.Caption" Value="Zbiór rekordów" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultCount.Caption" Value="Liczba rekordów" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultDateTimeFunction.Caption" Value="Wynik funkcji (Data/Godzina)" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultEntity.Caption" Value="Pierwsza pozycja wynikowego zestawu" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultEntityCollection.Caption" Value="Powstała kolekcja" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultFloatFunction.Caption" Value="Wynik funkcji (dziesiętny)" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultIntegerFunction.Caption" Value="Wynik funkcji (liczba całkowita)" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultRowsCount.Caption" Value="Liczba odczytanych rekordów" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultType.Caption" Value="Typ wyniku" />
+			<Item Name="Caption" Value="Contract catalog validation" />
+		</Items>
+	</Group>
+</Resources>

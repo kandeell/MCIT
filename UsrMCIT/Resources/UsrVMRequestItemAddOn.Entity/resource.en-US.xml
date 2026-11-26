@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Resources Culture="en-US">
+	<Group Type="String">
+		<Items>
+			<Item Name="Caption" Value="VM Request Item Add-on" />
+			<Item Name="Columns.UsrAddOn.Caption" Value="Add-on" />
+			<Item Name="Columns.UsrConfigAddOnRate.Caption" Value="Add-on Rate" />
+			<Item Name="Columns.UsrConfigVersion.Caption" Value="Configuration Version" />
+			<Item Name="Columns.UsrCurrency.Caption" Value="Currency" />
+			<Item Name="Columns.UsrName.Caption" Value="Name" />
+			<Item Name="Columns.UsrQuantity.Caption" Value="Quantity" />
+			<Item Name="Columns.UsrRequestItem.Caption" Value="Request Item" />
+			<Item Name="Columns.UsrTotalAmountSnapshot.Caption" Value="Total Amount Snapshot" />
+			<Item Name="Columns.UsrUnitPriceSnapshot.Caption" Value="Unit Price Snapshot" />
+			<Item Name="Columns.UsrUnitSnapshot.Caption" Value="Unit Snapshot" />
+			<Item Name="EventsProcessSchema.Caption" Value="Business process" />
+		</Items>
+	</Group>
+</Resources>

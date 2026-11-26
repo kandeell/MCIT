@@ -77,8 +77,6 @@
 			<Item Name="BaseElements.ChangeDataUserTask1.Parameters.IgnoreErrors.Caption" Value="Continuă executarea erorilor" />
 			<Item Name="BaseElements.ChangeDataUserTask1.Parameters.IsMatchConditions.Caption" Value="Daca obiectul indeplineste urmatoarele conditii" />
 			<Item Name="BaseElements.ChangeDataUserTask1.Parameters.RecordColumnValues.Caption" Value="Seteaza valorile coloana" />
-			<Item Name="BaseElements.LinkEntityToProcessUserTask1.Parameters.EntityId.Caption" Value="Obiect" />
-			<Item Name="BaseElements.LinkEntityToProcessUserTask1.Parameters.EntitySchemaId.Caption" Value="Schema obiect" />
 			<Item Name="Caption" Value="MCIT VM Manual Provisioning" />
 		</Items>
 	</Group>

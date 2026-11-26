@@ -1,0 +1,13 @@
+﻿{
+  "Descriptor": {
+    "UId": "35540952-78fe-4c18-b1ad-3f2600fb32e6",
+    "Name": "UsrConfigAddOnRate",
+    "ModifiedOnUtc": "\/Date(1795454236000)\/",
+    "Parent": {
+      "UId": "1bab9dcf-17d5-49f8-9536-8e0064f1dce0",
+      "Name": "BaseEntity"
+    },
+    "ManagerName": "EntitySchemaManager",
+    "Caption": "Configuration Add-on Rate"
+  }
+}

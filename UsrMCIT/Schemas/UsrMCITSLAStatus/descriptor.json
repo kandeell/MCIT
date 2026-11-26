@@ -1,0 +1,13 @@
+﻿{
+  "Descriptor": {
+    "UId": "a20db65b-b522-41a9-8291-894922853a49",
+    "Name": "UsrMCITSLAStatus",
+    "ModifiedOnUtc": "\/Date(1795546916000)\/",
+    "Parent": {
+      "UId": "11ab4bcb-9b23-4b6d-9c86-520fae925d75",
+      "Name": "BaseLookup"
+    },
+    "ManagerName": "EntitySchemaManager",
+    "Caption": "MCIT SLA Status"
+  }
+}

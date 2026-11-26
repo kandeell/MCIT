@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Resources Culture="en-US">
+	<Group Type="String">
+		<Items>
+			<Item Name="BaseElements.AddOnValid.Caption" Value="Add-on valid" />
+			<Item Name="BaseElements.CatalogValidationStart.Caption" Value="Catalog validation start" />
+			<Item Name="BaseElements.ConditionalFlow_AddOnValid_MarkCatalogValid.Caption" Value="Add-on valid" />
+			<Item Name="BaseElements.ConditionalFlow_ResourceValid_MarkCatalogValid.Caption" Value="Resource valid" />
+			<Item Name="BaseElements.ConditionalFlow_SelectCatalogItem_ReadResourceType.Caption" Value="Resource type selected" />
+			<Item Name="BaseElements.DefaultFlow_AddOnValid_EndCatalogValidation.Caption" Value="Add-on invalid" />
+			<Item Name="BaseElements.DefaultFlow_ResourceValid_EndCatalogValidation.Caption" Value="Resource invalid" />
+			<Item Name="BaseElements.DefaultFlow_SelectCatalogItem_ReadAddOn.Caption" Value="Add-on selected" />
+			<Item Name="BaseElements.EndCatalogValidation.Caption" Value="End catalog validation" />
+			<Item Name="BaseElements.MarkCatalogValid.Caption" Value="Mark catalog valid" />
+			<Item Name="BaseElements.ReadAddOn.Caption" Value="Read active add-on" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.AggregationColumnName.Caption" Value="Name of aggregate function column" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.CanReadUncommitedData.Caption" Value="Read uncommitted data" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ConsiderTimeInFilter.Caption" Value="Consider time in the filter" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ConsiderTimeInFilter.DisplayValue" Value="false" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.DataSourceFilters.Caption" Value="Data source of filters" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.EntityColumnMetaPathes.Caption" Value="Columns to read" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.FunctionType.Caption" Value="Aggregate function type" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.IgnoreDisplayValues.Caption" Value="Do not read displayed values of lookup columns" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.NumberOfRecords.Caption" Value="Number of records to read" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.OrderInfo.Caption" Value="Columns order" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ReadSomeTopRecords.Caption" Value="Read first" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultCompositeObjectList.Caption" Value="Collection of records" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultCount.Caption" Value="Number of records" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultDateTimeFunction.Caption" Value="Function result (Date/Time)" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultEntity.Caption" Value="First item of resulting collection" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultEntityCollection.Caption" Value="Resulting collection" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultFloatFunction.Caption" Value="Function result (Decimal)" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultIntegerFunction.Caption" Value="Function result (Integer)" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultRowsCount.Caption" Value="Number of records read" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultType.Caption" Value="Type of result" />
+			<Item Name="BaseElements.ReadResourceType.Caption" Value="Read active resource type" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.AggregationColumnName.Caption" Value="Name of aggregate function column" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.CanReadUncommitedData.Caption" Value="Read uncommitted data" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ConsiderTimeInFilter.Caption" Value="Consider time in the filter" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ConsiderTimeInFilter.DisplayValue" Value="false" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.DataSourceFilters.Caption" Value="Data source of filters" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.EntityColumnMetaPathes.Caption" Value="Columns to read" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.FunctionType.Caption" Value="Aggregate function type" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.IgnoreDisplayValues.Caption" Value="Do not read displayed values of lookup columns" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.NumberOfRecords.Caption" Value="Number of records to read" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.OrderInfo.Caption" Value="Columns order" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ReadSomeTopRecords.Caption" Value="Read first" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultCompositeObjectList.Caption" Value="Collection of records" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultCount.Caption" Value="Number of records" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultDateTimeFunction.Caption" Value="Function result (Date/Time)" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultEntity.Caption" Value="First item of resulting collection" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultEntityCollection.Caption" Value="Resulting collection" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultFloatFunction.Caption" Value="Function result (Decimal)" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultIntegerFunction.Caption" Value="Function result (Integer)" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultRowsCount.Caption" Value="Number of records read" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultType.Caption" Value="Type of result" />
+			<Item Name="BaseElements.ResourceValid.Caption" Value="Resource valid" />
+			<Item Name="BaseElements.SelectCatalogItem.Caption" Value="Select catalog item" />
+			<Item Name="Caption" Value="Contract catalog validation" />
+			<Item Name="Parameters.AddOnParameter.Caption" Value="Add-on" />
+			<Item Name="Parameters.ResourceTypeParameter.Caption" Value="Resource type" />
+			<Item Name="Parameters.ValidParameter.Caption" Value="Valid" />
+			<Item Name="Parameters.ValidParameter.DisplayValue" Value="false" />
+		</Items>
+	</Group>
+</Resources>

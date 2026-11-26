@@ -1045,6 +1045,72 @@ define("UsrMCITRequestDetailRuntime", ["@creatio-devkit/common"], function(sdk) 
                     justification.lastChild.textContent=show(data.UsrBusinessJustification);
                     append(grid,info,justification);return grid;
                 };
+                // MCIT VM detail preview v18. All network reads are click-triggered;
+                // renderVM remains synchronous and performs no data requests.
+                rt.vmPreviewById = new Map();
+                rt.vmPreviewSelectedId = "";
+                rt.loadVmPreview = async itemId => {
+                    const key = idOf(itemId).toLowerCase();
+                    if(!isGuid(key) || !rt.items.some(item=>idOf(item.Id).toLowerCase()===key))return;
+                    if(rt.vmPreviewById.has(key))return; // one read per item/request
+                    const generation = rt.generation, requestId = rt.id;
+                    const state = {status:"loading",values:{},addOns:[],addOnsReadable:false,message:""};
+                    rt.vmPreviewById.set(key,state);
+                    rt.paint();
+                    const current = () => !rt.disposed && rt.generation === generation && rt.id === requestId;
+                    try{
+                        // Read optional columns individually: missing fields cannot stop the page.
+                        const optionalItemFields = [
+                            "UsrConfigVersion","UsrTotalAmountSnapshot","UsrCurrency",
+                            "UsrAdditionalRAMGB","UsrAdditionalStorageGB",
+                            "UsrVPNMbps","UsrInternetMbps","UsrPricingCapturedOn"
+                        ];
+                        await Promise.all(optionalItemFields.map(async field=>{
+                            try{
+                                const row=await loadRecord(ITEM_SCHEMA,key,["Id",field]);
+                                if(row && Object.prototype.hasOwnProperty.call(row,field))
+                                    state.values[field]=row[field];
+                            }catch(_missingOrDenied){/* optional field unavailable */}
+                        }));
+                        if(!current())return;
+                        // Allow either common relationship column; never scan unrelated VM items.
+                        let found=[];
+                        for(const relation of ["UsrRequestItem","UsrVMRequestItem"]){
+                            try{
+                                const rows=await loadRows("UsrVMRequestItemAddOn",
+                                    ["Id",relation],[[relation,key]],60);
+                                state.addOnsReadable=true;
+                                if(rows.length){found=rows;break;}
+                            }catch(_missingRelation){/* Try the alternate installed lookup column. */}
+                        }
+                        if(!current())return;
+                        if(found.length){
+                            const optionalAddOnFields=["UsrAddOn","UsrAddOnType","UsrName",
+                                "UsrQuantity","UsrUnitPriceSnapshot","UsrTotalAmountSnapshot",
+                                "UsrCurrency","UsrUnitSnapshot"];
+                            state.addOns=await Promise.all(found.slice(0,60).map(async row=>{
+                                const entry={Id:row.Id};
+                                await Promise.all(optionalAddOnFields.map(async field=>{
+                                    try{
+                                        const record=await loadRecord("UsrVMRequestItemAddOn",
+                                            idOf(row.Id),["Id",field]);
+                                        if(record && Object.prototype.hasOwnProperty.call(record,field))
+                                            entry[field]=record[field];
+                                    }catch(_optional){/* Field is not installed or readable. */}
+                                }));
+                                return entry;
+                            }));
+                        }
+                        state.status="ready";
+                    }catch(error){
+                        console.warn("MCIT VM detail preview failed",error);
+                        state.status="error";
+                        state.message=error?.message||String(error);
+                    }finally{
+                        // No auto-retry or paint loop. Ignore an obsolete request page.
+                        if(current() && rt.tab === "VM Items")rt.paint();
+                    }
+                };
                 rt.renderVM=()=>{
                     if(rt.parts.items==="loading")return element("div","usr-dt-loading","Loading VM Items from Creatio…");
                     if(rt.parts.items==="error")return errorBox("Cannot read saved VM Items: "+rt.errors.items);
@@ -1120,7 +1186,109 @@ define("UsrMCITRequestDetailRuntime", ["@creatio-devkit/common"], function(sdk) 
                         "and falls back to the VM Request Item provisioning status (e.g. Provisioned). " +
                         "VM ID is read from the linked Virtual Machine Infrastructure VM ID. " +
                         "Qty defaults to 1 VM per saved item unless a dedicated quantity field or multiple linked inventory VMs exists.");
-                    card.appendChild(note);return card;
+                    card.appendChild(note);
+                    // Append a read-only panel after the ORIGINAL working VM table.
+                    const full=element("div","usr-dt-vm-detail-wrap");
+                    full.appendChild(card);
+                    const activeId=rt.vmPreviewSelectedId;
+                    const selected=sorted.find(v=>idOf(v.Id).toLowerCase()===activeId) || sorted[0];
+                    if(!selected)return full;
+                    const selectedId=idOf(selected.Id).toLowerCase();
+                    const saved=rt.vmPreviewById.get(selectedId);
+                    const optional=saved?.values || {};
+                    const detail=makeCard("Selected VM Configuration","usr-dt-vm-detail-body");
+                    detail.style.marginTop="15px";
+                    const content=detail.lastChild;
+                    content.style.padding="14px 16px";
+                    const tabs=element("div","usr-dt-vm-detail-choices");
+                    tabs.style.display="flex";
+                    tabs.style.gap="7px";
+                    tabs.style.flexWrap="wrap";
+                    tabs.style.marginBottom="12px";
+                    sorted.forEach((item,index)=>{
+                        const key=idOf(item.Id).toLowerCase();
+                        const name=display(item.UsrName)||display(item.UsrPurpose)||"VM Item";
+                        const pick=button((index+1)+". "+name,
+                            "usr-dt-action"+(key===selectedId?" usr-dt-primary":""),()=>{
+                                rt.vmPreviewSelectedId=key;
+                                rt.paint();
+                            });
+                        pick.setAttribute("aria-pressed",String(key===selectedId));
+                        tabs.appendChild(pick);
+                    });
+                    content.appendChild(tabs);
+                    const grid=element("div","usr-dt-vm-detail-grid");
+                    grid.style.display="grid";
+                    grid.style.gridTemplateColumns="repeat(auto-fit,minmax(235px,1fr))";
+                    grid.style.gap="0 22px";
+                    const savedAmount=optional.UsrTotalAmountSnapshot;
+                    const fields=[
+                        ["VM Name",display(selected.UsrName)||display(selected.UsrPurpose)],
+                        ["Operating System",display(selected.UsrOperatingSystem)],
+                        ["Environment",display(selected.UsrEnvironment)],
+                        ["vCPU",num(selected.UsrCPU)],
+                        ["RAM",number(selected.UsrRAMGB)===null?"—":num(selected.UsrRAMGB)+" GB"],
+                        ["Storage",number(selected.UsrStorageGB)===null?"—":num(selected.UsrStorageGB)+" GB"],
+                        ["Estimated Points",number(selected.UsrEstimatedPoints)===null?"—":num(selected.UsrEstimatedPoints)+" pts"],
+                        ["Saved Points Snapshot",number(selected.UsrTotalPointsSnapshot)===null?"—":num(selected.UsrTotalPointsSnapshot)+" pts"],
+                        ["Configuration Version",saved ? display(optional.UsrConfigVersion) : "Load details to view"],
+                        ["Financial Snapshot",saved ? num(savedAmount) : "Load details to view"],
+                        ["Currency",saved ? display(optional.UsrCurrency) : "Load details to view"],
+                        ["Additional RAM",saved ? num(optional.UsrAdditionalRAMGB) : "Load details to view"],
+                        ["Additional Storage",saved ? num(optional.UsrAdditionalStorageGB) : "Load details to view"],
+                        ["VPN Mbps",saved ? num(optional.UsrVPNMbps) : "Load details to view"],
+                        ["Internet Mbps",saved ? num(optional.UsrInternetMbps) : "Load details to view"]
+                    ];
+                    fields.forEach(([label,value])=>grid.appendChild(infoLine(label,value||"—")));
+                    content.appendChild(grid);
+                    const addonTitle=element("h3","usr-dt-section-title","Saved Add-ons");
+                    addonTitle.style.margin="16px 0 12px";
+                    content.appendChild(addonTitle);
+                    if(!saved){
+                        const action=button("Load pricing & add-ons","usr-dt-action usr-dt-primary",()=>{
+                            // Only an explicit click may initiate extra queries.
+                            rt.loadVmPreview(selectedId);
+                        });
+                        content.appendChild(action);
+                        content.appendChild(element("div","usr-dt-table-note",
+                            "Extra details are loaded on demand; the existing VM table needs no extra queries."));
+                    }else if(saved.status==="loading"){
+                        content.appendChild(element("div","usr-dt-loading","Reading saved VM details…"));
+                    }else if(saved.status==="error"){
+                        content.appendChild(errorBox("Optional VM details unavailable: "+saved.message));
+                    }else if(!saved.addOnsReadable){
+                        content.appendChild(element("div","usr-dt-table-note",
+                            "Add-on detail object is unavailable or access is denied. Original VM item remains visible."));
+                    }else if(!saved.addOns.length){
+                        content.appendChild(element("div","usr-dt-table-note",
+                            "No saved add-on rows are linked to this VM item."));
+                    }else{
+                        const addonScroll=element("div","usr-dt-table-scroll");
+                        const addonTable=element("table","usr-dt-table");
+                        addonTable.style.minWidth="660px";
+                        const addonHead=element("thead"),addonHeadRow=element("tr");
+                        ["Add-on","Quantity","Unit Price","Total Amount","Currency"]
+                            .forEach(value=>addonHeadRow.appendChild(element("th","",value)));
+                        addonHead.appendChild(addonHeadRow);
+                        const addonBody=element("tbody");
+                        saved.addOns.forEach(a=>{
+                            const tr=element("tr");
+                            const values=[
+                                display(a.UsrAddOn)||display(a.UsrAddOnType)||display(a.UsrName)||"—",
+                                num(a.UsrQuantity),num(a.UsrUnitPriceSnapshot),
+                                num(a.UsrTotalAmountSnapshot),display(a.UsrCurrency)||"—"
+                            ];
+                            values.forEach(value=>tr.appendChild(element("td","",value)));
+                            addonBody.appendChild(tr);
+                        });
+                        append(addonTable,addonHead,addonBody);
+                        addonScroll.appendChild(addonTable);
+                        content.appendChild(addonScroll);
+                    }
+                    content.appendChild(element("div","usr-dt-table-note",
+                        "Read-only saved data. This preview does not submit the request or post points/financial transactions."));
+                    full.appendChild(detail);
+                    return full;
                 };
                 rt.workflowMilestones=()=>{
                     const map=new Map();
@@ -1746,6 +1914,8 @@ define("UsrMCITRequestDetailRuntime", ["@creatio-devkit/common"], function(sdk) 
                     rt.processes=[];rt.processElements=[];rt.inventoryByItem.clear();
                     rt.statusHistory=[];rt.approvals=[];rt.submittedAt=null;rt.submissionSource="";
                     rt.validation=null;
+                    rt.vmPreviewSelectedId="";
+                    rt.vmPreviewById.clear();
                     rt.processLink={status:"loading",linked:0,loaded:0};
                     rt.errors={};rt.parts={items:"loading",files:"loading",processes:"loading",inventory:"loading",workflow:"loading"};
                     rt.paint();

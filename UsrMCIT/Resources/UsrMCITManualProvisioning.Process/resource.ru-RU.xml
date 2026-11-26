@@ -109,6 +109,12 @@
 			<Item Name="BaseElements.ChangeDataUserTask3.Parameters.RecordColumnValues.Caption" Value="Значения полей" />
 			<Item Name="BaseElements.LinkEntityToProcessUserTask1.Parameters.EntityId.Caption" Value="Объект" />
 			<Item Name="BaseElements.LinkEntityToProcessUserTask1.Parameters.EntitySchemaId.Caption" Value="Схема объекта" />
+			<Item Name="BaseElements.MarkRetryRequestCompleted.Parameters.ConsiderTimeInFilter.Caption" Value="Учитывать время в фильтре" />
+			<Item Name="BaseElements.MarkRetryRequestCompleted.Parameters.DataSourceFilters.Caption" Value="Фильтры источника данных" />
+			<Item Name="BaseElements.MarkRetryRequestCompleted.Parameters.EntitySchemaUId.Caption" Value="Объект" />
+			<Item Name="BaseElements.MarkRetryRequestCompleted.Parameters.IgnoreErrors.Caption" Value="Продолжить выполнение при ошибках" />
+			<Item Name="BaseElements.MarkRetryRequestCompleted.Parameters.IsMatchConditions.Caption" Value="Если объект соответствует условиям" />
+			<Item Name="BaseElements.MarkRetryRequestCompleted.Parameters.RecordColumnValues.Caption" Value="Значения полей" />
 			<Item Name="BaseElements.ReadDataUserTask1.Parameters.AggregationColumnName.Caption" Value="Имя колонки для агрегирующей функции" />
 			<Item Name="BaseElements.ReadDataUserTask1.Parameters.CanReadUncommitedData.Caption" Value="Выполнять &quot;грязное чтение&quot;" />
 			<Item Name="BaseElements.ReadDataUserTask1.Parameters.ConsiderTimeInFilter.Caption" Value="Учитывать время в фильтре" />

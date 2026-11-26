@@ -1,0 +1,399 @@
+/* Point Expiry only — paste into LESS, not JS. */
+.mcit-pe-dashboard {
+    box-sizing: border-box; width: 100%; min-width: 0;
+    padding: 24px 28px 32px !important; gap: 16px !important;
+    background: #f6f7fb !important; color: #172033;
+    font-family: Rubik, Arial, sans-serif;
+}
+.mcit-pe-dashboard .mcit-pe-title {color:#35135d!important;font-weight:700!important;font-size:26px!important;line-height:1.25!important;}
+.mcit-pe-dashboard .mcit-pe-subtitle {color:#667085!important;font-size:13px!important;margin-top:-10px!important;}
+.mcit-pe-dashboard .mcit-pe-metrics {gap:16px!important;}
+.mcit-pe-dashboard .mcit-pe-card {box-sizing:border-box;min-width:0;min-height:116px;padding:18px 20px!important;background:#fff!important;border:1px solid #e2e6ef;border-radius:14px;gap:9px!important;box-shadow:0 2px 5px rgba(53,19,93,.035);}
+.mcit-pe-dashboard .mcit-pe-purple {border-left:4px solid #6424b9!important;}
+.mcit-pe-dashboard .mcit-pe-red {border-left:4px solid #dc2626!important;}
+.mcit-pe-dashboard .mcit-pe-amber {border-left:4px solid #d97706!important;}
+.mcit-pe-dashboard .mcit-pe-kpi-label, .mcit-pe-dashboard .mcit-pe-kpi-label * {color:#667085!important;font-size:13px!important;font-weight:500!important;}
+.mcit-pe-dashboard .mcit-pe-kpi-value, .mcit-pe-dashboard .mcit-pe-kpi-value * {font-size:30px!important;line-height:1.2!important;font-weight:700!important;font-variant-numeric:tabular-nums;}
+.mcit-pe-dashboard .mcit-pe-purple .mcit-pe-kpi-value,.mcit-pe-dashboard .mcit-pe-purple .mcit-pe-kpi-value * {color:#6424b9!important;}
+.mcit-pe-dashboard .mcit-pe-red .mcit-pe-kpi-value,.mcit-pe-dashboard .mcit-pe-red .mcit-pe-kpi-value * {color:#dc2626!important;}
+.mcit-pe-dashboard .mcit-pe-amber .mcit-pe-kpi-value,.mcit-pe-dashboard .mcit-pe-amber .mcit-pe-kpi-value * {color:#b45309!important;}
+.mcit-pe-dashboard .mcit-pe-notice {box-sizing:border-box;background:#f0eafb!important;border:1px solid #e6dcf4;border-radius:9px;padding:11px 14px!important;color:#4c2679!important;font-size:12px!important;}
+.mcit-pe-dashboard .mcit-pe-table {box-sizing:border-box;min-width:0;width:100%;background:#fff!important;border:1px solid #e2e6ef;border-radius:14px;padding:18px!important;gap:14px!important;}
+.mcit-pe-dashboard .mcit-pe-filter {gap:12px!important;align-items:end!important;padding:0 0 12px!important;border-bottom:1px solid #eef0f4;}
+.mcit-pe-dashboard .mcit-pe-input {min-width:0;}
+.mcit-pe-dashboard .mcit-pe-input input {box-sizing:border-box;background:#fff!important;border-radius:8px!important;min-height:36px;font-size:13px!important;}
+.mcit-pe-dashboard .mcit-pe-input .crt-input-label {color:#667085!important;font-weight:500!important;font-size:12px!important;}
+.mcit-pe-dashboard .mcit-pe-scroll {width:100%;min-width:0;overflow-x:auto!important;}
+.mcit-pe-dashboard .mcit-pe-table-content {min-width:1500px;gap:0!important;}
+.mcit-pe-dashboard .mcit-pe-table-header {background:#eee8f9!important;border-bottom:1px solid #dfd5ef;border-radius:8px 8px 0 0;gap:0!important;padding:10px 0!important;}
+.mcit-pe-dashboard .mcit-pe-record {border-bottom:1px solid #eceef3;gap:0!important;padding:7px 0!important;align-items:center!important;min-height:52px;}
+.mcit-pe-dashboard .mcit-pe-record:hover {background:#faf8ff!important;}
+.mcit-pe-dashboard .mcit-pe-head,.mcit-pe-dashboard .mcit-pe-cell {padding:7px 9px!important;min-width:0;overflow-wrap:anywhere;font-size:12px!important;line-height:1.45!important;}
+.mcit-pe-dashboard .mcit-pe-head,.mcit-pe-dashboard .mcit-pe-head * {font-weight:600!important;color:#35135d!important;}
+.mcit-pe-dashboard .mcit-pe-remaining,.mcit-pe-dashboard .mcit-pe-remaining * {font-weight:700!important;color:#6424b9!important;}
+.mcit-pe-dashboard .mcit-pe-link button {color:#5b21a5!important;text-decoration:underline;background:transparent!important;border:0!important;text-align:left;white-space:normal;}
+.mcit-pe-dashboard .mcit-pe-footer {gap:8px!important;align-items:center!important;padding-top:4px!important;}
+.mcit-pe-dashboard .mcit-pe-page-count {color:#667085!important;font-size:12px!important;}
+.mcit-pe-dashboard .mcit-pe-pager-button button {border:1px solid #e2e6ef!important;border-radius:8px!important;background:#fff!important;color:#5b21a5!important;}
+@media(max-width:1100px){.mcit-pe-dashboard{padding:16px!important;}.mcit-pe-dashboard .mcit-pe-filter{overflow-x:auto!important;}.mcit-pe-dashboard .mcit-pe-card{padding:12px!important;}}
+
+/* Calendar edition: all styles remain scoped to Point Expiry. */
+.mcit-pe-dashboard {padding:26px 28px 32px!important;gap:18px!important;background:#f5f5fa!important;}
+.mcit-pe-dashboard .mcit-pe-card {min-height:124px;padding:20px 22px!important;border-radius:18px!important;box-shadow:0 3px 12px rgba(53,19,93,.045);}
+.mcit-pe-dashboard .mcit-pe-kpi-value, .mcit-pe-dashboard .mcit-pe-kpi-value * {font-size:32px!important;}
+.mcit-pe-dashboard .mcit-pe-purple .mcit-pe-kpi-value, .mcit-pe-dashboard .mcit-pe-purple .mcit-pe-kpi-value * {color:#6424b9!important;}
+.mcit-pe-dashboard .mcit-pe-red .mcit-pe-kpi-value, .mcit-pe-dashboard .mcit-pe-red .mcit-pe-kpi-value * {color:#dc2626!important;}
+.mcit-pe-dashboard .mcit-pe-amber .mcit-pe-kpi-value, .mcit-pe-dashboard .mcit-pe-amber .mcit-pe-kpi-value * {color:#b45309!important;}
+.mcit-pe-dashboard .mcit-pe-table {padding:22px!important;border-radius:20px!important;box-shadow:0 3px 14px rgba(53,19,93,.035);}
+.mcit-pe-dashboard .mcit-pe-table-title, .mcit-pe-dashboard .mcit-pe-table-title * {color:#35135d!important;font-size:21px!important;font-weight:650!important;}
+.mcit-pe-dashboard .mcit-pe-filter {gap:14px!important;align-items:start!important;padding:12px 0 18px!important;}
+.mcit-pe-dashboard .mcit-pe-filter-group {min-width:0;gap:6px!important;}
+.mcit-pe-dashboard .mcit-pe-filter-caption, .mcit-pe-dashboard .mcit-pe-filter-caption * {color:#5e6374!important;font-size:12px!important;font-weight:500!important;}
+/* Separate native labels are outside the rounded control frame. */
+.mcit-pe-dashboard .mcit-pe-filter .mcit-pe-input {
+    min-width:0!important; width:100%; box-sizing:border-box!important;
+    border-radius:24px!important; background:#fff!important;
+    --mdc-outlined-text-field-container-shape:24px;
+    --mdc-outlined-text-field-outline-color:#d9dce7;
+    --mdc-outlined-text-field-focus-outline-color:#6424b9;
+}
+.mcit-pe-dashboard .mcit-pe-filter .mcit-pe-text-field {
+    clip-path:none; -webkit-clip-path:none;
+}
+/* Do not clip the date picker host: the calendar overlay must remain usable. */
+.mcit-pe-dashboard .mcit-pe-filter .mcit-pe-calendar {overflow:visible!important;}
+.mcit-pe-dashboard .mcit-pe-filter .mcit-pe-input :is(input,.crt-input-field-container,.crt-input-field,.crt-input-container,.crt-date-time-picker-field-container,.crt-datetime-picker-field-container,.mat-form-field-flex,.mat-mdc-text-field-wrapper,.mdc-text-field) {
+    box-sizing:border-box!important;border-radius:24px!important;background-clip:padding-box!important;
+}
+.mcit-pe-dashboard .mcit-pe-filter .mcit-pe-input::part(field) {border-radius:24px!important;}
+.mcit-pe-dashboard .mcit-pe-filter .mcit-pe-input :is(.crt-input-field-container,.crt-date-time-picker-field-container,.crt-datetime-picker-field-container,.mat-form-field-flex,.mat-mdc-text-field-wrapper) {background:#fff!important;min-height:44px!important;}
+.mcit-pe-dashboard .mcit-pe-filter .mcit-pe-input input {min-height:40px!important;background:transparent!important;color:#35135d!important;font-size:13px!important;padding-inline:12px!important;}
+.mcit-pe-dashboard .mcit-pe-filter .mcit-pe-input :is(.mat-form-field-outline-start,.mdc-notched-outline__leading) {border-radius:24px 0 0 24px!important;}
+.mcit-pe-dashboard .mcit-pe-filter .mcit-pe-input :is(.mat-form-field-outline-end,.mdc-notched-outline__trailing) {border-radius:0 24px 24px 0!important;}
+.mcit-pe-dashboard .mcit-pe-filter .mcit-pe-input:focus-within {outline:2px solid #a78bca;outline-offset:1px;}
+.mcit-pe-dashboard .mcit-pe-filter .mcit-pe-input input::placeholder {color:#8992a3!important;opacity:1;}
+.mcit-pe-dashboard .mcit-pe-table-header {background:#eee8f9!important;border-radius:12px 12px 0 0!important;}
+.mcit-pe-dashboard .mcit-pe-record {min-height:56px;}
+.mcit-pe-dashboard .mcit-pe-status, .mcit-pe-dashboard .mcit-pe-status * {color:#5b21a5!important;font-weight:600!important;}
+.mcit-pe-dashboard .mcit-pe-days, .mcit-pe-dashboard .mcit-pe-days * {font-variant-numeric:tabular-nums;font-weight:500!important;}
+@media(max-width:1100px){.mcit-pe-dashboard{padding:16px!important;}.mcit-pe-dashboard .mcit-pe-table{padding:14px!important;}.mcit-pe-dashboard .mcit-pe-filter{overflow-x:auto!important;}}
+
+/* Rounded controls V3. The native FlexContainer owns the visible border.
+   Keep all overlays, including date picker and dropdown, unclipped. */
+.mcit-pe-dashboard .mcit-pe-filter .mcit-pe-rounded-frame {
+    width:100%!important; min-width:0!important; box-sizing:border-box!important;
+    min-height:48px!important; gap:0!important; padding:0 10px!important;
+    justify-content:center!important; align-items:stretch!important;
+    border:1px solid #d8ddea!important; border-radius:999px!important;
+    background:#fff!important; overflow:visible!important;
+    box-shadow:0 2px 5px rgba(53,19,93,.035)!important;
+    transition:border-color .16s ease,box-shadow .16s ease;
+}
+.mcit-pe-dashboard .mcit-pe-filter .mcit-pe-rounded-frame:hover {
+    border-color:#a78bca!important;
+}
+.mcit-pe-dashboard .mcit-pe-filter .mcit-pe-rounded-frame:focus-within {
+    border-color:#6424b9!important;
+    box-shadow:0 0 0 3px rgba(100,36,185,.12)!important;
+}
+.mcit-pe-dashboard .mcit-pe-rounded-frame :is(crt-input,crt-date-time-picker,crt-datetime-picker,mat-form-field,.mcit-pe-input) {
+    width:100%!important; min-width:0!important; box-sizing:border-box!important;
+    border:0!important; outline:0!important; box-shadow:none!important;
+    border-radius:999px!important; background:transparent!important;
+}
+/* Remove the known inner border owners, not labels or popup containers. */
+.mcit-pe-dashboard .mcit-pe-rounded-frame :is(.crt-input-field-container,.crt-input-field,.crt-input-container,.crt-input-wrapper,.crt-date-time-picker-field-container,.crt-datetime-picker-field-container,.crt-datepicker-field-container,.mat-form-field-flex,.mat-form-field-infix,.mat-mdc-text-field-wrapper,.mdc-text-field) {
+    border:0!important; outline:0!important; box-shadow:none!important;
+    border-radius:999px!important; background:transparent!important;
+    min-width:0!important; box-sizing:border-box!important;
+}
+.mcit-pe-dashboard .mcit-pe-rounded-frame :is(.mat-form-field-outline,.mat-form-field-outline-thick,.mdc-notched-outline,.mdc-line-ripple) {
+    display:none!important;
+}
+.mcit-pe-dashboard .mcit-pe-rounded-frame :is(.mat-form-field-wrapper) {padding-bottom:0!important;}
+.mcit-pe-dashboard .mcit-pe-rounded-frame input {
+    min-height:42px!important; border:0!important; outline:0!important;
+    box-shadow:none!important; background:transparent!important;
+    border-radius:999px!important; font-size:13px!important;
+    padding-inline:6px!important; color:#35135d!important;
+}
+.mcit-pe-dashboard .mcit-pe-rounded-frame input::placeholder {color:#8992a3!important;}
+.mcit-pe-dashboard .mcit-pe-sort-frame :is(crt-button,.mcit-pe-sort-menu) {width:100%!important;min-width:0!important;}
+.mcit-pe-dashboard .mcit-pe-sort-frame button {
+    width:100%!important; min-height:44px!important; border:0!important;
+    background:transparent!important; border-radius:999px!important;
+    color:#35135d!important; box-shadow:none!important;
+    font-size:13px!important; font-weight:500!important;
+    justify-content:space-between!important; text-align:left!important;
+}
+.mcit-pe-dashboard .mcit-pe-sort-frame button:hover {background:#f8f5ff!important;}
+.mcit-pe-dashboard .mcit-pe-filter-group {gap:8px!important;}
+/* The surrounding field retains its visible keyboard focus ring. */
+
+/* ==========================================
+   POINT EXPIRY - COMPACT FILTER CONTROLS
+   ========================================== */
+
+.mcit-pe-dashboard .mcit-pe-filter {
+    gap: 12px !important;
+    padding: 6px 0 14px !important;
+    align-items: start !important;
+}
+
+.mcit-pe-dashboard .mcit-pe-filter-group {
+    gap: 6px !important;
+    min-width: 0 !important;
+}
+
+/* Equal height for all five filter boxes */
+
+.mcit-pe-dashboard .mcit-pe-filter .mcit-pe-rounded-frame {
+    height: 46px !important;
+    min-height: 46px !important;
+    max-height: 46px !important;
+    padding: 0 12px !important;
+    border-radius: 24px !important;
+    gap: 0 !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+}
+
+/* Remove excessive native control spacing */
+
+.mcit-pe-dashboard .mcit-pe-rounded-frame .mcit-pe-input {
+    height: 44px !important;
+    min-height: 0 !important;
+    max-height: 44px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.mcit-pe-dashboard .mcit-pe-rounded-frame
+:is(crt-input, crt-date-time-picker, crt-datetime-picker) {
+    min-height: 0 !important;
+    height: 44px !important;
+    max-height: 44px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Inner field containers */
+
+.mcit-pe-dashboard .mcit-pe-rounded-frame
+:is(
+    .crt-input-field-container,
+    .crt-input-field,
+    .crt-input-container,
+    .crt-input-wrapper,
+    .crt-date-time-picker-field-container,
+    .crt-datetime-picker-field-container,
+    .mat-form-field-flex,
+    .mat-mdc-text-field-wrapper,
+    .mdc-text-field
+) {
+    min-height: 0 !important;
+    height: 44px !important;
+    max-height: 44px !important;
+    padding-block: 0 !important;
+    margin-block: 0 !important;
+    border-radius: 24px !important;
+    box-sizing: border-box !important;
+}
+
+/* Input text */
+
+.mcit-pe-dashboard .mcit-pe-rounded-frame input {
+    height: 40px !important;
+    min-height: 0 !important;
+    max-height: 40px !important;
+    padding: 0 6px !important;
+    font-size: 12px !important;
+    line-height: 20px !important;
+    margin: 0 !important;
+}
+
+/* Sort dropdown */
+
+.mcit-pe-dashboard .mcit-pe-sort-frame button {
+    height: 44px !important;
+    min-height: 0 !important;
+    max-height: 44px !important;
+    padding: 0 4px !important;
+    font-size: 12px !important;
+    border-radius: 24px !important;
+}
+
+/* Compact filter labels */
+
+.mcit-pe-dashboard .mcit-pe-filter-caption,
+.mcit-pe-dashboard .mcit-pe-filter-caption * {
+    font-size: 12px !important;
+    font-weight: 500 !important;
+}
+
+/* Reduce space around the table */
+
+.mcit-pe-dashboard .mcit-pe-table {
+    padding: 18px !important;
+    gap: 12px !important;
+}
+
+/* ==========================================
+   POINT EXPIRY - FINAL FILTER ALIGNMENT FIX
+   ========================================== */
+
+/* Outer rounded container */
+
+.mcit-pe-dashboard .mcit-pe-rounded-frame {
+    height: 46px !important;
+    min-height: 46px !important;
+    max-height: 46px !important;
+    border-radius: 24px !important;
+    padding: 0 14px !important;
+    display: flex !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+}
+
+/* Native Creatio control hosts */
+
+.mcit-pe-dashboard .mcit-pe-rounded-frame
+:is(crt-input, crt-datetimepicker, crt-picker) {
+    display: block !important;
+    width: 100% !important;
+    height: 42px !important;
+    min-height: 0 !important;
+    max-height: 42px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Remove Creatio's default outer padding */
+
+.mcit-pe-dashboard .mcit-pe-rounded-frame
+:is(.crt-base-input-container, .crt-input) {
+    height: 42px !important;
+    min-height: 0 !important;
+    max-height: 42px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* Material form field */
+
+.mcit-pe-dashboard .mcit-pe-rounded-frame
+.mat-mdc-form-field {
+    width: 100% !important;
+    height: 42px !important;
+    min-height: 0 !important;
+    max-height: 42px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    --mat-form-field-container-height: 42px;
+    --mat-form-field-container-vertical-padding: 0px;
+}
+
+/* Remove the extra space reserved below inputs */
+
+.mcit-pe-dashboard .mcit-pe-rounded-frame
+.mat-mdc-form-field-subscript-wrapper {
+    display: none !important;
+}
+
+/* Internal text field wrapper */
+
+.mcit-pe-dashboard .mcit-pe-rounded-frame
+.mat-mdc-text-field-wrapper {
+    height: 42px !important;
+    min-height: 0 !important;
+    max-height: 42px !important;
+    padding: 0 !important;
+    border-radius: 24px !important;
+}
+
+/* Correct the 70px internal field height */
+
+.mcit-pe-dashboard .mcit-pe-rounded-frame
+.mat-mdc-form-field-flex {
+    height: 42px !important;
+    min-height: 0 !important;
+    max-height: 42px !important;
+    padding: 0 !important;
+    align-items: center !important;
+}
+
+/* Remove the problematic 15px vertical padding */
+
+.mcit-pe-dashboard .mcit-pe-rounded-frame
+.mat-mdc-form-field-infix {
+    height: 42px !important;
+    min-height: 0 !important;
+    max-height: 42px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
+}
+
+/* Native text and date input containers */
+
+.mcit-pe-dashboard .mcit-pe-rounded-frame
+:is(.crt-input-control, .crt-picker-input-control) {
+    width: 100% !important;
+    height: 42px !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* Actual input text */
+
+.mcit-pe-dashboard .mcit-pe-rounded-frame input {
+    height: 40px !important;
+    min-height: 0 !important;
+    max-height: 40px !important;
+    padding: 0 2px !important;
+    margin: 0 !important;
+    line-height: 20px !important;
+    font-size: 12px !important;
+    background: transparent !important;
+    border: none !important;
+    box-sizing: border-box !important;
+}
+
+/* Calendar icon alignment */
+
+.mcit-pe-dashboard .mcit-pe-rounded-frame
+.mat-mdc-form-field-icon-suffix {
+    display: flex !important;
+    align-items: center !important;
+    height: 42px !important;
+    padding: 0 !important;
+}
+
+/* Keep Sort dropdown aligned */
+
+.mcit-pe-dashboard .mcit-pe-sort-frame button {
+    height: 42px !important;
+    min-height: 42px !important;
+    max-height: 42px !important;
+    padding: 0 !important;
+    font-size: 12px !important;
+}
+
+/* Consistent positioning of all filter groups */
+
+.mcit-pe-dashboard .mcit-pe-filter {
+    align-items: start !important;
+    gap: 12px !important;
+}
+
+.mcit-pe-dashboard .mcit-pe-filter-group {
+    gap: 6px !important;
+    min-width: 0 !important;
+}

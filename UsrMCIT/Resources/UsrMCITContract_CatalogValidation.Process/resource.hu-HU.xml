@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Resources Culture="hu-HU">
+	<Group Type="String">
+		<Items>
+			<Item Name="BaseElements.ReadAddOn.Parameters.AggregationColumnName.Caption" Value="Az összesítő függvényoszlop neve" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.CanReadUncommitedData.Caption" Value="Nem véglegesített adatok olvasása" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ConsiderTimeInFilter.Caption" Value="Vegye figyelembe az időt a szűrőben" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.DataSourceFilters.Caption" Value="A szűrők adatforrása" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.EntityColumnMetaPathes.Caption" Value="Olvasandó oszlopok" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.FunctionType.Caption" Value="Összesítő függvény típusa" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.IgnoreDisplayValues.Caption" Value="Ne olvassa be a keresőoszlopok megjelenített értékeit" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.NumberOfRecords.Caption" Value="Olvasandó rekordok száma" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.OrderInfo.Caption" Value="Oszlopok sorrendje" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ReadSomeTopRecords.Caption" Value="Először olvassa el" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultCompositeObjectList.Caption" Value="Nyilvántartások gyűjtése" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultCount.Caption" Value="Rekordok száma" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultDateTimeFunction.Caption" Value="Függvény eredménye (dátum/idő)" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultEntity.Caption" Value="Az eredményül kapott gyűjtemény első eleme" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultEntityCollection.Caption" Value="Eredményül kapott gyűjtemény" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultFloatFunction.Caption" Value="Függvény eredménye (decimális)" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultIntegerFunction.Caption" Value="Függvény eredménye (egész szám)" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultRowsCount.Caption" Value="Olvasott rekordok száma" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultType.Caption" Value="Az eredmény típusa" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.AggregationColumnName.Caption" Value="Az összesítő függvényoszlop neve" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.CanReadUncommitedData.Caption" Value="Nem véglegesített adatok olvasása" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ConsiderTimeInFilter.Caption" Value="Vegye figyelembe az időt a szűrőben" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.DataSourceFilters.Caption" Value="A szűrők adatforrása" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.EntityColumnMetaPathes.Caption" Value="Olvasandó oszlopok" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.FunctionType.Caption" Value="Összesítő függvény típusa" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.IgnoreDisplayValues.Caption" Value="Ne olvassa be a keresőoszlopok megjelenített értékeit" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.NumberOfRecords.Caption" Value="Olvasandó rekordok száma" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.OrderInfo.Caption" Value="Oszlopok sorrendje" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ReadSomeTopRecords.Caption" Value="Először olvassa el" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultCompositeObjectList.Caption" Value="Nyilvántartások gyűjtése" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultCount.Caption" Value="Rekordok száma" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultDateTimeFunction.Caption" Value="Függvény eredménye (dátum/idő)" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultEntity.Caption" Value="Az eredményül kapott gyűjtemény első eleme" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultEntityCollection.Caption" Value="Eredményül kapott gyűjtemény" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultFloatFunction.Caption" Value="Függvény eredménye (decimális)" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultIntegerFunction.Caption" Value="Függvény eredménye (egész szám)" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultRowsCount.Caption" Value="Olvasott rekordok száma" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultType.Caption" Value="Az eredmény típusa" />
+			<Item Name="Caption" Value="Contract catalog validation" />
+		</Items>
+	</Group>
+</Resources>

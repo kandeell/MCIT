@@ -1,0 +1,9 @@
+﻿{
+  "Descriptor": {
+    "UId": "d26f8aba-2ebc-4ce9-9093-69975df6b38d",
+    "Name": "UsrMCITSLAStatusRefresh",
+    "ModifiedOnUtc": "\/Date(1795550769000)\/",
+    "ManagerName": "ProcessSchemaManager",
+    "Caption": "MCIT SLA Status Refresh"
+  }
+}

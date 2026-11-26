@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Resources Culture="en-US">
+	<Group Type="String">
+		<Items>
+			<Item Name="Caption" Value="Configuration Add-on Rate" />
+			<Item Name="Columns.UsrActive.Caption" Value="Active" />
+			<Item Name="Columns.UsrAddOn.Caption" Value="Add-on" />
+			<Item Name="Columns.UsrConfigVersion.Caption" Value="Configuration Version" />
+			<Item Name="Columns.UsrCurrency.Caption" Value="Currency" />
+			<Item Name="Columns.UsrIncrement.Caption" Value="Increment" />
+			<Item Name="Columns.UsrMaxQuantity.Caption" Value="Maximum Quantity" />
+			<Item Name="Columns.UsrMinQuantity.Caption" Value="Minimum Quantity" />
+			<Item Name="Columns.UsrUnit.Caption" Value="Unit" />
+			<Item Name="Columns.UsrUnitPrice.Caption" Value="Unit Price" />
+			<Item Name="EventsProcessSchema.Caption" Value="Business process" />
+		</Items>
+	</Group>
+</Resources>

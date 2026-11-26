@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Resources Culture="lv-LV">
+	<Group Type="String">
+		<Items>
+			<Item Name="BaseElements.ReadAddOn.Parameters.AggregationColumnName.Caption" Value="Apkopotās funkcijas kolonnas nosaukums" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.CanReadUncommitedData.Caption" Value="Lasīt neapstiprinātus datus" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ConsiderTimeInFilter.Caption" Value="Ņemt vērā laiku filtrā" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.DataSourceFilters.Caption" Value="Datu avots filtriem" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.EntityColumnMetaPathes.Caption" Value="Kolonnas, kuras lasīt" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.FunctionType.Caption" Value="Apkopotās funkcijas veids" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.IgnoreDisplayValues.Caption" Value="Nelasīt rādītās vērtības saraksta kolonnās" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.NumberOfRecords.Caption" Value="Lasāmo ierakstu skaits" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.OrderInfo.Caption" Value="Kolonnu secība" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ReadSomeTopRecords.Caption" Value="Lasīt pirmo" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultCompositeObjectList.Caption" Value="Ierakstu kolekcija" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultCount.Caption" Value="Ierakstu skaits" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultDateTimeFunction.Caption" Value="Funkcijas rezultāts (Datums/Laiks)" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultEntity.Caption" Value="Pirmā vienība rezultātu kolekcijā" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultEntityCollection.Caption" Value="Rezultātu kolekcija" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultFloatFunction.Caption" Value="Funkcijas rezultāts (decimālskaitlis)" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultIntegerFunction.Caption" Value="Funkcijas rezultāts (Vesels skaitlis)" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultRowsCount.Caption" Value="Lasāmo ierakstu skaits" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultType.Caption" Value="Rezultāta veids" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.AggregationColumnName.Caption" Value="Apkopotās funkcijas kolonnas nosaukums" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.CanReadUncommitedData.Caption" Value="Lasīt neapstiprinātus datus" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ConsiderTimeInFilter.Caption" Value="Ņemt vērā laiku filtrā" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.DataSourceFilters.Caption" Value="Datu avots filtriem" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.EntityColumnMetaPathes.Caption" Value="Kolonnas, kuras lasīt" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.FunctionType.Caption" Value="Apkopotās funkcijas veids" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.IgnoreDisplayValues.Caption" Value="Nelasīt rādītās vērtības saraksta kolonnās" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.NumberOfRecords.Caption" Value="Lasāmo ierakstu skaits" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.OrderInfo.Caption" Value="Kolonnu secība" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ReadSomeTopRecords.Caption" Value="Lasīt pirmo" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultCompositeObjectList.Caption" Value="Ierakstu kolekcija" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultCount.Caption" Value="Ierakstu skaits" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultDateTimeFunction.Caption" Value="Funkcijas rezultāts (Datums/Laiks)" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultEntity.Caption" Value="Pirmā vienība rezultātu kolekcijā" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultEntityCollection.Caption" Value="Rezultātu kolekcija" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultFloatFunction.Caption" Value="Funkcijas rezultāts (decimālskaitlis)" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultIntegerFunction.Caption" Value="Funkcijas rezultāts (Vesels skaitlis)" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultRowsCount.Caption" Value="Lasāmo ierakstu skaits" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultType.Caption" Value="Rezultāta veids" />
+			<Item Name="Caption" Value="Contract catalog validation" />
+		</Items>
+	</Group>
+</Resources>

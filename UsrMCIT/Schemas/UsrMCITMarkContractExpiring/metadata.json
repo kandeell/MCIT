@@ -1,0 +1,300 @@
+{
+  "MetaData": {
+    "Schema": {
+      "ManagerName": "ProcessSchemaManager",
+      "UId": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c",
+      "A2": "UsrMCITMarkContractExpiring",
+      "A5": "0a07faf7-f6e2-439e-ab7c-961d7c56566e",
+      "B1": [],
+      "B2": [],
+      "B3": [],
+      "B6": "5dcca910-bc4c-42b7-bfe0-2ad5c8cc3965",
+      "B8": "10.1.796.0",
+      "FJ1": [
+        {
+          "BL1": "Terrasoft.Core.Process.ProcessSchemaParameter",
+          "UId": "099a3f91-723e-48bc-b8e4-41173643efda",
+          "A2": "ContractId",
+          "A3": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c",
+          "A4": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c",
+          "IL2": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c",
+          "L1": "23018567-a13c-4320-8687-fd6f9e3699bd",
+          "L8": {},
+          "L12": 0
+        },
+        {
+          "BL1": "Terrasoft.Core.Process.ProcessSchemaParameter",
+          "UId": "88776469-d7b1-40f9-8a0f-893af290986f",
+          "A2": "WarningDays",
+          "A3": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c",
+          "A4": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c",
+          "IL2": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c",
+          "L1": "6b6b74e2-820d-490e-a017-2b73d4ccf2b0",
+          "L8": {
+            "GS1": 1,
+            "GS2": "30",
+            "GS5": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c"
+          },
+          "L12": 0
+        },
+        {
+          "BL1": "Terrasoft.Core.Process.ProcessSchemaParameter",
+          "UId": "d8b67836-7daf-421f-be30-f786f3f418ff",
+          "A2": "Success",
+          "A3": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c",
+          "A4": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c",
+          "IL2": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c",
+          "L1": "90b65bf8-0ffc-4141-8779-2420877af907",
+          "L8": {
+            "GS1": 1,
+            "GS2": "false",
+            "GS5": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c"
+          },
+          "L12": 1
+        },
+        {
+          "BL1": "Terrasoft.Core.Process.ProcessSchemaParameter",
+          "UId": "5db900a7-5e8c-46a5-a220-f77e7fe3585a",
+          "A2": "ResultMessage",
+          "A3": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c",
+          "A4": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c",
+          "IL2": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c",
+          "L1": "5ca35f10-a101-4c67-a96a-383da6afacfc",
+          "L8": {},
+          "L12": 1
+        }
+      ],
+      "IJ1": true,
+      "BK8": "bb4d6607-026b-4b27-b640-8f5c77c1e89d",
+      "BK15": [],
+      "BK37": {
+        "BL1": "Terrasoft.Core.Process.ProcessSchemaParameter",
+        "UId": "cdd58be7-2dba-4a5e-869b-1ad5d6d7513a",
+        "A2": "NotificationCaption",
+        "A3": "bb4d6607-026b-4b27-b640-8f5c77c1e89d",
+        "A4": "bb4d6607-026b-4b27-b640-8f5c77c1e89d",
+        "L1": "8b3f29bb-ea14-4ce5-a5c5-293a929b6ba2",
+        "L8": {
+          "GS1": 3,
+          "GS2": "[#[PropertyValue:Caption]#]"
+        }
+      },
+      "BK1": "FFFFFFFF",
+      "BK2": "FFBBBBBB",
+      "BK3": [
+        {
+          "BL1": "Terrasoft.Core.Process.ProcessSchemaLaneSet",
+          "UId": "99cf3b87-4c6a-4d11-ad6e-740ad8657cb7",
+          "A2": "LaneSet1",
+          "A3": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c",
+          "A4": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c",
+          "A5": "0a07faf7-f6e2-439e-ab7c-961d7c56566e",
+          "BM1": 0,
+          "BM4": [
+            {
+              "BL1": "Terrasoft.Core.Process.ProcessSchemaLane",
+              "UId": "2daacb3c-66c9-432e-ba89-2f170d6da77c",
+              "A2": "Lane1",
+              "A3": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c",
+              "A4": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c",
+              "A5": "0a07faf7-f6e2-439e-ab7c-961d7c56566e",
+              "IL2": "99cf3b87-4c6a-4d11-ad6e-740ad8657cb7",
+              "CD1": [],
+              "CD2": [],
+              "CD4": "99cf3b87-4c6a-4d11-ad6e-740ad8657cb7",
+              "CD6": "691;487",
+              "CD7": []
+            }
+          ]
+        }
+      ],
+      "BK5": [],
+      "BK4": [
+        {
+          "BL1": "Terrasoft.Core.Process.ProcessSchemaStartEvent",
+          "UId": "74c1fc81-bd06-4cf7-9893-274c7581ccaf",
+          "A2": "StartWarningTransition",
+          "A3": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c",
+          "A4": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c",
+          "A5": "0a07faf7-f6e2-439e-ab7c-961d7c56566e",
+          "IL2": "2daacb3c-66c9-432e-ba89-2f170d6da77c",
+          "BL3": "60;184",
+          "BL7": "53818048-7868-48f6-ada0-0ebaa65af628",
+          "BN2": "31;31",
+          "BO3": true,
+          "FC1": [],
+          "ED1": false
+        },
+        {
+          "BL1": "Terrasoft.Core.Process.ProcessSchemaExclusiveGateway",
+          "UId": "a8f0683c-cbe3-4390-9318-ca0c0f7ec1d5",
+          "A2": "CheckWarningInput",
+          "A3": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c",
+          "A4": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c",
+          "A5": "0a07faf7-f6e2-439e-ab7c-961d7c56566e",
+          "IL2": "2daacb3c-66c9-432e-ba89-2f170d6da77c",
+          "BL3": "240;172",
+          "BL7": "bd9f7570-6c97-4f16-90e5-663a190c6c7c",
+          "BN2": "55;55",
+          "BO3": true,
+          "HH2": []
+        },
+        {
+          "BL1": "Terrasoft.Core.Process.ProcessSchemaScriptTask",
+          "UId": "47d132a3-31cb-4e04-b6be-b3cb170816cc",
+          "A2": "CommitWarningTransition",
+          "A3": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c",
+          "A4": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c",
+          "A5": "0a07faf7-f6e2-439e-ab7c-961d7c56566e",
+          "IL2": "2daacb3c-66c9-432e-ba89-2f170d6da77c",
+          "BL3": "420;302",
+          "BL7": "0e490dda-e140-4441-b600-6f5c64d024df",
+          "BN2": "69;55",
+          "BO3": true,
+          "BP2": [],
+          "CL2": "FFFFFFFF",
+          "CH1": "Set<bool>(\"Success\", false);\nSet<string>(\"ResultMessage\", \"Contract warning transition failed.\");\ntry {\n    var contractId = Get<Guid>(\"ContractId\");\n    var warningDays = Get<int>(\"WarningDays\");\n    Guid instanceId;\n    if (contractId == Guid.Empty || warningDays < 0 || context == null || context.Process == null ||\n        !Guid.TryParse(context.Process.InstanceUId, out instanceId) ||\n        instanceId == Guid.Empty || UserConnection.CurrentUser == null)\n        throw new UnauthorizedAccessException(\"Cannot verify warning initiator.\");\n    using (var db = UserConnection.EnsureDBConnection()) {\n        var owner = new CustomQuery(UserConnection,\n            \"SELECT OwnerId FROM dbo.SysProcessLog WHERE Id = @Id\")\n            .WithParameter(\"Id\", instanceId).ExecuteScalar<Guid>(db);\n        if (owner == Guid.Empty || owner != UserConnection.CurrentUser.ContactId)\n            throw new UnauthorizedAccessException(\"Execution identity differs from initiator.\");\n        Terrasoft.Configuration.UsrMCITScreenAccess.Demand(UserConnection, \"CONTRACTS\", \"Activate\");\n        if (!Terrasoft.Configuration.UsrMCITDataScopeRuntime\n            .ReadAuthorizedContractIds(UserConnection).Contains(contractId))\n            throw new UnauthorizedAccessException(\"Contract scope denied.\");\n        var security = UserConnection.DBSecurityEngine;\n        var rights = security.GetEntitySchemaOperationsRightLevel(\n            UserConnection.CurrentUser.Id, \"UsrMCITContract\");\n        if ((rights & Terrasoft.Core.DB.SchemaOperationRightLevels.CanEdit) == 0)\n            throw new UnauthorizedAccessException(\"Contract edit denied.\");\n        var recordRights = security.GetEntitySchemaRecordRightLevel(\n            UserConnection.CurrentUser.Id, \"UsrMCITContract\", contractId);\n        if ((recordRights & Terrasoft.Core.DB.SchemaRecordRightLevels.CanEdit) == 0)\n            throw new UnauthorizedAccessException(\"Contract record edit denied.\");\n        const string sql = @\"\nSET XACT_ABORT ON;\nSET NOCOUNT ON;\nDECLARE @Status uniqueidentifier, @End date, @Today date=CONVERT(date,GETDATE());\nSELECT @Status=UsrStatusId, @End=CONVERT(date,UsrEndDate)\nFROM dbo.UsrMCITContract WITH (UPDLOCK,HOLDLOCK) WHERE Id=@ContractId;\nIF @Status <> '5f9739e9-4f5c-42ba-8157-d1e2468a27e4'\n    THROW 51521,'Only an Active contract can become Expiring.',1;\nIF @End IS NULL OR @End<=@Today OR @End>DATEADD(day,@WarningDays,@Today)\n    THROW 51522,'Contract is outside the configured warning window.',1;\nUPDATE dbo.UsrMCITContract SET\n    UsrStatusId='69e3f764-e785-4e2d-bff1-4c06e0552a13',\n    ModifiedOn=GETDATE(), ModifiedById=@ActorContact\nWHERE Id=@ContractId AND UsrStatusId=@Status;\nIF @@ROWCOUNT<>1 THROW 51523,'Concurrent status change detected.',1;\nSELECT CAST(1 AS int);\n\";\n        db.StartTransaction(System.Data.IsolationLevel.Serializable);\n        try {\n            var confirmed = new CustomQuery(UserConnection, sql)\n                .WithParameter(\"ContractId\", contractId)\n                .WithParameter(\"WarningDays\", warningDays)\n                .WithParameter(\"ActorContact\", owner).ExecuteScalar<int>(db);\n            if (confirmed != 1) throw new InvalidOperationException(\"Warning transition not confirmed.\");\n            db.CommitTransaction();\n        } catch { db.RollbackTransaction(); throw; }\n    }\n    Set<bool>(\"Success\", true);\n    Set<string>(\"ResultMessage\", \"Contract marked Expiring.\");\n} catch (Exception) {\n    Set<bool>(\"Success\", false);\n    Set<string>(\"ResultMessage\", \"Warning transition rejected; no status change committed.\");\n}\nreturn true;",
+          "CH2": true
+        },
+        {
+          "BL1": "Terrasoft.Core.Process.ProcessSchemaFormulaTask",
+          "UId": "ff7d5671-7de4-45ee-84be-fe80e7089849",
+          "A2": "ReportInvalidWarningInput",
+          "A3": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c",
+          "A4": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c",
+          "A5": "0a07faf7-f6e2-439e-ab7c-961d7c56566e",
+          "IL2": "2daacb3c-66c9-432e-ba89-2f170d6da77c",
+          "BL3": "420;172",
+          "BL7": "d334d28f-b11a-477e-9ff0-0a95fa73d53b",
+          "BN2": "69;55",
+          "BO3": true,
+          "BP2": [],
+          "CL2": "FFFFFFFF",
+          "CH1": "\"A contract is required.\"",
+          "HS1": "5db900a7-5e8c-46a5-a220-f77e7fe3585a"
+        },
+        {
+          "BL1": "Terrasoft.Core.Process.ProcessSchemaTerminateEvent",
+          "UId": "5be7500f-6aef-436a-afc3-f41b9b6d1e61",
+          "A2": "EndWarningTransition",
+          "A3": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c",
+          "A4": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c",
+          "A5": "0a07faf7-f6e2-439e-ab7c-961d7c56566e",
+          "IL2": "2daacb3c-66c9-432e-ba89-2f170d6da77c",
+          "BL3": "600;184",
+          "BL7": "1bd93619-0574-454e-bb4e-cf53b9eb9470",
+          "BN2": "31;31",
+          "BO3": true,
+          "FC1": []
+        },
+        {
+          "BL1": "Terrasoft.Core.Process.ProcessSchemaSequenceFlow",
+          "UId": "34b153ac-2e69-496f-bd60-9290f38105e4",
+          "A2": "SequenceFlow_StartWarningTransition_CheckWarningInput",
+          "A3": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c",
+          "A4": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c",
+          "A5": "0a07faf7-f6e2-439e-ab7c-961d7c56566e",
+          "BL7": "0d8351f6-c2f4-4737-bdd9-6fbfe0837fec",
+          "CI1": "74c1fc81-bd06-4cf7-9893-274c7581ccaf",
+          "CI2": "a8f0683c-cbe3-4390-9318-ca0c0f7ec1d5",
+          "CI3": "null",
+          "CI5": "FF939598",
+          "CI6": 1,
+          "CI7": "1;0",
+          "CI8": "-1;0",
+          "CI11": "91;200",
+          "CI12": "240;200"
+        },
+        {
+          "BL1": "Terrasoft.Core.Process.ProcessSchemaConditionalFlow",
+          "UId": "c5d5da74-02c0-4f2a-986f-c2ee90111872",
+          "A2": "ConditionalFlow_CheckWarningInput_CommitWarningTransition",
+          "A3": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c",
+          "A4": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c",
+          "A5": "0a07faf7-f6e2-439e-ab7c-961d7c56566e",
+          "BL7": "dac675d4-ea84-4e44-9056-38bf918618e9",
+          "CI1": "a8f0683c-cbe3-4390-9318-ca0c0f7ec1d5",
+          "CI2": "47d132a3-31cb-4e04-b6be-b3cb170816cc",
+          "CI3": "[#[IsOwnerSchema:false].[IsSchema:false].[Parameter:{099a3f91-723e-48bc-b8e4-41173643efda}]#] != Guid.Empty",
+          "CI4": 2,
+          "CI5": "FF939598",
+          "CI6": 1,
+          "CI7": "0;-1",
+          "CI8": "-1;0",
+          "CI11": "268;227",
+          "CI12": "420;330",
+          "CI10": {
+            "Item0": "268;330"
+          },
+          "GV2": "{}",
+          "GV3": []
+        },
+        {
+          "BL1": "Terrasoft.Core.Process.ProcessSchemaSequenceFlow",
+          "UId": "fd5ddb4b-57b5-4c62-b8a0-e6266ef46b4a",
+          "A2": "DefaultFlow_CheckWarningInput_ReportInvalidWarningInput",
+          "A3": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c",
+          "A4": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c",
+          "A5": "0a07faf7-f6e2-439e-ab7c-961d7c56566e",
+          "BL7": "573ed909-e069-4161-b193-ae8dd9437c68",
+          "CI1": "a8f0683c-cbe3-4390-9318-ca0c0f7ec1d5",
+          "CI2": "ff7d5671-7de4-45ee-84be-fe80e7089849",
+          "CI3": "null",
+          "CI4": 1,
+          "CI5": "FF939598",
+          "CI6": 1,
+          "CI7": "1;0",
+          "CI8": "-1;0",
+          "CI11": "295;200",
+          "CI12": "420;200"
+        },
+        {
+          "BL1": "Terrasoft.Core.Process.ProcessSchemaSequenceFlow",
+          "UId": "2d5f3b90-ce41-46a9-a83b-be2e81f4abb9",
+          "A2": "SequenceFlow_CommitWarningTransition_EndWarningTransition",
+          "A3": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c",
+          "A4": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c",
+          "A5": "0a07faf7-f6e2-439e-ab7c-961d7c56566e",
+          "BL7": "0d8351f6-c2f4-4737-bdd9-6fbfe0837fec",
+          "CI1": "47d132a3-31cb-4e04-b6be-b3cb170816cc",
+          "CI2": "5be7500f-6aef-436a-afc3-f41b9b6d1e61",
+          "CI3": "null",
+          "CI5": "FF939598",
+          "CI6": 1,
+          "CI7": "1;0",
+          "CI8": "0;-1",
+          "CI11": "489;330",
+          "CI12": "616;215",
+          "CI10": {
+            "Item0": "616;330"
+          }
+        },
+        {
+          "BL1": "Terrasoft.Core.Process.ProcessSchemaSequenceFlow",
+          "UId": "c16da12a-9456-4cfb-b6df-b2543bb2e2fe",
+          "A2": "SequenceFlow_ReportInvalidWarningInput_EndWarningTransition",
+          "A3": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c",
+          "A4": "51c90301-8e99-4bb7-bdb4-8c01493d5e6c",
+          "A5": "0a07faf7-f6e2-439e-ab7c-961d7c56566e",
+          "BL7": "0d8351f6-c2f4-4737-bdd9-6fbfe0837fec",
+          "CI1": "ff7d5671-7de4-45ee-84be-fe80e7089849",
+          "CI2": "5be7500f-6aef-436a-afc3-f41b9b6d1e61",
+          "CI3": "null",
+          "CI5": "FF939598",
+          "CI6": 1,
+          "CI7": "1;0",
+          "CI8": "-1;0",
+          "CI11": "489;200",
+          "CI12": "600;200"
+        }
+      ],
+      "BK9": [],
+      "BK18": "Business Process",
+      "BK29": true,
+      "BK30": true,
+      "BK34": "en-US",
+      "Labels": [],
+      "BK24": []
+    }
+  }
+}

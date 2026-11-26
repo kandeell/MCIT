@@ -3,6 +3,8 @@
 	<Group Type="String">
 		<Items>
 			<Item Name="Caption" Value="Contract Configuration Version form page" />
+			<Item Name="LocalizableStrings.Button_bhvvdm3_caption.Value" Value="Activate" />
+			<Item Name="LocalizableStrings.Button_yn5ak4f_caption.Value" Value="Button" />
 			<Item Name="LocalizableStrings.ExpansionPanel_5dphlae_title.Value" Value="Optional Add-on Financial Rates" />
 			<Item Name="LocalizableStrings.GeneralInfoTab_caption.Value" Value="Point Configuration" />
 			<Item Name="LocalizableStrings.GridDetailAddBtn_sq24o0x_caption.Value" Value="New" />
@@ -17,6 +19,7 @@
 			<Item Name="LocalizableStrings.Label_jqf5taj_caption.Value" Value="Resource Entitlement per Point" />
 			<Item Name="LocalizableStrings.Label_qgyhb32_caption.Value" Value="Optional Add-on Financial Rates" />
 			<Item Name="LocalizableStrings.Label_st4qdfg_caption.Value" Value="Change Summary" />
+			<Item Name="LocalizableStrings.MenuItem_utrk5he_caption.Value" Value="Menu item" />
 			<Item Name="LocalizableStrings.PageTitle_caption.Value" Value="$headercaption" />
 			<Item Name="LocalizableStrings.TabContainer_kntw6lq_caption.Value" Value="Resources" />
 			<Item Name="LocalizableStrings.TabContainer_onmyly9_caption.Value" Value="Add-on Rates" />

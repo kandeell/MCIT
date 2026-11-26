@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Resources Culture="tr-CY">
+	<Group Type="String">
+		<Items>
+			<Item Name="BaseElements.ReadAddOn.Parameters.AggregationColumnName.Caption" Value="Toplama fonksiyonu sütununun adı" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.CanReadUncommitedData.Caption" Value="İşlenmemiş veriyi oku" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ConsiderTimeInFilter.Caption" Value="Filtrede zamanı dikkate al" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.DataSourceFilters.Caption" Value="Filtrelerin veri kaynağı" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.EntityColumnMetaPathes.Caption" Value="Okunacak sütunlar" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.FunctionType.Caption" Value="Toplama fonksiyonu tipi" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.IgnoreDisplayValues.Caption" Value="Arama sütunlarının görüntülenen değerlerini okuma" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.NumberOfRecords.Caption" Value="Okunacak kayıt sayısı" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.OrderInfo.Caption" Value="Sütunların sırası" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ReadSomeTopRecords.Caption" Value="İlkini oku" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultCompositeObjectList.Caption" Value="Kayıtlar koleksiyonu" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultCount.Caption" Value="Kayıt sayısı" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultDateTimeFunction.Caption" Value="Fonksiyon sonucu (Tarih/Saat)" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultEntity.Caption" Value="Sonuç koleksiyonunun ilk öğesi" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultEntityCollection.Caption" Value="Sonuç koleksiyonu" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultFloatFunction.Caption" Value="Fonksiyon sonucu (Ondalık)" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultIntegerFunction.Caption" Value="Fonksiyon sonucu (Tamsayı)" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultRowsCount.Caption" Value="Okunan kayıt sayısı" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultType.Caption" Value="Sonuç türü" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.AggregationColumnName.Caption" Value="Toplama fonksiyonu sütununun adı" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.CanReadUncommitedData.Caption" Value="İşlenmemiş veriyi oku" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ConsiderTimeInFilter.Caption" Value="Filtrede zamanı dikkate al" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.DataSourceFilters.Caption" Value="Filtrelerin veri kaynağı" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.EntityColumnMetaPathes.Caption" Value="Okunacak sütunlar" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.FunctionType.Caption" Value="Toplama fonksiyonu tipi" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.IgnoreDisplayValues.Caption" Value="Arama sütunlarının görüntülenen değerlerini okuma" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.NumberOfRecords.Caption" Value="Okunacak kayıt sayısı" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.OrderInfo.Caption" Value="Sütunların sırası" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ReadSomeTopRecords.Caption" Value="İlkini oku" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultCompositeObjectList.Caption" Value="Kayıtlar koleksiyonu" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultCount.Caption" Value="Kayıt sayısı" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultDateTimeFunction.Caption" Value="Fonksiyon sonucu (Tarih/Saat)" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultEntity.Caption" Value="Sonuç koleksiyonunun ilk öğesi" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultEntityCollection.Caption" Value="Sonuç koleksiyonu" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultFloatFunction.Caption" Value="Fonksiyon sonucu (Ondalık)" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultIntegerFunction.Caption" Value="Fonksiyon sonucu (Tamsayı)" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultRowsCount.Caption" Value="Okunan kayıt sayısı" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultType.Caption" Value="Sonuç türü" />
+			<Item Name="Caption" Value="Contract catalog validation" />
+		</Items>
+	</Group>
+</Resources>

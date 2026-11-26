@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Resources Culture="en-US">
+	<Group Type="String">
+		<Items>
+			<Item Name="BaseElements.CheckExpirationInput.Caption" Value="Contract supplied?" />
+			<Item Name="BaseElements.CommitContractExpiration.Caption" Value="Validate and expire contract atomically" />
+			<Item Name="BaseElements.ConditionalFlow_CheckExpirationInput_CommitContractExpiration.Caption" Value="Contract supplied" />
+			<Item Name="BaseElements.DefaultFlow_CheckExpirationInput_SetInvalidExpirationInput.Caption" Value="Contract missing" />
+			<Item Name="BaseElements.EndContractExpiration.Caption" Value="Contract expiration complete" />
+			<Item Name="BaseElements.SetInvalidExpirationInput.Caption" Value="Report missing contract" />
+			<Item Name="BaseElements.StartContractExpiration.Caption" Value="Contract expiration requested" />
+			<Item Name="Caption" Value="MCIT expire contract" />
+			<Item Name="Parameters.ContractId.Caption" Value="Contract ID" />
+			<Item Name="Parameters.ResultMessage.Caption" Value="Result message" />
+			<Item Name="Parameters.Success.Caption" Value="Expiration succeeded" />
+			<Item Name="Parameters.Success.DisplayValue" Value="false" />
+		</Items>
+	</Group>
+</Resources>

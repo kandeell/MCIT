@@ -5,8 +5,7 @@ define("UsrPage_vuvb9us", /**SCHEMA_DEPS*/["css!UsrRubikFontCSS"]/**SCHEMA_DEPS*
 				"operation": "merge",
 				"name": "PageTitle",
 				"values": {
-					"caption": "Point Configuration Version",
-					"visible": true
+					"caption": "Point Configuration Version"
 				}
 			},
 			{
@@ -26,11 +25,7 @@ define("UsrPage_vuvb9us", /**SCHEMA_DEPS*/["css!UsrRubikFontCSS"]/**SCHEMA_DEPS*
 						"right": "none",
 						"top": "none",
 						"bottom": "none"
-					},
-					"visible": true,
-					"color": "transparent",
-					"borderRadius": "none",
-					"alignItems": "stretch"
+					}
 				}
 			},
 			{
@@ -51,18 +46,7 @@ define("UsrPage_vuvb9us", /**SCHEMA_DEPS*/["css!UsrRubikFontCSS"]/**SCHEMA_DEPS*
 						"colSpan": 2,
 						"rowSpan": 1
 					},
-					"visible": true,
-					"padding": {
-						"top": "none",
-						"right": "none",
-						"bottom": "none",
-						"left": "none"
-					},
-					"color": "transparent",
-					"borderRadius": "none",
-					"alignItems": "stretch",
-					"justifyContent": "center",
-					"gap": "small"
+					"justifyContent": "center"
 				}
 			},
 			{
@@ -77,7 +61,6 @@ define("UsrPage_vuvb9us", /**SCHEMA_DEPS*/["css!UsrRubikFontCSS"]/**SCHEMA_DEPS*
 					"underlineSelectedTabColor": "crt-color-violet",
 					"headerBackgroundColor": "primary",
 					"allowToggleClose": false,
-					"visible": true,
 					"stretch": true
 				}
 			},
@@ -95,11 +78,34 @@ define("UsrPage_vuvb9us", /**SCHEMA_DEPS*/["css!UsrRubikFontCSS"]/**SCHEMA_DEPS*
 			},
 			{
 				"operation": "insert",
+				"name": "Button_bhvvdm3",
+				"values": {
+					"type": "crt.Button",
+					"caption": "#ResourceString(Button_bhvvdm3_caption)#",
+					"color": "primary",
+					"size": "large",
+					"iconPosition": "only-text",
+					"clicked": {
+						"request": "crt.RunBusinessProcessRequest",
+						"params": {
+							"processName": "UsrActivateConfigurationVersion",
+							"processRunType": "ForTheSelectedPage",
+							"saveAtProcessStart": true,
+							"showNotification": true,
+							"recordIdProcessParameterName": "ConfigurationVersion"
+						}
+					},
+					"clickMode": "default"
+				},
+				"parentName": "MainHeader",
+				"propertyName": "items",
+				"index": 2
+			},
+			{
+				"operation": "insert",
 				"name": "EntityStageProgressBar_rdgenhg",
 				"values": {
 					"type": "crt.EntityStageProgressBar",
-					"saveOnChange": false,
-					"askUserToChangeSchema": true,
 					"entityName": "UsrContractConfigVersion"
 				},
 				"parentName": "MainContainer",
@@ -113,7 +119,6 @@ define("UsrPage_vuvb9us", /**SCHEMA_DEPS*/["css!UsrRubikFontCSS"]/**SCHEMA_DEPS*
 					"type": "crt.TabContainer",
 					"caption": "Source Version",
 					"iconPosition": "only-text",
-					"visible": true,
 					"items": []
 				},
 				"parentName": "Tabs",
@@ -136,17 +141,8 @@ define("UsrPage_vuvb9us", /**SCHEMA_DEPS*/["css!UsrRubikFontCSS"]/**SCHEMA_DEPS*
 						"rowGap": "medium"
 					},
 					"items": [],
-					"fitContent": true,
-					"visible": true,
-					"alignItems": "stretch",
 					"color": "primary",
-					"borderRadius": "small",
-					"padding": {
-						"top": "none",
-						"bottom": "none",
-						"left": "none",
-						"right": "none"
-					}
+					"borderRadius": "small"
 				},
 				"parentName": "MCITSourceVersionTab",
 				"propertyName": "items",
@@ -252,8 +248,6 @@ define("UsrPage_vuvb9us", /**SCHEMA_DEPS*/["css!UsrRubikFontCSS"]/**SCHEMA_DEPS*
 					"listActions": [],
 					"tooltip": "",
 					"control": "$UsrContractConfigVersionDS_UsrPreviousVersion_vc9noy1",
-					"visible": true,
-					"readonly": false,
 					"placeholder": ""
 				},
 				"parentName": "MCITSourceVersionCard",
@@ -267,8 +261,7 @@ define("UsrPage_vuvb9us", /**SCHEMA_DEPS*/["css!UsrRubikFontCSS"]/**SCHEMA_DEPS*
 					"type": "crt.FlexContainer",
 					"direction": "column",
 					"wrap": "nowrap",
-					"items": [],
-					"fitContent": true
+					"items": []
 				},
 				"parentName": "MCITSourceVersionTab",
 				"propertyName": "items",
@@ -287,18 +280,7 @@ define("UsrPage_vuvb9us", /**SCHEMA_DEPS*/["css!UsrRubikFontCSS"]/**SCHEMA_DEPS*
 						"columnGap": "none",
 						"rowGap": "none"
 					},
-					"items": [],
-					"fitContent": true,
-					"visible": true,
-					"alignItems": "stretch",
-					"color": "transparent",
-					"borderRadius": "none",
-					"padding": {
-						"top": "none",
-						"bottom": "none",
-						"right": "none",
-						"left": "none"
-					}
+					"items": []
 				},
 				"parentName": "FlexContainer_cqfu2pd",
 				"propertyName": "items",
@@ -318,7 +300,6 @@ define("UsrPage_vuvb9us", /**SCHEMA_DEPS*/["css!UsrRubikFontCSS"]/**SCHEMA_DEPS*
 						"rowGap": "medium"
 					},
 					"items": [],
-					"fitContent": true,
 					"visible": "$MCITHasContract",
 					"color": "primary",
 					"borderRadius": "medium",
@@ -327,8 +308,7 @@ define("UsrPage_vuvb9us", /**SCHEMA_DEPS*/["css!UsrRubikFontCSS"]/**SCHEMA_DEPS*
 						"bottom": "medium",
 						"left": "medium",
 						"right": "medium"
-					},
-					"alignItems": "stretch"
+					}
 				},
 				"parentName": "MCITSourceVersionTab",
 				"propertyName": "items",
@@ -361,7 +341,6 @@ define("UsrPage_vuvb9us", /**SCHEMA_DEPS*/["css!UsrRubikFontCSS"]/**SCHEMA_DEPS*
 					"items": "$MCITVersionHistory",
 					"primaryColumnName": "MCITHistory_Id",
 					"fitContent": true,
-					"visible": true,
 					"placeholder": false,
 					"features": {
 						"rows": {
@@ -453,7 +432,6 @@ define("UsrPage_vuvb9us", /**SCHEMA_DEPS*/["css!UsrRubikFontCSS"]/**SCHEMA_DEPS*
 						"rowGap": "small"
 					},
 					"items": [],
-					"fitContent": true,
 					"color": "primary",
 					"borderRadius": "medium",
 					"padding": {
@@ -678,7 +656,6 @@ define("UsrPage_vuvb9us", /**SCHEMA_DEPS*/["css!UsrRubikFontCSS"]/**SCHEMA_DEPS*
 						"rowGap": "small"
 					},
 					"items": [],
-					"fitContent": true,
 					"color": "primary",
 					"borderRadius": "medium",
 					"padding": {
@@ -766,7 +743,6 @@ define("UsrPage_vuvb9us", /**SCHEMA_DEPS*/["css!UsrRubikFontCSS"]/**SCHEMA_DEPS*
 						"rowGap": "small"
 					},
 					"items": [],
-					"fitContent": true,
 					"color": "primary",
 					"borderRadius": "medium",
 					"padding": {
@@ -869,7 +845,6 @@ define("UsrPage_vuvb9us", /**SCHEMA_DEPS*/["css!UsrRubikFontCSS"]/**SCHEMA_DEPS*
 						"rowGap": "medium"
 					},
 					"items": [],
-					"fitContent": true,
 					"color": "primary",
 					"borderRadius": "medium",
 					"padding": {
@@ -1018,6 +993,65 @@ define("UsrPage_vuvb9us", /**SCHEMA_DEPS*/["css!UsrRubikFontCSS"]/**SCHEMA_DEPS*
 			},
 			{
 				"operation": "insert",
+				"name": "DataGrid_u2gjahn",
+				"values": {
+					"type": "crt.DataGrid",
+					"features": {
+						"rows": {
+							"selection": {
+								"enable": true,
+								"multiple": true
+							}
+						}
+					},
+					"items": "$DataGrid_u2gjahn",
+					"primaryColumnName": "DataGrid_u2gjahnDS_Id",
+					"columns": [
+						{
+							"id": "7b89b6b1-e4cd-e21a-d4de-96b46d16d993",
+							"code": "DataGrid_u2gjahnDS_UsrName",
+							"caption": "#ResourceString(DataGrid_u2gjahnDS_UsrName)#",
+							"dataValueType": 28
+						},
+						{
+							"id": "5d540018-73aa-50a5-a390-005dbbbebd48",
+							"code": "DataGrid_u2gjahnDS_UsrResourceType",
+							"caption": "#ResourceString(DataGrid_u2gjahnDS_UsrResourceType)#",
+							"dataValueType": 10
+						},
+						{
+							"id": "f5c3eeae-5c19-e87d-ad12-5648d6918129",
+							"code": "DataGrid_u2gjahnDS_UsrPricingUnitLookup",
+							"caption": "#ResourceString(DataGrid_u2gjahnDS_UsrPricingUnitLookup)#",
+							"dataValueType": 10
+						},
+						{
+							"id": "78896c29-11df-0c86-b583-70373b9ae86b",
+							"code": "DataGrid_u2gjahnDS_UsrPointsPerUnit",
+							"caption": "#ResourceString(DataGrid_u2gjahnDS_UsrPointsPerUnit)#",
+							"dataValueType": 31
+						},
+						{
+							"id": "883f702a-ff06-eff6-d8da-e38deb396f0b",
+							"code": "DataGrid_u2gjahnDS_UsrAmountPerUnit",
+							"caption": "#ResourceString(DataGrid_u2gjahnDS_UsrAmountPerUnit)#",
+							"dataValueType": 31
+						},
+						{
+							"id": "5a4bd442-f8ff-f84c-def0-d1b0e6075e8c",
+							"code": "DataGrid_u2gjahnDS_UsrCurrency",
+							"caption": "#ResourceString(DataGrid_u2gjahnDS_UsrCurrency)#",
+							"dataValueType": 10
+						}
+					],
+					"placeholder": false
+				},
+				"parentName": "TabContainer_kntw6lq",
+				"propertyName": "items",
+				"index": 1
+			},
+			{
+				"operation": "insert",
 				"name": "TabContainer_onmyly9",
 				"values": {
 					"type": "crt.TabContainer",
@@ -1043,7 +1077,6 @@ define("UsrPage_vuvb9us", /**SCHEMA_DEPS*/["css!UsrRubikFontCSS"]/**SCHEMA_DEPS*
 						"rowGap": "medium"
 					},
 					"items": [],
-					"fitContent": true,
 					"color": "primary",
 					"borderRadius": "medium",
 					"padding": {
@@ -1051,11 +1084,27 @@ define("UsrPage_vuvb9us", /**SCHEMA_DEPS*/["css!UsrRubikFontCSS"]/**SCHEMA_DEPS*
 						"bottom": "medium",
 						"left": "medium",
 						"right": "medium"
-					},
-					"visible": true,
-					"alignItems": "stretch"
+					}
 				},
 				"parentName": "TabContainer_onmyly9",
+				"propertyName": "items",
+				"index": 0
+			},
+			{
+				"operation": "insert",
+				"name": "FlexContainer_h2v35kx",
+				"values": {
+					"layoutConfig": {
+						"column": 1,
+						"colSpan": 1,
+						"row": 1,
+						"rowSpan": 1
+					},
+					"type": "crt.FlexContainer",
+					"direction": "row",
+					"items": []
+				},
+				"parentName": "GridContainer_ewqysfs",
 				"propertyName": "items",
 				"index": 0
 			},
@@ -1066,17 +1115,33 @@ define("UsrPage_vuvb9us", /**SCHEMA_DEPS*/["css!UsrRubikFontCSS"]/**SCHEMA_DEPS*
 					"type": "crt.Label",
 					"caption": "Optional Add-on Financial Rates",
 					"labelType": "headline-3",
-					"labelColor": "#5B21A5",
-					"layoutConfig": {
-						"column": 1,
-						"row": 1,
-						"colSpan": 1,
-						"rowSpan": 1
-					}
+					"labelColor": "#5B21A5"
 				},
-				"parentName": "GridContainer_ewqysfs",
+				"parentName": "FlexContainer_h2v35kx",
 				"propertyName": "items",
 				"index": 0
+			},
+			{
+				"operation": "insert",
+				"name": "Button_yn5ak4f",
+				"values": {
+					"type": "crt.Button",
+					"caption": "#ResourceString(Button_yn5ak4f_caption)#",
+					"color": "default",
+					"size": "small",
+					"iconPosition": "only-icon",
+					"clicked": {
+						"request": "crt.OpenPageRequest",
+						"params": {
+							"schemaName": "UsrConfigurationAddOnRateMiniPage"
+						}
+					},
+					"clickMode": "default",
+					"icon": "add-button-icon"
+				},
+				"parentName": "FlexContainer_h2v35kx",
+				"propertyName": "items",
+				"index": 1
 			},
 			{
 				"operation": "insert",
@@ -1085,7 +1150,6 @@ define("UsrPage_vuvb9us", /**SCHEMA_DEPS*/["css!UsrRubikFontCSS"]/**SCHEMA_DEPS*
 					"type": "crt.DataGrid",
 					"items": "$DataGrid_wskxcup",
 					"primaryColumnName": "DataGrid_wskxcupDS_Id",
-					"visible": true,
 					"fitContent": true,
 					"placeholder": false,
 					"features": {
@@ -1098,40 +1162,58 @@ define("UsrPage_vuvb9us", /**SCHEMA_DEPS*/["css!UsrRubikFontCSS"]/**SCHEMA_DEPS*
 					},
 					"columns": [
 						{
-							"id": "90721679-373b-9963-c743-1210cef1d012",
-							"code": "DataGrid_wskxcupDS_UsrName",
-							"caption": "Rate name",
-							"dataValueType": 28
+							"id": "ac7c7fae-ef75-217f-e7fb-98506010e235",
+							"code": "DataGrid_wskxcupDS_UsrUnit",
+							"caption": "#ResourceString(DataGrid_wskxcupDS_UsrUnit)#",
+							"dataValueType": 27
 						},
 						{
-							"id": "30361e42-a5dd-195d-21e4-5aed249bd0b0",
-							"code": "DataGrid_wskxcupDS_UsrResourceType",
-							"caption": "Resource type",
-							"dataValueType": 10
+							"id": "8ee53e3b-516c-4f7d-09eb-34dbcba42d04",
+							"code": "DataGrid_wskxcupDS_UsrMaxQuantity",
+							"caption": "#ResourceString(DataGrid_wskxcupDS_UsrMaxQuantity)#",
+							"dataValueType": 4
 						},
 						{
-							"id": "311d3bb5-1c71-7d2b-2eb8-4cb4edabed1f",
-							"code": "DataGrid_wskxcupDS_UsrAmountPerUnit",
-							"caption": "Amount per unit",
+							"id": "b1353b36-afd2-49e3-c426-f3b052d84f35",
+							"code": "DataGrid_wskxcupDS_UsrMinQuantity",
+							"caption": "#ResourceString(DataGrid_wskxcupDS_UsrMinQuantity)#",
+							"dataValueType": 4
+						},
+						{
+							"id": "3ec6e61a-825e-5f07-3ccf-3b56b1657b8e",
+							"code": "DataGrid_wskxcupDS_UsrIncrement",
+							"caption": "#ResourceString(DataGrid_wskxcupDS_UsrIncrement)#",
+							"dataValueType": 4
+						},
+						{
+							"id": "9acefa00-f2e1-e78f-2c9f-c6cfa67403fd",
+							"code": "DataGrid_wskxcupDS_UsrUnitPrice",
+							"caption": "#ResourceString(DataGrid_wskxcupDS_UsrUnitPrice)#",
 							"dataValueType": 31
 						},
 						{
-							"id": "9b6f94ad-e485-2651-68d5-3f2d48c48428",
+							"id": "ea83d0f6-9511-8139-5896-e930795a7baf",
+							"code": "DataGrid_wskxcupDS_UsrUnit",
+							"caption": "#ResourceString(DataGrid_wskxcupDS_UsrUnit)#",
+							"dataValueType": 27
+						},
+						{
+							"id": "a060a580-9b33-e930-a9d8-f514ded6506b",
 							"code": "DataGrid_wskxcupDS_UsrCurrency",
-							"caption": "Currency",
+							"caption": "#ResourceString(DataGrid_wskxcupDS_UsrCurrency)#",
 							"dataValueType": 10
 						},
 						{
-							"id": "ac47ef82-8045-4707-a6bc-eeb89a6a911f",
-							"code": "DataGrid_wskxcupDS_UsrPricingUnitLookup",
-							"caption": "Pricing unit",
-							"dataValueType": 10
+							"id": "178bfa41-99e7-e54c-e092-721e1d6e3fb0",
+							"code": "DataGrid_wskxcupDS_UsrActive",
+							"caption": "#ResourceString(DataGrid_wskxcupDS_UsrActive)#",
+							"dataValueType": 12
 						},
 						{
-							"id": "a9eea340-52be-523b-b741-133390a1d36b",
-							"code": "DataGrid_wskxcupDS_UsrPointsPerUnit",
-							"caption": "Points per unit",
-							"dataValueType": 31
+							"id": "d365dca5-d062-1e41-4d82-00831b2b6e91",
+							"code": "DataGrid_wskxcupDS_UsrAddOn",
+							"caption": "#ResourceString(DataGrid_wskxcupDS_UsrAddOn)#",
+							"dataValueType": 10
 						}
 					],
 					"layoutConfig": {
@@ -1139,11 +1221,123 @@ define("UsrPage_vuvb9us", /**SCHEMA_DEPS*/["css!UsrRubikFontCSS"]/**SCHEMA_DEPS*
 						"row": 2,
 						"colSpan": 1,
 						"rowSpan": 1
-					}
+					},
+					"selectionState": "$DataGrid_wskxcup_SelectionState",
+					"_selectionOptions": {
+						"attribute": "DataGrid_wskxcup_SelectionState"
+					},
+					"bulkActions": []
 				},
 				"parentName": "GridContainer_ewqysfs",
 				"propertyName": "items",
 				"index": 1
+			},
+			{
+				"operation": "insert",
+				"name": "DataGrid_wskxcup_AddTagsBulkAction",
+				"values": {
+					"type": "crt.MenuItem",
+					"caption": "Add tag",
+					"icon": "tag-icon",
+					"clicked": {
+						"request": "crt.AddTagsInRecordsRequest",
+						"params": {
+							"dataSourceName": "DataGrid_wskxcupDS",
+							"filters": "$DataGrid_wskxcup | crt.ToCollectionFilters : 'DataGrid_wskxcup' : $DataGrid_wskxcup_SelectionState | crt.SkipIfSelectionEmpty : $DataGrid_wskxcup_SelectionState"
+						}
+					},
+					"items": []
+				},
+				"parentName": "DataGrid_wskxcup",
+				"propertyName": "bulkActions",
+				"index": 0
+			},
+			{
+				"operation": "insert",
+				"name": "DataGrid_wskxcup_RemoveTagsBulkAction",
+				"values": {
+					"type": "crt.MenuItem",
+					"caption": "Remove tag",
+					"icon": "delete-button-icon",
+					"clicked": {
+						"request": "crt.RemoveTagsInRecordsRequest",
+						"params": {
+							"dataSourceName": "DataGrid_wskxcupDS",
+							"filters": "$DataGrid_wskxcup | crt.ToCollectionFilters : 'DataGrid_wskxcup' : $DataGrid_wskxcup_SelectionState | crt.SkipIfSelectionEmpty : $DataGrid_wskxcup_SelectionState"
+						}
+					}
+				},
+				"parentName": "DataGrid_wskxcup_AddTagsBulkAction",
+				"propertyName": "items",
+				"index": 0
+			},
+			{
+				"operation": "insert",
+				"name": "DataGrid_wskxcup_ExportToExcelBulkAction",
+				"values": {
+					"type": "crt.MenuItem",
+					"caption": "Export to Excel",
+					"icon": "export-button-icon",
+					"clicked": {
+						"request": "crt.ExportDataGridToExcelRequest",
+						"params": {
+							"viewName": "DataGrid_wskxcup",
+							"filters": "$DataGrid_wskxcup | crt.ToCollectionFilters : 'DataGrid_wskxcup' : $DataGrid_wskxcup_SelectionState | crt.SkipIfSelectionEmpty : $DataGrid_wskxcup_SelectionState"
+						}
+					}
+				},
+				"parentName": "DataGrid_wskxcup",
+				"propertyName": "bulkActions",
+				"index": 1
+			},
+			{
+				"operation": "insert",
+				"name": "DataGrid_wskxcup_MergeBulkAction",
+				"values": {
+					"type": "crt.MenuItem",
+					"caption": "Merge",
+					"icon": "merge-icon",
+					"clicked": {
+						"request": "crt.MergeRecordsRequest",
+						"params": {
+							"dataSourceName": "DataGrid_wskxcupDS",
+							"selectionState": "$DataGrid_wskxcup_SelectionState"
+						}
+					}
+				},
+				"parentName": "DataGrid_wskxcup",
+				"propertyName": "bulkActions",
+				"index": 2
+			},
+			{
+				"operation": "insert",
+				"name": "DataGrid_wskxcup_DeleteBulkAction",
+				"values": {
+					"type": "crt.MenuItem",
+					"caption": "Delete",
+					"icon": "delete-button-icon",
+					"clicked": {
+						"request": "crt.DeleteRecordsRequest",
+						"params": {
+							"dataSourceName": "DataGrid_wskxcupDS",
+							"filters": "$DataGrid_wskxcup | crt.ToCollectionFilters : 'DataGrid_wskxcup' : $DataGrid_wskxcup_SelectionState | crt.SkipIfSelectionEmpty : $DataGrid_wskxcup_SelectionState"
+						}
+					}
+				},
+				"parentName": "DataGrid_wskxcup",
+				"propertyName": "bulkActions",
+				"index": 3
+			},
+			{
+				"operation": "insert",
+				"name": "MenuItem_utrk5he",
+				"values": {
+					"type": "crt.MenuItem",
+					"caption": "#ResourceString(MenuItem_utrk5he_caption)#"
+				},
+				"parentName": "DataGrid_wskxcup",
+				"propertyName": "bulkActions",
+				"index": 4
 			}
 		]/**SCHEMA_VIEW_CONFIG_DIFF*/,
 		viewModelConfigDiff: /**SCHEMA_VIEW_MODEL_CONFIG_DIFF*/[
@@ -1345,28 +1539,39 @@ define("UsrPage_vuvb9us", /**SCHEMA_DEPS*/["css!UsrRubikFontCSS"]/**SCHEMA_DEPS*
 					"DataGrid_wskxcup": {
 						"isCollection": true,
 						"modelConfig": {
-							"path": "DataGrid_wskxcupDS"
+							"path": "DataGrid_wskxcupDS",
+							"filterAttributes": [
+								{
+									"loadOnChange": true,
+									"name": "DataGrid_wskxcup_PredefinedFilter"
+								}
+							]
 						},
 						"viewModelConfig": {
 							"attributes": {
-								"DataGrid_wskxcupDS_Id": {
+								"DataGrid_wskxcupDS_UsrUnit": {
 									"modelConfig": {
-										"path": "DataGrid_wskxcupDS.Id"
+										"path": "DataGrid_wskxcupDS.UsrUnit"
 									}
 								},
-								"DataGrid_wskxcupDS_UsrName": {
+								"DataGrid_wskxcupDS_UsrMaxQuantity": {
 									"modelConfig": {
-										"path": "DataGrid_wskxcupDS.UsrName"
+										"path": "DataGrid_wskxcupDS.UsrMaxQuantity"
 									}
 								},
-								"DataGrid_wskxcupDS_UsrResourceType": {
+								"DataGrid_wskxcupDS_UsrMinQuantity": {
 									"modelConfig": {
-										"path": "DataGrid_wskxcupDS.UsrResourceType"
+										"path": "DataGrid_wskxcupDS.UsrMinQuantity"
 									}
 								},
-								"DataGrid_wskxcupDS_UsrAmountPerUnit": {
+								"DataGrid_wskxcupDS_UsrIncrement": {
 									"modelConfig": {
-										"path": "DataGrid_wskxcupDS.UsrAmountPerUnit"
+										"path": "DataGrid_wskxcupDS.UsrIncrement"
+									}
+								},
+								"DataGrid_wskxcupDS_UsrUnitPrice": {
+									"modelConfig": {
+										"path": "DataGrid_wskxcupDS.UsrUnitPrice"
 									}
 								},
 								"DataGrid_wskxcupDS_UsrCurrency": {
@@ -1374,19 +1579,19 @@ define("UsrPage_vuvb9us", /**SCHEMA_DEPS*/["css!UsrRubikFontCSS"]/**SCHEMA_DEPS*
 										"path": "DataGrid_wskxcupDS.UsrCurrency"
 									}
 								},
-								"DataGrid_wskxcupDS_UsrPricingUnitLookup": {
+								"DataGrid_wskxcupDS_UsrActive": {
 									"modelConfig": {
-										"path": "DataGrid_wskxcupDS.UsrPricingUnitLookup"
+										"path": "DataGrid_wskxcupDS.UsrActive"
 									}
 								},
-								"DataGrid_wskxcupDS_UsrConfigVersion": {
+								"DataGrid_wskxcupDS_UsrAddOn": {
 									"modelConfig": {
-										"path": "DataGrid_wskxcupDS.UsrConfigVersion"
+										"path": "DataGrid_wskxcupDS.UsrAddOn"
 									}
 								},
-								"DataGrid_wskxcupDS_UsrPointsPerUnit": {
+								"DataGrid_wskxcupDS_Id": {
 									"modelConfig": {
-										"path": "DataGrid_wskxcupDS.UsrPointsPerUnit"
+										"path": "DataGrid_wskxcupDS.Id"
 									}
 								}
 							}
@@ -1409,6 +1614,54 @@ define("UsrPage_vuvb9us", /**SCHEMA_DEPS*/["css!UsrRubikFontCSS"]/**SCHEMA_DEPS*
 								]
 							}
 						}
+					},
+					"DataGrid_wskxcup_PredefinedFilter": {
+						"value": null
+					},
+					"DataGrid_u2gjahn": {
+						"isCollection": true,
+						"modelConfig": {
+							"path": "DataGrid_u2gjahnDS"
+						},
+						"viewModelConfig": {
+							"attributes": {
+								"DataGrid_u2gjahnDS_UsrName": {
+									"modelConfig": {
+										"path": "DataGrid_u2gjahnDS.UsrName"
+									}
+								},
+								"DataGrid_u2gjahnDS_UsrResourceType": {
+									"modelConfig": {
+										"path": "DataGrid_u2gjahnDS.UsrResourceType"
+									}
+								},
+								"DataGrid_u2gjahnDS_UsrPricingUnitLookup": {
+									"modelConfig": {
+										"path": "DataGrid_u2gjahnDS.UsrPricingUnitLookup"
+									}
+								},
+								"DataGrid_u2gjahnDS_UsrPointsPerUnit": {
+									"modelConfig": {
+										"path": "DataGrid_u2gjahnDS.UsrPointsPerUnit"
+									}
+								},
+								"DataGrid_u2gjahnDS_UsrAmountPerUnit": {
+									"modelConfig": {
+										"path": "DataGrid_u2gjahnDS.UsrAmountPerUnit"
+									}
+								},
+								"DataGrid_u2gjahnDS_UsrCurrency": {
+									"modelConfig": {
+										"path": "DataGrid_u2gjahnDS.UsrCurrency"
+									}
+								},
+								"DataGrid_u2gjahnDS_Id": {
+									"modelConfig": {
+										"path": "DataGrid_u2gjahnDS.Id"
+									}
+								}
+							}
+						}
 					}
 				}
 			}
@@ -1420,16 +1673,22 @@ define("UsrPage_vuvb9us", /**SCHEMA_DEPS*/["css!UsrRubikFontCSS"]/**SCHEMA_DEPS*
 				"values": {
 					"primaryDataSourceName": "UsrContractConfigVersionDS",
 					"dependencies": {
+						"MCITVersionHistoryDS": [
+							{
+								"attributePath": "UsrContract",
+								"relationPath": "UsrContractConfigVersionDS.UsrContract"
+							}
+						],
 						"DataGrid_wskxcupDS": [
 							{
 								"attributePath": "UsrConfigVersion",
 								"relationPath": "UsrContractConfigVersionDS.Id"
 							}
 						],
-						"MCITVersionHistoryDS": [
+						"DataGrid_u2gjahnDS": [
 							{
-								"attributePath": "UsrContract",
-								"relationPath": "UsrContractConfigVersionDS.UsrContract"
+								"attributePath": "UsrConfigVersion",
+								"relationPath": "UsrContractConfigVersionDS.Id"
 							}
 						]
 					}
@@ -1509,31 +1768,58 @@ define("UsrPage_vuvb9us", /**SCHEMA_DEPS*/["css!UsrRubikFontCSS"]/**SCHEMA_DEPS*
 						"type": "crt.EntityDataSource",
 						"scope": "viewElement",
 						"config": {
+							"entitySchemaName": "UsrConfigAddOnRate",
+							"attributes": {
+								"UsrUnit": {
+									"path": "UsrUnit"
+								},
+								"UsrMaxQuantity": {
+									"path": "UsrMaxQuantity"
+								},
+								"UsrMinQuantity": {
+									"path": "UsrMinQuantity"
+								},
+								"UsrIncrement": {
+									"path": "UsrIncrement"
+								},
+								"UsrUnitPrice": {
+									"path": "UsrUnitPrice"
+								},
+								"UsrCurrency": {
+									"path": "UsrCurrency"
+								},
+								"UsrActive": {
+									"path": "UsrActive"
+								},
+								"UsrAddOn": {
+									"path": "UsrAddOn"
+								}
+							}
+						}
+					},
+					"DataGrid_u2gjahnDS": {
+						"type": "crt.EntityDataSource",
+						"scope": "viewElement",
+						"config": {
 							"entitySchemaName": "UsrConfigResourceRate",
 							"attributes": {
-								"Id": {
-									"path": "Id"
-								},
 								"UsrName": {
 									"path": "UsrName"
 								},
 								"UsrResourceType": {
 									"path": "UsrResourceType"
 								},
+								"UsrPricingUnitLookup": {
+									"path": "UsrPricingUnitLookup"
+								},
+								"UsrPointsPerUnit": {
+									"path": "UsrPointsPerUnit"
+								},
 								"UsrAmountPerUnit": {
 									"path": "UsrAmountPerUnit"
 								},
 								"UsrCurrency": {
 									"path": "UsrCurrency"
-								},
-								"UsrPricingUnitLookup": {
-									"path": "UsrPricingUnitLookup"
-								},
-								"UsrConfigVersion": {
-									"path": "UsrConfigVersion"
-								},
-								"UsrPointsPerUnit": {
-									"path": "UsrPointsPerUnit"
 								}
 							}
 						}

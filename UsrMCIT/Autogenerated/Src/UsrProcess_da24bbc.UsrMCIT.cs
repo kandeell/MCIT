@@ -39,6 +39,20 @@
 			var operationId = Get<Guid>("OperationId");
 			var points = Get<decimal>("PointsRequired");
 			
+			// Reset validation and preview outputs
+			Set<bool>("InputsValid", false);
+			Set<bool>("PreviewReady", false);
+			Set<bool>("ConsumptionSucceeded", false);
+			
+			Set<decimal>("PreviewAvailablePoints", 0m);
+			Set<decimal>("PreviewRestoredPoints", 0m);
+			
+			Set<decimal>("AvailablePointsUsed", 0m);
+			Set<decimal>("RestoredPointsUsed", 0m);
+			
+			Set<string>("ErrorMessage", "");
+			
+			// Validate mandatory inputs
 			bool isValid =
 			    contractId != Guid.Empty &&
 			    requestId != Guid.Empty &&
@@ -46,16 +60,15 @@
 			    points > 0m;
 			
 			Set<bool>("InputsValid", isValid);
-			Set<bool>("ConsumptionSucceeded", false);
-			Set<decimal>("AvailablePointsUsed", 0m);
-			Set<decimal>("RestoredPointsUsed", 0m);
 			
-			Set<string>(
-			    "ErrorMessage",
-			    isValid
-			        ? ""
-			        : "ContractId, RequestId, OperationId and positive PointsRequired are mandatory."
-			);
+			if (!isValid)
+			{
+			    Set<string>(
+			        "ErrorMessage",
+			        "ContractId, RequestId, OperationId and " +
+			        "positive PointsRequired are mandatory."
+			    );
+			}
 			
 			return true;
 		}

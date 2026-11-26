@@ -1,4 +1,3 @@
-
 using System;
 using System.Data;
 using Terrasoft.Core;
@@ -24,24 +23,43 @@ namespace Terrasoft.Configuration
         }
 
         public UsrMCITPointsConsumptionResult PostConsumption(
-            Guid contractId,
-            Guid requestId,
-            Guid requestItemId,
-            Guid virtualMachineId,
-            Guid operationId,
-            decimal pointsRequired)
+            Guid contractId, Guid requestId, Guid requestItemId,
+            Guid virtualMachineId, Guid operationId, decimal pointsRequired)
         {
-            if (contractId == Guid.Empty ||
-                requestId == Guid.Empty ||
-                operationId == Guid.Empty ||
-                pointsRequired <= 0)
-            {
-                throw new ArgumentException(
-                    "Invalid consumption input parameters.");
+            UsrMCITPointsConsumptionResult result;
+            using (var db = _uc.EnsureDBConnection()) {
+                db.StartTransaction(IsolationLevel.Serializable);
+                try {
+                    result = PostConsumptionWithinTransaction(db, contractId,
+                        requestId, requestItemId, virtualMachineId, operationId, pointsRequired);
+                    db.CommitTransaction();
+                } catch {
+                    db.RollbackTransaction();
+                    throw;
+                }
             }
+            try {
+                RefreshPreview(contractId, operationId);
+            } catch (Exception refreshError) {
+                System.Diagnostics.Trace.TraceError(
+                    "MCIT consumption preview refresh failed for operation {0}: {1}",
+                    operationId, refreshError);
+            }
+            return result;
+        }
 
+        internal UsrMCITPointsConsumptionResult PostConsumptionWithinTransaction(
+            DBExecutor db, Guid contractId, Guid requestId, Guid requestItemId,
+            Guid virtualMachineId, Guid operationId, decimal pointsRequired,
+            bool isBaseResize = false)
+        {
+            if (db == null || contractId == Guid.Empty || requestId == Guid.Empty ||
+                operationId == Guid.Empty || pointsRequired <= 0)
+                throw new ArgumentException("Invalid consumption input parameters.");
+            if (isBaseResize && (requestItemId == Guid.Empty ||
+                virtualMachineId == Guid.Empty || operationId != requestItemId))
+                throw new ArgumentException("Invalid base-resize operation identity.");
             Guid actorId = _uc.CurrentUser.ContactId;
-
             const string sql = @"
 SET NOCOUNT ON;
 
@@ -53,6 +71,9 @@ DECLARE @InitialType uniqueidentifier =
 
 DECLARE @RestorationType uniqueidentifier =
     'A73D30E6-E5E0-4DDB-A62C-CA1A29EB2BF9';
+
+DECLARE @TerminationRestorationType uniqueidentifier =
+    '65A9C955-4B2A-4E70-9BAC-4AF75F1E0AED';
 
 DECLARE @GenericConsumptionType uniqueidentifier =
     'CCE3062D-A79E-4ADB-BAFE-F731CA2B3340';
@@ -85,6 +106,23 @@ EXEC @LockResult = sys.sp_getapplock
 
 IF @LockResult < 0
     THROW 51101, 'Consumption lock unavailable.', 1;
+
+-- New-VM posting and resize posting must never share the same charge path.
+-- The resize flag is internal: only the atomic lifecycle orchestrator may use it.
+IF NOT EXISTS (
+    SELECT 1
+    FROM dbo.UsrVMRequest r WITH (UPDLOCK, HOLDLOCK)
+    WHERE r.Id = @RequestId
+      AND r.UsrContractId = @ContractId
+      AND (
+        (@IsBaseResize = 0 AND ISNULL(r.UsrTargetVirtualMachineId, @Zero) = @Zero)
+        OR
+        (@IsBaseResize = 1 AND r.UsrTargetVirtualMachineId = @VmId
+         AND @VmId <> @Zero AND @RequestItemId <> @Zero
+         AND @OperationId = @RequestItemId)
+      )
+)
+    THROW 51115, 'Request is not eligible for this consumption path.', 1;
 
 -- Do not reuse an operation identifier for another request.
 IF EXISTS (
@@ -142,6 +180,25 @@ BEGIN
     )
         THROW 51104, 'Existing operation has invalid allocations.', 1;
 
+    IF @IsBaseResize = 1 AND EXISTS (
+        SELECT 1
+        FROM dbo.UsrPointTransaction t
+        JOIN dbo.UsrVMRequest r ON r.Id = @RequestId
+        WHERE t.UsrName = @OperationName
+          AND (
+            ISNULL(t.UsrVirtualMachineId, @Zero) <> @VmId
+            OR ISNULL(t.UsrRequestItemId, @Zero) <> @RequestItemId
+            OR ISNULL(t.UsrContractId, @Zero) <> @ContractId
+            OR ISNULL(t.UsrRequestId, @Zero) <> @RequestId
+            OR ISNULL(t.UsrConfigVersionId, @Zero) <> ISNULL(r.UsrConfigVersionId, @Zero)
+            OR t.UsrQuantity IS NULL OR t.UsrQuantity <= 0
+            OR t.UsrTransactionTypeId IS NULL
+            OR t.UsrTransactionTypeId NOT IN (@AvailableConsumptionType, @RestoredConsumptionType)
+            OR ISNULL(t.UsrReason, N'') <> N'MCIT VM resource consumption'
+          )
+    )
+        THROW 51116, 'Existing resize consumption does not match the operation.', 1;
+
     SELECT CAST(1 AS int),
            @ExistingAvailable,
            @ExistingRestored;
@@ -150,14 +207,66 @@ END;
 
 -- Recheck request identity and charge.
 -- The BPMN remains responsible for its approval decision.
-IF NOT EXISTS (
-    SELECT 1
-    FROM dbo.UsrVMRequest r
-    WHERE r.Id = @RequestId
-      AND r.UsrContractId = @ContractId
-      AND r.UsrEstimatedPoints = @Required
-)
-    THROW 51105, 'Request, contract or points mismatch.', 1;
+IF @IsBaseResize = 0
+BEGIN
+    IF NOT EXISTS (
+        SELECT 1
+        FROM dbo.UsrVMRequest r
+        WHERE r.Id = @RequestId
+          AND r.UsrContractId = @ContractId
+          AND ((@RequestItemId = @Zero AND r.UsrEstimatedPoints = @Required)
+          OR EXISTS (
+              SELECT 1 FROM dbo.UsrVMRequestItem i
+              WHERE i.Id = @RequestItemId AND i.UsrRequestId = r.Id
+                AND i.UsrTotalPointsSnapshot = @Required))
+    )
+        THROW 51105, 'Request, contract or points mismatch.', 1;
+END
+ELSE
+BEGIN
+    -- Only a positive base-resource upgrade is supported here.
+    -- Approval, authorization, approved-specification integrity, original
+    -- resource eligibility, and inventory update are the caller's duties.
+    IF NOT EXISTS (
+        SELECT 1
+        FROM dbo.UsrVMRequest r WITH (UPDLOCK, HOLDLOCK)
+        JOIN dbo.UsrVMRequestItem i WITH (UPDLOCK, HOLDLOCK)
+          ON i.UsrRequestId = r.Id AND i.Id = @RequestItemId
+        JOIN dbo.UsrVirtualMachine v WITH (UPDLOCK, HOLDLOCK)
+          ON v.Id = @VmId AND v.UsrContractId = @ContractId
+        WHERE r.Id = @RequestId AND r.UsrContractId = @ContractId
+          AND r.UsrTargetVirtualMachineId = v.Id
+          AND v.UsrStatusId = '41bb88e4-90bf-4a7e-8544-0af669ab6cbe'
+          AND r.UsrConfigVersionId IS NOT NULL
+          AND r.UsrConfigVersionId <> @Zero
+          AND i.UsrConfigVersionId = r.UsrConfigVersionId
+          AND i.UsrProvisioningStatusId = 'bf38ce52-dd76-41f3-8338-a78b42c3daa4'
+          AND r.UsrStatusId IN (
+            'd16b6935-b617-41c3-9acd-08b4034ab2a8',
+            '6a672c37-8140-45c6-aea7-a2e82a7e55e3')
+          AND ISNULL(r.UsrIsArchived, 0) = 0
+          AND r.UsrResizeAdditionalPointsPreview = @Required
+          AND r.UsrResizeReductionPointsPreview = 0
+          AND v.UsrAllocatedPoints > 0
+          AND i.UsrEstimatedPoints = i.UsrTotalPointsSnapshot
+          AND i.UsrTotalPointsSnapshot = v.UsrAllocatedPoints + @Required
+          AND i.UsrTotalAmountSnapshot >= 0
+          AND ISNULL(i.UsrAdditionalRAMGB, 0) = 0
+          AND ISNULL(i.UsrAdditionalStorageGB, 0) = 0
+          AND ISNULL(i.UsrVPNMbps, 0) = 0
+          AND ISNULL(i.UsrInternetMbps, 0) = 0
+          AND i.UsrCPU >= v.UsrCPU
+          AND i.UsrRAMGB >= v.UsrRAMGB
+          AND i.UsrStorageGB >= v.UsrStorageGB
+          AND ISNULL(i.UsrOperatingSystemId, @Zero) = ISNULL(v.UsrOperatingSystemId, @Zero)
+          AND (SELECT COUNT(*) FROM dbo.UsrVMRequestItem
+               WHERE UsrRequestId = @RequestId) = 1
+          AND NOT EXISTS (
+              SELECT 1 FROM dbo.UsrVMRequestItemAddOn
+              WHERE UsrRequestItemId = i.Id)
+    )
+        THROW 51117, 'Base resize delta or target VM is inconsistent.', 1;
+END;
 
 IF @RequestItemId <> @Zero
    AND NOT EXISTS (
@@ -208,7 +317,7 @@ WHERE t.UsrContractId = @ContractId
   AND (
       t.UsrTransactionTypeId = @InitialType
       OR (
-          t.UsrTransactionTypeId = @RestorationType
+          t.UsrTransactionTypeId IN (@RestorationType, @TerminationRestorationType)
           AND t.UsrExpirationDate > CONVERT(date, GETDATE())
       )
   );
@@ -268,7 +377,7 @@ BEGIN
           (@Kind = 0 AND UsrTransactionTypeId = @InitialType)
           OR
           (@Kind = 1
-           AND UsrTransactionTypeId = @RestorationType
+           AND UsrTransactionTypeId IN (@RestorationType, @TerminationRestorationType)
            AND UsrExpirationDate > CONVERT(date, GETDATE()))
       );
 
@@ -332,12 +441,14 @@ BEGIN
         @ContractId,
         @SourceId,
         @BalanceType,
-        s.UsrConfigVersionId,
+        (SELECT r.UsrConfigVersionId FROM dbo.UsrVMRequest r WHERE r.Id = @RequestId),
         NULLIF(@VmId, @Zero),
         @RequestId,
         NULLIF(@RequestItemId, @Zero),
         @ActorId,
-        N'MCIT points consumption'
+        CASE WHEN @IsBaseResize = 1
+             THEN N'MCIT VM resource consumption'
+             ELSE N'MCIT points consumption' END
     FROM dbo.UsrPointTransaction s
     WHERE s.Id = @SourceId;
 
@@ -403,43 +514,36 @@ SELECT CAST(1 AS int),
        @UsedRestored;
 ";
 
-            using (var db = _uc.EnsureDBConnection())
-            {
-                db.StartTransaction(IsolationLevel.Serializable);
+            var query = new CustomQuery(_uc, sql)
+                .WithParameter("ContractId", contractId)
+                .WithParameter("RequestId", requestId)
+                .WithParameter("RequestItemId", requestItemId)
+                .WithParameter("VmId", virtualMachineId)
+                .WithParameter("OperationId", operationId)
+                .WithParameter("Required", pointsRequired)
+                .WithParameter("IsBaseResize", isBaseResize)
+                .WithParameter("ActorId", actorId);
+            using (IDataReader reader = query.ExecuteReader(db)) {
+                if (!reader.Read())
+                    throw new InvalidOperationException("Consumption did not return a result.");
+                return new UsrMCITPointsConsumptionResult {
+                    Success = reader.GetInt32(0) == 1,
+                    AvailableUsed = reader.GetDecimal(1),
+                    RestoredUsed = reader.GetDecimal(2),
+                    ErrorMessage = ""
+                };
+            }
+        }
 
-                try
-                {
-                    var query = new CustomQuery(_uc, sql)
-                        .WithParameter("ContractId", contractId)
-                        .WithParameter("RequestId", requestId)
-                        .WithParameter("RequestItemId", requestItemId)
-                        .WithParameter("VmId", virtualMachineId)
-                        .WithParameter("OperationId", operationId)
-                        .WithParameter("Required", pointsRequired)
-                        .WithParameter("ActorId", actorId);
-
-                    var result = new UsrMCITPointsConsumptionResult();
-
-                    using (IDataReader reader = query.ExecuteReader(db))
-                    {
-                        if (!reader.Read())
-                            throw new InvalidOperationException(
-                                "Consumption did not return a result.");
-
-                        result.Success = reader.GetInt32(0) == 1;
-                        result.AvailableUsed = reader.GetDecimal(1);
-                        result.RestoredUsed = reader.GetDecimal(2);
-                        result.ErrorMessage = "";
-                    }
-
-                    db.CommitTransaction();
-                    return result;
-                }
-                catch
-                {
-                    db.RollbackTransaction();
-                    throw;
-                }
+        internal void RefreshPreview(Guid contractId, Guid operationId)
+        {
+            try {
+                new UsrMCITRestoredPointsExpiryService(_uc).RefreshContractPreview(contractId);
+            } catch (Exception ex) {
+                global::Common.Logging.LogManager
+                    .GetLogger("UsrMCITPointsConsumptionService")
+                    .Error("Consumption committed but expiry preview refresh failed: " +
+                           "ContractId=" + contractId + ", OperationId=" + operationId + ": " + ex);
             }
         }
     }

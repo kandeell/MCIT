@@ -7,6 +7,7 @@
 		<Compile Include="$(PkgPath)/UsrMCIT/Schemas/UsrAdministrationHome/UsrAdministrationHome.cs" Condition="Exists('$(PkgPath)/UsrMCIT/Schemas/UsrAdministrationHome/UsrAdministrationHome.cs')" />
 		<Compile Include="$(PkgPath)/UsrMCIT/Schemas/UsrAuthority/UsrAuthority.cs" Condition="Exists('$(PkgPath)/UsrMCIT/Schemas/UsrAuthority/UsrAuthority.cs')" />
 		<Compile Include="$(PkgPath)/UsrMCIT/Schemas/UsrCompletion/UsrCompletion.cs" Condition="Exists('$(PkgPath)/UsrMCIT/Schemas/UsrCompletion/UsrCompletion.cs')" />
+		<Compile Include="$(PkgPath)/UsrMCIT/Schemas/UsrConfigAddOnRate/UsrConfigAddOnRate.cs" Condition="Exists('$(PkgPath)/UsrMCIT/Schemas/UsrConfigAddOnRate/UsrConfigAddOnRate.cs')" />
 		<Compile Include="$(PkgPath)/UsrMCIT/Schemas/UsrConfigResourceRate/UsrConfigResourceRate.cs" Condition="Exists('$(PkgPath)/UsrMCIT/Schemas/UsrConfigResourceRate/UsrConfigResourceRate.cs')" />
 		<Compile Include="$(PkgPath)/UsrMCIT/Schemas/UsrConfigVersionStatus/UsrConfigVersionStatus.cs" Condition="Exists('$(PkgPath)/UsrMCIT/Schemas/UsrConfigVersionStatus/UsrConfigVersionStatus.cs')" />
 		<Compile Include="$(PkgPath)/UsrMCIT/Schemas/UsrContractConfigVersion/UsrContractConfigVersion.cs" Condition="Exists('$(PkgPath)/UsrMCIT/Schemas/UsrContractConfigVersion/UsrContractConfigVersion.cs')" />
@@ -52,6 +53,7 @@
 		<Compile Include="$(PkgPath)/UsrMCIT/Schemas/UsrMCITRoleType/UsrMCITRoleType.cs" Condition="Exists('$(PkgPath)/UsrMCIT/Schemas/UsrMCITRoleType/UsrMCITRoleType.cs')" />
 		<Compile Include="$(PkgPath)/UsrMCIT/Schemas/UsrMCITScopeEditRequest/UsrMCITScopeEditRequest.cs" Condition="Exists('$(PkgPath)/UsrMCIT/Schemas/UsrMCITScopeEditRequest/UsrMCITScopeEditRequest.cs')" />
 		<Compile Include="$(PkgPath)/UsrMCIT/Schemas/UsrMCITScopeManagedGrant/UsrMCITScopeManagedGrant.cs" Condition="Exists('$(PkgPath)/UsrMCIT/Schemas/UsrMCITScopeManagedGrant/UsrMCITScopeManagedGrant.cs')" />
+		<Compile Include="$(PkgPath)/UsrMCIT/Schemas/UsrMCITSLAStatus/UsrMCITSLAStatus.cs" Condition="Exists('$(PkgPath)/UsrMCIT/Schemas/UsrMCITSLAStatus/UsrMCITSLAStatus.cs')" />
 		<Compile Include="$(PkgPath)/UsrMCIT/Schemas/UsrMCITUserAuthorityAccess/UsrMCITUserAuthorityAccess.cs" Condition="Exists('$(PkgPath)/UsrMCIT/Schemas/UsrMCITUserAuthorityAccess/UsrMCITUserAuthorityAccess.cs')" />
 		<Compile Include="$(PkgPath)/UsrMCIT/Schemas/UsrMCITUserContractAccess/UsrMCITUserContractAccess.cs" Condition="Exists('$(PkgPath)/UsrMCIT/Schemas/UsrMCITUserContractAccess/UsrMCITUserContractAccess.cs')" />
 		<Compile Include="$(PkgPath)/UsrMCIT/Schemas/UsrMCITUserStatus/UsrMCITUserStatus.cs" Condition="Exists('$(PkgPath)/UsrMCIT/Schemas/UsrMCITUserStatus/UsrMCITUserStatus.cs')" />
@@ -77,5 +79,6 @@
 		<Compile Include="$(PkgPath)/UsrMCIT/Schemas/UsrVMNetworkZone/UsrVMNetworkZone.cs" Condition="Exists('$(PkgPath)/UsrMCIT/Schemas/UsrVMNetworkZone/UsrVMNetworkZone.cs')" />
 		<Compile Include="$(PkgPath)/UsrMCIT/Schemas/UsrVMRequest/UsrVMRequest.cs" Condition="Exists('$(PkgPath)/UsrMCIT/Schemas/UsrVMRequest/UsrVMRequest.cs')" />
 		<Compile Include="$(PkgPath)/UsrMCIT/Schemas/UsrVMRequestItem/UsrVMRequestItem.cs" Condition="Exists('$(PkgPath)/UsrMCIT/Schemas/UsrVMRequestItem/UsrVMRequestItem.cs')" />
+		<Compile Include="$(PkgPath)/UsrMCIT/Schemas/UsrVMRequestItemAddOn/UsrVMRequestItemAddOn.cs" Condition="Exists('$(PkgPath)/UsrMCIT/Schemas/UsrVMRequestItemAddOn/UsrVMRequestItemAddOn.cs')" />
 	</ItemGroup>
 </Project>

@@ -1,0 +1,10 @@
+﻿{
+  "Descriptor": {
+    "UId": "4206e272-25e2-4b72-9249-c93cf7964123",
+    "Name": "UsrMCITContract_ConfigurationValidation",
+    "ModifiedOnUtc": "\/Date(1795678638000)\/",
+    "ManagerName": "ProcessSchemaManager",
+    "Caption": "Contract configuration validation",
+    "DependsOn": []
+  }
+}

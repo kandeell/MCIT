@@ -1,0 +1,13 @@
+﻿{
+  "Descriptor": {
+    "UId": "d80df77a-8f00-4c17-a0d6-b4a0c7b08ade",
+    "Name": "UsrProcess_da24bbcUsrMCIT1",
+    "ModifiedOnUtc": "\/Date(1795482279000)\/",
+    "Parent": {
+      "UId": "fe81d682-994b-461a-8aac-b0232a5c110d",
+      "Name": "UsrProcess_da24bbc"
+    },
+    "ManagerName": "ProcessSchemaManager",
+    "Caption": "MCIT Points Consumption & Allocation"
+  }
+}

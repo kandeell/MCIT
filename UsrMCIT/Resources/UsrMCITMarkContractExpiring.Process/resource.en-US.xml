@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Resources Culture="en-US">
+	<Group Type="String">
+		<Items>
+			<Item Name="BaseElements.CheckWarningInput.Caption" Value="Contract supplied?" />
+			<Item Name="BaseElements.CommitWarningTransition.Caption" Value="Mark eligible contract expiring" />
+			<Item Name="BaseElements.ConditionalFlow_CheckWarningInput_CommitWarningTransition.Caption" Value="Contract supplied" />
+			<Item Name="BaseElements.DefaultFlow_CheckWarningInput_ReportInvalidWarningInput.Caption" Value="Contract missing" />
+			<Item Name="BaseElements.EndWarningTransition.Caption" Value="Warning transition complete" />
+			<Item Name="BaseElements.ReportInvalidWarningInput.Caption" Value="Report missing contract" />
+			<Item Name="BaseElements.StartWarningTransition.Caption" Value="Contract warning requested" />
+			<Item Name="Caption" Value="MCIT mark contract expiring" />
+			<Item Name="Parameters.ContractId.Caption" Value="Contract ID" />
+			<Item Name="Parameters.ResultMessage.Caption" Value="Result message" />
+			<Item Name="Parameters.Success.Caption" Value="Transition succeeded" />
+			<Item Name="Parameters.Success.DisplayValue" Value="false" />
+			<Item Name="Parameters.WarningDays.Caption" Value="Expiration warning days" />
+			<Item Name="Parameters.WarningDays.DisplayValue" Value="30" />
+		</Items>
+	</Group>
+</Resources>

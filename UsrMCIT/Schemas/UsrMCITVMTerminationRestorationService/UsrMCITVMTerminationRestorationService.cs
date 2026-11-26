@@ -52,8 +52,9 @@ DECLARE @EmptyGuid uniqueidentifier = '00000000-0000-0000-0000-000000000000';
 DECLARE @ConsumptionGeneric uniqueidentifier = 'CCE3062D-A79E-4ADB-BAFE-F731CA2B3340';
 DECLARE @ConsumptionAvailable uniqueidentifier = '9714B14C-2A5F-4D72-A114-78833EF52F42';
 DECLARE @ConsumptionRestored uniqueidentifier = 'DB304861-706C-4974-94AF-F337300181D0';
-DECLARE @TerminationRestoration uniqueidentifier = '65A9C955-4B2A-4E70-9BAC-4AF75F1E0AED';
-DECLARE @RestoredBalance uniqueidentifier = 'BA34D604-C14E-49E1-80A4-1AAE00302C3F';
+DECLARE @OrdinaryRestoration uniqueidentifier =
+'A73D30E6-E5E0-4DDB-A62C-CA1A29EB2BF9';
+			DECLARE @RestoredBalance uniqueidentifier = 'BA34D604-C14E-49E1-80A4-1AAE00302C3F';
 DECLARE @OperationName nvarchar(100) = N'MCIT-VM-TERMINATE-' + CONVERT(nvarchar(36), @OperationId);
 DECLARE @LockResult int;
 
@@ -161,6 +162,117 @@ IF EXISTS (
     WHERE a.Cnt <> 1 OR a.Qty <> c.Quantity
 )
     THROW 51209, 'Original consumption allocations do not match the ledger.', 1;
+
+-- =============================================
+-- Prevent double restoration after VM reduction
+-- =============================================
+
+-- Reject invalid or cross-contract restoration
+-- references before calculating remaining points.
+
+IF EXISTS (
+    SELECT 1
+    FROM dbo.UsrPointTransaction r
+        WITH (UPDLOCK, HOLDLOCK)
+    INNER JOIN @Original c
+        ON c.Id = r.UsrOriginTransactionId
+    WHERE r.UsrTransactionTypeId IN (
+        @OrdinaryRestoration,
+        @TerminationRestoration
+    )
+    AND (
+        ISNULL(r.UsrContractId, @EmptyGuid) <> @ContractId
+        OR ISNULL(r.UsrVirtualMachineId, @EmptyGuid) <> @VmId
+        OR r.UsrQuantity IS NULL
+        OR r.UsrQuantity <= 0
+    )
+)
+    THROW 51215,
+        'Invalid previous restoration reference.', 1;
+
+-- Reject ambiguous ordinary restorations.
+
+IF EXISTS (
+    SELECT 1
+    FROM dbo.UsrPointTransaction r
+        WITH (UPDLOCK, HOLDLOCK)
+    WHERE r.UsrContractId = @ContractId
+      AND r.UsrVirtualMachineId = @VmId
+      AND r.UsrTransactionTypeId = @OrdinaryRestoration
+      AND NOT EXISTS (
+          SELECT 1
+          FROM @Original c
+          WHERE c.Id = r.UsrOriginTransactionId
+      )
+)
+    THROW 51216,
+        'Previous restoration cannot be traced to eligible consumption.', 1;
+
+-- Calculate ordinary restorations for each
+-- original consumption transaction.
+
+DECLARE @PreviouslyRestored TABLE (
+    OriginId uniqueidentifier PRIMARY KEY,
+    Quantity decimal(38,8) NOT NULL
+);
+
+INSERT INTO @PreviouslyRestored (
+    OriginId,
+    Quantity
+)
+SELECT
+    r.UsrOriginTransactionId,
+    SUM(r.UsrQuantity)
+FROM dbo.UsrPointTransaction r
+    WITH (UPDLOCK, HOLDLOCK)
+INNER JOIN @Original c
+    ON c.Id = r.UsrOriginTransactionId
+WHERE r.UsrTransactionTypeId = @OrdinaryRestoration
+GROUP BY r.UsrOriginTransactionId;
+
+-- Detect existing over-restoration.
+
+IF EXISTS (
+    SELECT 1
+    FROM @Original c
+    INNER JOIN @PreviouslyRestored r
+        ON r.OriginId = c.Id
+    WHERE r.Quantity > c.Quantity
+)
+    THROW 51217,
+        'Previously restored points exceed original consumption.', 1;
+
+-- Deduct ordinary restorations.
+-- Existing termination retries are checked separately.
+
+UPDATE c
+SET c.Quantity = c.Quantity - r.Quantity
+FROM @Original c
+INNER JOIN @PreviouslyRestored r
+    ON r.OriginId = c.Id;
+
+-- Exclude fully restored consumption sources.
+
+DELETE FROM @Original
+WHERE Quantity = 0;
+
+-- Recalculate eligible termination totals.
+
+SET @OriginalCount = (
+    SELECT COUNT(*) FROM @Original
+);
+
+SET @OriginalTotal = (
+    SELECT COALESCE(SUM(Quantity), 0)
+    FROM @Original
+);
+
+-- Fail closed until the zero-point termination
+-- completion and audit policy is implemented.
+
+IF @OriginalCount = 0
+    THROW 51218,
+        'No remaining eligible points to restore. Manual termination review required.', 1;
 
 DECLARE @ExistingCount int = 0;
 DECLARE @ExistingTotal decimal(18,8) = 0;
@@ -320,12 +432,8 @@ SELECT CAST(1 AS int) AS Success,
             {
                 try
                 {
-                    var parameters = new Dictionary<string, string>
-                    {
-                        { "ContractID", contractId.ToString("D") }
-                    };
-                    _uc.ProcessEngine.ProcessExecutor.Execute(
-                        "UsrMCITRestorationExpiryPreview", parameters);
+                    new UsrMCITRestoredPointsExpiryService(_uc)
+                        .RefreshContractPreview(contractId);
                 }
                 catch (Exception ex)
                 {

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Resources Culture="sq-AL">
+	<Group Type="String">
+		<Items>
+			<Item Name="BaseElements.ReadAddOn.Parameters.AggregationColumnName.Caption" Value="Emri i kolonës së funksionit agregat" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.CanReadUncommitedData.Caption" Value="Lexo të dhëna të paangazhuara" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ConsiderTimeInFilter.Caption" Value="Konsidero kohën në filtrim" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.DataSourceFilters.Caption" Value="Burimi i të dhënave të filtrave" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.EntityColumnMetaPathes.Caption" Value="Kolonat për të lexuar" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.FunctionType.Caption" Value="Lloji i funksionit agregat" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.IgnoreDisplayValues.Caption" Value="Mos lexo vlerat e paraqitura të kolonave të kërkimit" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.NumberOfRecords.Caption" Value="Numri i të dhënave për të lexuar" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.OrderInfo.Caption" Value="Renditja e kolonave" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ReadSomeTopRecords.Caption" Value="Lexo në fillim" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultCompositeObjectList.Caption" Value="Mbledhja e të dhënave" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultCount.Caption" Value="Numri i të dhënave" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultDateTimeFunction.Caption" Value="Rezultati i funksionit (Data/Ora)" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultEntity.Caption" Value="Artikulli i parë i mbledhjes rezultuese" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultEntityCollection.Caption" Value="Mbledhja rezultuese" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultFloatFunction.Caption" Value="Rezultati i funksionit (numër dhjetor)" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultIntegerFunction.Caption" Value="Rezultati i funksionit (numër i plotë)" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultRowsCount.Caption" Value="Numri i të dhënave të lexuara" />
+			<Item Name="BaseElements.ReadAddOn.Parameters.ResultType.Caption" Value="Lloji i rezultatit" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.AggregationColumnName.Caption" Value="Emri i kolonës së funksionit agregat" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.CanReadUncommitedData.Caption" Value="Lexo të dhëna të paangazhuara" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ConsiderTimeInFilter.Caption" Value="Konsidero kohën në filtrim" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.DataSourceFilters.Caption" Value="Burimi i të dhënave të filtrave" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.EntityColumnMetaPathes.Caption" Value="Kolonat për të lexuar" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.FunctionType.Caption" Value="Lloji i funksionit agregat" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.IgnoreDisplayValues.Caption" Value="Mos lexo vlerat e paraqitura të kolonave të kërkimit" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.NumberOfRecords.Caption" Value="Numri i të dhënave për të lexuar" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.OrderInfo.Caption" Value="Renditja e kolonave" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ReadSomeTopRecords.Caption" Value="Lexo në fillim" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultCompositeObjectList.Caption" Value="Mbledhja e të dhënave" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultCount.Caption" Value="Numri i të dhënave" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultDateTimeFunction.Caption" Value="Rezultati i funksionit (Data/Ora)" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultEntity.Caption" Value="Artikulli i parë i mbledhjes rezultuese" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultEntityCollection.Caption" Value="Mbledhja rezultuese" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultFloatFunction.Caption" Value="Rezultati i funksionit (numër dhjetor)" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultIntegerFunction.Caption" Value="Rezultati i funksionit (numër i plotë)" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultRowsCount.Caption" Value="Numri i të dhënave të lexuara" />
+			<Item Name="BaseElements.ReadResourceType.Parameters.ResultType.Caption" Value="Lloji i rezultatit" />
+			<Item Name="Caption" Value="Contract catalog validation" />
+		</Items>
+	</Group>
+</Resources>

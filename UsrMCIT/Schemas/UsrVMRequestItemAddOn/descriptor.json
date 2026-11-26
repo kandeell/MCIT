@@ -1,0 +1,13 @@
+﻿{
+  "Descriptor": {
+    "UId": "579e7e2d-6001-4d27-8737-2ac1cf8d7666",
+    "Name": "UsrVMRequestItemAddOn",
+    "ModifiedOnUtc": "\/Date(1795459616000)\/",
+    "Parent": {
+      "UId": "1bab9dcf-17d5-49f8-9536-8e0064f1dce0",
+      "Name": "BaseEntity"
+    },
+    "ManagerName": "EntitySchemaManager",
+    "Caption": "VM Request Item Add-on"
+  }
+}

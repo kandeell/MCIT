@@ -238,6 +238,91 @@ namespace Terrasoft.Configuration
             return new CustomQuery(uc, sql).ExecuteScalar<int>();
         }
 
+        // Built-in Supervisor only. Native object and record rights still apply.
+        private static bool IsOperationalSupervisor(UserConnection uc)
+        {
+            return uc != null &&
+                uc.CurrentUser != null &&
+                uc.CurrentUser.Id ==
+                    new Guid("7F3B869F-34F3-4F20-AB4D-7480A5FDF647") &&
+                uc.DBSecurityEngine.GetCanExecuteOperation("CanManageAdministration");
+        }
+
+        // Read-only boundary for operational reporting. The native ESQ intersects
+        // MCIT role/scope eligibility with Creatio object and record rights.
+        // Empty or inconsistent role/scope state produces no authorized records.
+        public static HashSet<Guid> ReadAuthorizedContractIds(UserConnection uc)
+        {
+            if (uc == null) throw new ArgumentNullException("uc");
+            var x = new UsrMCITRoleFormEngine(uc);
+            bool isSupervisor = IsOperationalSupervisor(uc);
+            var roles = isSupervisor ? new List<Entity>() : EligibleRoles(x, uc.CurrentUser.Id);
+            var authorized = new HashSet<Guid>();
+            if (!isSupervisor && roles.Count == 0) return authorized;
+            var query = new EntitySchemaQuery(uc.EntitySchemaManager, "UsrMCITContract") {
+                UseAdminRights = false
+            };
+            query.PrimaryQueryColumn.IsAlwaysSelect = true;
+            foreach (Entity contract in query.GetEntityCollection(uc)) {
+                if (isSupervisor || roles.Any(role => RoleAllows(x, role, uc.CurrentUser.Id,
+                    "UsrMCITContract", contract))) {
+                    authorized.Add(contract.PrimaryColumnValue);
+                    if (authorized.Count > MaxRowsPerObject)
+                        throw new InvalidOperationException("Operational contract scope exceeds limit.");
+                }
+            }
+            return authorized;
+        }
+
+        // Read-only authorization for the exact operational entities used by TE OPS.
+        // Native ESQ enforces object and record visibility before MCIT scope checks.
+        public static HashSet<Guid> ReadAuthorizedOperationalRecordIds(
+            UserConnection uc, string schema)
+        {
+            if (uc == null) throw new ArgumentNullException("uc");
+            if (schema == "UsrMCITContract")
+                return ReadAuthorizedContractIds(uc);
+            if (schema != "UsrVirtualMachine" && schema != "UsrVMRequest" &&
+                schema != "UsrPointTransaction" && schema != "UsrFinancialTransaction")
+                throw new UnauthorizedAccessException("Unsupported operational entity.");
+            var x = new UsrMCITRoleFormEngine(uc);
+            bool isSupervisor = IsOperationalSupervisor(uc);
+            var roles = isSupervisor ? new List<Entity>() : EligibleRoles(x, uc.CurrentUser.Id);
+            var contracts = ReadAuthorizedContractIds(uc);
+            var result = new HashSet<Guid>();
+            if ((!isSupervisor && roles.Count == 0) || contracts.Count == 0) return result;
+            var q = new EntitySchemaQuery(uc.EntitySchemaManager, schema) {
+                UseAdminRights = false
+            };
+            q.PrimaryQueryColumn.IsAlwaysSelect = true;
+            q.AddAllSchemaColumns();
+            HashSet<Guid> visibleVMs = null;
+            HashSet<Guid> visibleRequests = null;
+            if (schema == "UsrPointTransaction" || schema == "UsrFinancialTransaction") {
+                visibleVMs = ReadAuthorizedOperationalRecordIds(uc, "UsrVirtualMachine");
+                visibleRequests = ReadAuthorizedOperationalRecordIds(uc, "UsrVMRequest");
+            }
+            foreach (Entity record in q.GetEntityCollection(uc)) {
+                Guid contractId = x.Id(record, "UsrContract");
+                if (contractId == Guid.Empty || !contracts.Contains(contractId)) continue;
+                bool allowed = schema == "UsrVirtualMachine" || schema == "UsrVMRequest"
+                    ? (isSupervisor || roles.Any(role => RoleAllows(x, role, uc.CurrentUser.Id, schema, record)))
+                    : true;
+                if (!allowed) continue;
+                if (visibleVMs != null) {
+                    Guid vmId = x.Id(record, "UsrVirtualMachine");
+                    Guid requestId = HasColumn(x, schema, "UsrRequest")
+                        ? x.Id(record, "UsrRequest") : Guid.Empty;
+                    if (vmId != Guid.Empty && !visibleVMs.Contains(vmId)) continue;
+                    if (requestId != Guid.Empty && !visibleRequests.Contains(requestId)) continue;
+                }
+                result.Add(record.PrimaryColumnValue);
+                if (result.Count > MaxRowsPerObject)
+                    throw new InvalidOperationException("Operational scope exceeds limit.");
+            }
+            return result;
+        }
+
         // Idempotent, per-user grant synchronization. Changes ONLY rights whose IDs
         // were recorded in the custom ledger. Unrelated manual and inherited rights remain.
         public static void ReconcileUser(UserConnection uc, Guid userId)

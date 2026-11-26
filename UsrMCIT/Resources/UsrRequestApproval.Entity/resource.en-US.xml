@@ -14,6 +14,7 @@
 			<Item Name="Columns.UsrName.Caption" Value="Review name" />
 			<Item Name="Columns.UsrRequest.Caption" Value="VM request" />
 			<Item Name="Columns.UsrReviewRound.Caption" Value="Review round" />
+			<Item Name="Columns.UsrSLAStatus.Caption" Value="SLA Status" />
 			<Item Name="Columns.UsrSequence.Caption" Value="Sequence" />
 			<Item Name="Columns.UsrStage.Caption" Value="Approval stage" />
 			<Item Name="EventsProcessSchema.Caption" Value="Business process" />

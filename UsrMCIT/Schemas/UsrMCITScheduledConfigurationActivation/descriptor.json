@@ -1,0 +1,9 @@
+﻿{
+  "Descriptor": {
+    "UId": "04a95cca-793a-4467-849f-c0df2146f02b",
+    "Name": "UsrMCITScheduledConfigurationActivation",
+    "ModifiedOnUtc": "\/Date(1795612123000)\/",
+    "ManagerName": "ProcessSchemaManager",
+    "Caption": "MCIT scheduled configuration activation"
+  }
+}

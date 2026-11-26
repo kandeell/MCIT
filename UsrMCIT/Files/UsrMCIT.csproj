@@ -546,6 +546,11 @@
 			<SpecificVersion>False</SpecificVersion>
 			<Private>False</Private>
 		</Reference>
+		<Reference Include="CrtProcessBuilder">
+			<HintPath>$(RelativePkgFolderPath)/CrtProcessBuilder/$(StandalonePackageAssemblyPath)/CrtProcessBuilder.dll</HintPath>
+			<SpecificVersion>False</SpecificVersion>
+			<Private>False</Private>
+		</Reference>
 		<Reference Include="CrtProductivityApp">
 			<HintPath>$(RelativePkgFolderPath)/CrtProductivityApp/$(StandalonePackageAssemblyPath)/CrtProductivityApp.dll</HintPath>
 			<SpecificVersion>False</SpecificVersion>
@@ -857,6 +862,7 @@
 		<Compile Remove="$(RelativePkgFolderPath)/UsrMCIT/Schemas/UsrAdministrationHome/UsrAdministrationHome.cs" Condition="Exists('$(RelativePkgFolderPath)/UsrMCIT/Schemas/UsrAdministrationHome/UsrAdministrationHome.cs')" />
 		<Compile Remove="$(RelativePkgFolderPath)/UsrMCIT/Schemas/UsrAuthority/UsrAuthority.cs" Condition="Exists('$(RelativePkgFolderPath)/UsrMCIT/Schemas/UsrAuthority/UsrAuthority.cs')" />
 		<Compile Remove="$(RelativePkgFolderPath)/UsrMCIT/Schemas/UsrCompletion/UsrCompletion.cs" Condition="Exists('$(RelativePkgFolderPath)/UsrMCIT/Schemas/UsrCompletion/UsrCompletion.cs')" />
+		<Compile Remove="$(RelativePkgFolderPath)/UsrMCIT/Schemas/UsrConfigAddOnRate/UsrConfigAddOnRate.cs" Condition="Exists('$(RelativePkgFolderPath)/UsrMCIT/Schemas/UsrConfigAddOnRate/UsrConfigAddOnRate.cs')" />
 		<Compile Remove="$(RelativePkgFolderPath)/UsrMCIT/Schemas/UsrConfigResourceRate/UsrConfigResourceRate.cs" Condition="Exists('$(RelativePkgFolderPath)/UsrMCIT/Schemas/UsrConfigResourceRate/UsrConfigResourceRate.cs')" />
 		<Compile Remove="$(RelativePkgFolderPath)/UsrMCIT/Schemas/UsrConfigVersionStatus/UsrConfigVersionStatus.cs" Condition="Exists('$(RelativePkgFolderPath)/UsrMCIT/Schemas/UsrConfigVersionStatus/UsrConfigVersionStatus.cs')" />
 		<Compile Remove="$(RelativePkgFolderPath)/UsrMCIT/Schemas/UsrContractConfigVersion/UsrContractConfigVersion.cs" Condition="Exists('$(RelativePkgFolderPath)/UsrMCIT/Schemas/UsrContractConfigVersion/UsrContractConfigVersion.cs')" />
@@ -902,6 +908,7 @@
 		<Compile Remove="$(RelativePkgFolderPath)/UsrMCIT/Schemas/UsrMCITRoleType/UsrMCITRoleType.cs" Condition="Exists('$(RelativePkgFolderPath)/UsrMCIT/Schemas/UsrMCITRoleType/UsrMCITRoleType.cs')" />
 		<Compile Remove="$(RelativePkgFolderPath)/UsrMCIT/Schemas/UsrMCITScopeEditRequest/UsrMCITScopeEditRequest.cs" Condition="Exists('$(RelativePkgFolderPath)/UsrMCIT/Schemas/UsrMCITScopeEditRequest/UsrMCITScopeEditRequest.cs')" />
 		<Compile Remove="$(RelativePkgFolderPath)/UsrMCIT/Schemas/UsrMCITScopeManagedGrant/UsrMCITScopeManagedGrant.cs" Condition="Exists('$(RelativePkgFolderPath)/UsrMCIT/Schemas/UsrMCITScopeManagedGrant/UsrMCITScopeManagedGrant.cs')" />
+		<Compile Remove="$(RelativePkgFolderPath)/UsrMCIT/Schemas/UsrMCITSLAStatus/UsrMCITSLAStatus.cs" Condition="Exists('$(RelativePkgFolderPath)/UsrMCIT/Schemas/UsrMCITSLAStatus/UsrMCITSLAStatus.cs')" />
 		<Compile Remove="$(RelativePkgFolderPath)/UsrMCIT/Schemas/UsrMCITUserAuthorityAccess/UsrMCITUserAuthorityAccess.cs" Condition="Exists('$(RelativePkgFolderPath)/UsrMCIT/Schemas/UsrMCITUserAuthorityAccess/UsrMCITUserAuthorityAccess.cs')" />
 		<Compile Remove="$(RelativePkgFolderPath)/UsrMCIT/Schemas/UsrMCITUserContractAccess/UsrMCITUserContractAccess.cs" Condition="Exists('$(RelativePkgFolderPath)/UsrMCIT/Schemas/UsrMCITUserContractAccess/UsrMCITUserContractAccess.cs')" />
 		<Compile Remove="$(RelativePkgFolderPath)/UsrMCIT/Schemas/UsrMCITUserStatus/UsrMCITUserStatus.cs" Condition="Exists('$(RelativePkgFolderPath)/UsrMCIT/Schemas/UsrMCITUserStatus/UsrMCITUserStatus.cs')" />
@@ -927,6 +934,7 @@
 		<Compile Remove="$(RelativePkgFolderPath)/UsrMCIT/Schemas/UsrVMNetworkZone/UsrVMNetworkZone.cs" Condition="Exists('$(RelativePkgFolderPath)/UsrMCIT/Schemas/UsrVMNetworkZone/UsrVMNetworkZone.cs')" />
 		<Compile Remove="$(RelativePkgFolderPath)/UsrMCIT/Schemas/UsrVMRequest/UsrVMRequest.cs" Condition="Exists('$(RelativePkgFolderPath)/UsrMCIT/Schemas/UsrVMRequest/UsrVMRequest.cs')" />
 		<Compile Remove="$(RelativePkgFolderPath)/UsrMCIT/Schemas/UsrVMRequestItem/UsrVMRequestItem.cs" Condition="Exists('$(RelativePkgFolderPath)/UsrMCIT/Schemas/UsrVMRequestItem/UsrVMRequestItem.cs')" />
+		<Compile Remove="$(RelativePkgFolderPath)/UsrMCIT/Schemas/UsrVMRequestItemAddOn/UsrVMRequestItemAddOn.cs" Condition="Exists('$(RelativePkgFolderPath)/UsrMCIT/Schemas/UsrVMRequestItemAddOn/UsrVMRequestItemAddOn.cs')" />
 	</ItemGroup>
 	<ItemGroup Label="3rd Party References"></ItemGroup>
 	<Target Name="Paths" BeforeTargets="BeforeCompile">
