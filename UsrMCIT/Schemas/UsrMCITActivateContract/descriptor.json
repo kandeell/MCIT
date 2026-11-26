@@ -2,8 +2,9 @@
   "Descriptor": {
     "UId": "c6636e41-a3e1-4e87-ad2a-af1274a653c0",
     "Name": "UsrMCITActivateContract",
-    "ModifiedOnUtc": "\/Date(1795612506000)\/",
+    "ModifiedOnUtc": "\/Date(1795688421000)\/",
     "ManagerName": "ProcessSchemaManager",
-    "Caption": "MCIT activate contract"
+    "Caption": "MCIT activate contract",
+    "DependsOn": []
   }
 }

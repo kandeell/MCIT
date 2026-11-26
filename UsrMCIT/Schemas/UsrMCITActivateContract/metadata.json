@@ -47,6 +47,18 @@
           "L1": "5ca35f10-a101-4c67-a96a-383da6afacfc",
           "L8": {},
           "L12": 1
+        },
+        {
+          "BL1": "Terrasoft.Core.Process.ProcessSchemaParameter",
+          "UId": "d5435c7f-607f-4d37-9491-e1dff206edb5",
+          "A2": "InitiatorContact",
+          "A3": "c6636e41-a3e1-4e87-ad2a-af1274a653c0",
+          "A4": "c6636e41-a3e1-4e87-ad2a-af1274a653c0",
+          "L1": "23018567-a13c-4320-8687-fd6f9e3699bd",
+          "L8": {
+            "GS5": "c6636e41-a3e1-4e87-ad2a-af1274a653c0"
+          },
+          "L12": 0
         }
       ],
       "IJ1": true,
@@ -56,8 +68,8 @@
         "BL1": "Terrasoft.Core.Process.ProcessSchemaParameter",
         "UId": "cdd58be7-2dba-4a5e-869b-1ad5d6d7513a",
         "A2": "NotificationCaption",
-        "A3": "bb4d6607-026b-4b27-b640-8f5c77c1e89d",
-        "A4": "bb4d6607-026b-4b27-b640-8f5c77c1e89d",
+        "A3": "c6636e41-a3e1-4e87-ad2a-af1274a653c0",
+        "A4": "c6636e41-a3e1-4e87-ad2a-af1274a653c0",
         "L1": "8b3f29bb-ea14-4ce5-a5c5-293a929b6ba2",
         "L8": {
           "GS1": 3,
@@ -74,6 +86,7 @@
           "A3": "c6636e41-a3e1-4e87-ad2a-af1274a653c0",
           "A4": "c6636e41-a3e1-4e87-ad2a-af1274a653c0",
           "A5": "0a07faf7-f6e2-439e-ab7c-961d7c56566e",
+          "BL7": "30890a9d-fc31-4fb2-9fef-95bf181869ec",
           "BM1": 0,
           "BM4": [
             {
@@ -87,7 +100,6 @@
               "CD1": [],
               "CD2": [],
               "CD4": "30890a9d-fc31-4fb2-9fef-95bf181869ec",
-              "CD6": "691;487",
               "CD7": []
             }
           ]
@@ -138,7 +150,7 @@
           "BO3": true,
           "BP2": [],
           "CL2": "FFFFFFFF",
-          "CH1": "Set<bool>(\"Success\", false);\nSet<string>(\"ResultMessage\", \"Contract activation failed.\");\ntry {\n    var contractId = Get<Guid>(\"ContractId\");\n    Guid instanceId;\n    if (contractId == Guid.Empty || context == null || context.Process == null ||\n        !Guid.TryParse(context.Process.InstanceUId, out instanceId) ||\n        instanceId == Guid.Empty || UserConnection.CurrentUser == null)\n        throw new UnauthorizedAccessException(\"Cannot verify activation initiator.\");\n    using (var db = UserConnection.EnsureDBConnection()) {\n        var owner = new CustomQuery(UserConnection,\n            \"SELECT OwnerId FROM dbo.SysProcessLog WHERE Id = @Id\")\n            .WithParameter(\"Id\", instanceId).ExecuteScalar<Guid>(db);\n        if (owner == Guid.Empty || owner != UserConnection.CurrentUser.ContactId)\n            throw new UnauthorizedAccessException(\"Execution identity differs from initiator.\");\n        Terrasoft.Configuration.UsrMCITScreenAccess.Demand(UserConnection, \"CONTRACTS\", \"Activate\");\n        if (!Terrasoft.Configuration.UsrMCITDataScopeRuntime\n            .ReadAuthorizedContractIds(UserConnection).Contains(contractId))\n            throw new UnauthorizedAccessException(\"Contract scope denied.\");\n        var security = UserConnection.DBSecurityEngine;\n        var rights = security.GetEntitySchemaOperationsRightLevel(\n            UserConnection.CurrentUser.Id, \"UsrMCITContract\");\n        if ((rights & Terrasoft.Core.DB.SchemaOperationRightLevels.CanEdit) == 0)\n            throw new UnauthorizedAccessException(\"Contract edit denied.\");\n        var recordRights = security.GetEntitySchemaRecordRightLevel(\n            UserConnection.CurrentUser.Id, \"UsrMCITContract\", contractId);\n        if ((recordRights & Terrasoft.Core.DB.SchemaRecordRightLevels.CanEdit) == 0)\n            throw new UnauthorizedAccessException(\"Contract record edit denied.\");\n        const string sql = @\"\nSET XACT_ABORT ON;\nSET NOCOUNT ON;\nDECLARE @Today date = CONVERT(date, GETDATE());\nDECLARE @Status uniqueidentifier, @Start date, @End date;\nDECLARE @Name nvarchar(max), @Number nvarchar(max);\nDECLARE @Account uniqueidentifier, @Currency uniqueidentifier;\nDECLARE @Budget decimal(18,4), @Points decimal(18,4);\nSELECT @Status=UsrStatusId, @Start=UsrStartDate, @End=UsrEndDate,\n       @Name=UsrName, @Number=UsrNumber, @Account=UsrAccountId,\n       @Currency=UsrCurrencyId, @Budget=UsrInitialBudget,\n       @Points=UsrInitialPoints\nFROM dbo.UsrMCITContract WITH (UPDLOCK,HOLDLOCK) WHERE Id=@ContractId;\nIF @Status <> '8f2d39e9-7c3f-408f-8c8d-f5385affc5ea'\n    THROW 51501, 'Only a Draft contract can be activated.', 1;\nIF @Start IS NULL OR @End IS NULL OR @End <= @Start\n   OR @Today < @Start OR @Today > @End\n   OR NULLIF(LTRIM(RTRIM(@Name)),'') IS NULL\n   OR NULLIF(LTRIM(RTRIM(@Number)),'') IS NULL\n   OR @Account IS NULL OR @Currency IS NULL\n   OR @Budget IS NULL OR @Budget < 0 OR @Points IS NULL OR @Points < 0\n    THROW 51502, 'Contract details or effective dates are invalid.', 1;\nIF (SELECT COUNT(*) FROM dbo.UsrContractConfigVersion WITH (UPDLOCK,HOLDLOCK)\n    WHERE UsrContractId=@ContractId\n      AND UsrConfigVersionStatusId='e7d05248-9d33-41c3-b688-c0b172b039cc'\n      AND CONVERT(date,UsrEffectiveFrom)<=@Today\n      AND (UsrEffectiveTo IS NULL OR CONVERT(date,UsrEffectiveTo)>=@Today)) <> 1\n    THROW 51503, 'Exactly one effective Active configuration is required.', 1;\nIF NOT EXISTS (SELECT 1 FROM dbo.UsrConfigResourceRate r\n    JOIN dbo.UsrContractConfigVersion v ON v.Id=r.UsrConfigVersionId\n    WHERE v.UsrContractId=@ContractId\n      AND v.UsrConfigVersionStatusId='e7d05248-9d33-41c3-b688-c0b172b039cc')\n    THROW 51504, 'Resource pricing is required.', 1;\nIF EXISTS (SELECT 1 FROM dbo.UsrConfigResourceRate r\n    JOIN dbo.UsrContractConfigVersion v ON v.Id=r.UsrConfigVersionId\n    WHERE v.UsrContractId=@ContractId\n      AND v.UsrConfigVersionStatusId='e7d05248-9d33-41c3-b688-c0b172b039cc'\n      AND (r.UsrCurrencyId IS NULL OR r.UsrCurrencyId<>@Currency\n           OR r.UsrResourceTypeId IS NULL OR r.UsrPricingUnitLookupId IS NULL\n           OR r.UsrAmountPerUnit IS NULL OR r.UsrAmountPerUnit<0\n           OR r.UsrPointsPerUnit IS NULL OR r.UsrPointsPerUnit<0))\n    THROW 51506, 'Active configuration has invalid resource pricing.', 1;\nUPDATE dbo.UsrMCITContract SET\n    UsrStatusId='5f9739e9-4f5c-42ba-8157-d1e2468a27e4',\n    ModifiedOn=GETDATE(), ModifiedById=@ActorContact\nWHERE Id=@ContractId AND UsrStatusId=@Status;\nIF @@ROWCOUNT<>1 THROW 51505, 'Concurrent contract activation detected.', 1;\nSELECT CAST(1 AS int);\n\";\n        db.StartTransaction(System.Data.IsolationLevel.Serializable);\n        try {\n            var confirmed = new CustomQuery(UserConnection, sql)\n                .WithParameter(\"ContractId\", contractId)\n                .WithParameter(\"ActorContact\", owner).ExecuteScalar<int>(db);\n            if (confirmed != 1) throw new InvalidOperationException(\"Activation not confirmed.\");\n            db.CommitTransaction();\n        } catch { db.RollbackTransaction(); throw; }\n    }\n    Set<bool>(\"Success\", true);\n    Set<string>(\"ResultMessage\", \"Contract activated.\");\n} catch (Exception) {\n    Set<bool>(\"Success\", false);\n    Set<string>(\"ResultMessage\", \"Contract activation rejected; no status change committed.\");\n}\nreturn true;",
+          "CH1": "\nSet<bool>(\"Success\", false);\nSet<string>(\"ResultMessage\", \"Contract activation failed.\");\n\ntry {\n\n    var contractId = Get<Guid>(\"ContractId\");\n    var owner = Get<Guid>(\"InitiatorContact\");\n\n    if (contractId == Guid.Empty)\n        throw new InvalidOperationException(\n            \"A contract is required.\"\n        );\n\n    Guid instanceId;\n\n    if (context == null ||\n        context.Process == null ||\n        !Guid.TryParse(\n            context.Process.InstanceUId,\n            out instanceId\n        ) ||\n        instanceId == Guid.Empty)\n    {\n        throw new UnauthorizedAccessException(\n            \"Cannot verify process context.\"\n        );\n    }\n\n    // Verify activation initiator\n\n    if (owner == Guid.Empty ||\n        UserConnection.CurrentUser == null ||\n        owner != UserConnection.CurrentUser.ContactId)\n    {\n        throw new UnauthorizedAccessException(\n            \"Cannot verify the contract activation initiator.\"\n        );\n    }\n\n    // Verify screen permissions\n\n    Terrasoft.Configuration.UsrMCITScreenAccess.Demand(\n        UserConnection,\n        \"CONTRACTS\",\n        \"Activate\"\n    );\n\n    // Verify contract data scope\n\n    if (!Terrasoft.Configuration.UsrMCITDataScopeRuntime\n        .ReadAuthorizedContractIds(UserConnection)\n        .Contains(contractId))\n    {\n        throw new UnauthorizedAccessException(\n            \"Contract scope denied.\"\n        );\n    }\n\n    // Verify object editing permissions\n\n    var security = UserConnection.DBSecurityEngine;\n\n    var rights =\n        security.GetEntitySchemaOperationsRightLevel(\n            UserConnection.CurrentUser.Id,\n            \"UsrMCITContract\"\n        );\n\n    if ((rights &\n        Terrasoft.Core.DB.SchemaOperationRightLevels.CanEdit) == 0)\n    {\n        throw new UnauthorizedAccessException(\n            \"Contract edit denied.\"\n        );\n    }\n\n    // Verify record editing permissions\n\n    var recordRights =\n        security.GetEntitySchemaRecordRightLevel(\n            UserConnection.CurrentUser.Id,\n            \"UsrMCITContract\",\n            contractId\n        );\n\n    if ((recordRights &\n        Terrasoft.Core.DB.SchemaRecordRightLevels.CanEdit) == 0)\n    {\n        throw new UnauthorizedAccessException(\n            \"Contract record edit denied.\"\n        );\n    }\n\n    const string sql = @\"\n\nSET XACT_ABORT ON;\nSET NOCOUNT ON;\n\nDECLARE @Now datetime2 = GETDATE();\nDECLARE @Today date = CONVERT(date, @Now);\n\nDECLARE @Status uniqueidentifier;\nDECLARE @Start date;\nDECLARE @End date;\nDECLARE @Name nvarchar(max);\nDECLARE @Number nvarchar(max);\nDECLARE @Account uniqueidentifier;\nDECLARE @Currency uniqueidentifier;\nDECLARE @Budget decimal(18,4);\nDECLARE @Points decimal(18,4);\nDECLARE @ConfigVersionId uniqueidentifier;\n\nDECLARE @DraftId uniqueidentifier =\n    '8F2D39E9-7C3F-408F-8C8D-F5385AFFC5EA';\n\nDECLARE @ActiveContractId uniqueidentifier =\n    '5F9739E9-4F5C-42BA-8157-D1E2468A27E4';\n\nDECLARE @ActiveConfigId uniqueidentifier =\n    'E7D05248-9D33-41C3-B688-C0B172B039CC';\n\nDECLARE @InitialAllocationType uniqueidentifier =\n    'F5E6739B-9EBA-4B66-B581-E1408BC06240';\n\nDECLARE @AvailableBalanceType uniqueidentifier =\n    'E815D3E7-FF4B-4986-AE79-806570585C4F';\n\n-- 1. Lock and read contract\n\nSELECT\n    @Status = UsrStatusId,\n    @Start = UsrStartDate,\n    @End = UsrEndDate,\n    @Name = UsrName,\n    @Number = UsrNumber,\n    @Account = UsrAccountId,\n    @Currency = UsrCurrencyId,\n    @Budget = UsrInitialBudget,\n    @Points = UsrInitialPoints\nFROM dbo.UsrMCITContract\nWITH (UPDLOCK, HOLDLOCK)\nWHERE Id = @ContractId;\n\n-- 2. Validate contract status\n\nIF @Status IS NULL OR @Status <> @DraftId\n    THROW 51501,\n        'Only a Draft contract can be activated.',\n        1;\n\n-- 3. Validate contract details\n\nIF @Start IS NULL\n   OR @End IS NULL\n   OR @End <= @Start\n   OR @Today < @Start\n   OR @Today > @End\n   OR NULLIF(LTRIM(RTRIM(@Name)), '') IS NULL\n   OR NULLIF(LTRIM(RTRIM(@Number)), '') IS NULL\n   OR @Account IS NULL\n   OR @Currency IS NULL\n   OR @Budget IS NULL\n   OR @Budget < 0\n   OR @Points IS NULL\n   OR @Points < 0\n\n    THROW 51502,\n        'Contract details or effective dates are invalid.',\n        1;\n\n-- 4. Validate effective Active configuration\n\nIF (\n    SELECT COUNT(*)\n    FROM dbo.UsrContractConfigVersion\n    WITH (UPDLOCK, HOLDLOCK)\n    WHERE UsrContractId = @ContractId\n      AND UsrConfigVersionStatusId = @ActiveConfigId\n      AND CONVERT(date, UsrEffectiveFrom) <= @Today\n      AND (\n          UsrEffectiveTo IS NULL\n          OR CONVERT(date, UsrEffectiveTo) >= @Today\n      )\n) <> 1\n\n    THROW 51503,\n        'Exactly one effective Active configuration is required.',\n        1;\n\nSELECT @ConfigVersionId = Id\nFROM dbo.UsrContractConfigVersion\nWITH (UPDLOCK, HOLDLOCK)\nWHERE UsrContractId = @ContractId\n  AND UsrConfigVersionStatusId = @ActiveConfigId\n  AND CONVERT(date, UsrEffectiveFrom) <= @Today\n  AND (\n      UsrEffectiveTo IS NULL\n      OR CONVERT(date, UsrEffectiveTo) >= @Today\n  );\n\nIF @ConfigVersionId IS NULL\n    THROW 51507,\n        'Active configuration not found.',\n        1;\n\n-- 5. Verify resource pricing exists\n\nIF NOT EXISTS (\n    SELECT 1\n    FROM dbo.UsrConfigResourceRate\n    WITH (UPDLOCK, HOLDLOCK)\n    WHERE UsrConfigVersionId = @ConfigVersionId\n)\n\n    THROW 51504,\n        'Resource pricing is required.',\n        1;\n\n-- 6. Validate resource pricing\n\nIF EXISTS (\n    SELECT 1\n    FROM dbo.UsrConfigResourceRate\n    WITH (UPDLOCK, HOLDLOCK)\n    WHERE UsrConfigVersionId = @ConfigVersionId\n      AND (\n          UsrCurrencyId IS NULL\n          OR UsrCurrencyId <> @Currency\n          OR UsrResourceTypeId IS NULL\n          OR UsrPricingUnitLookupId IS NULL\n          OR UsrAmountPerUnit IS NULL\n          OR UsrAmountPerUnit < 0\n          OR UsrPointsPerUnit IS NULL\n          OR UsrPointsPerUnit < 0\n      )\n)\n\n    THROW 51506,\n        'Active configuration has invalid resource pricing.',\n        1;\n\n-- 7. Prevent duplicate initial allocation\n-- Unexpected ledger history requires reconciliation.\n\nIF EXISTS (\n    SELECT 1\n    FROM dbo.UsrPointTransaction\n    WITH (UPDLOCK, HOLDLOCK)\n    WHERE UsrContractId = @ContractId\n)\n\n    THROW 51508,\n        'Contract already has ledger transactions. Reconciliation required.',\n        1;\n\n-- 8. Automatically allocate initial points\n\nIF @Points > 0\nBEGIN\n\n    INSERT INTO dbo.UsrPointTransaction (\n        Id,\n        CreatedOn,\n        CreatedById,\n        ModifiedOn,\n        ModifiedById,\n        ProcessListeners,\n        UsrName,\n        UsrReason,\n        UsrTransactionDate,\n        UsrActorId,\n        UsrQuantity,\n        UsrTransactionTypeId,\n        UsrContractId,\n        UsrConfigVersionId,\n        UsrSourceBalanceId\n    )\n\n    VALUES (\n        NEWID(),\n        @Now,\n        @ActorContact,\n        @Now,\n        @ActorContact,\n        0,\n        @Number + ' - Initial Allocation',\n        'Initial contract points allocation',\n        @Now,\n        @ActorContact,\n        @Points,\n        @InitialAllocationType,\n        @ContractId,\n        @ConfigVersionId,\n        @AvailableBalanceType\n    );\n\n    IF @@ROWCOUNT <> 1\n        THROW 51509,\n            'Initial allocation failed.',\n            1;\n\n    -- Verify initial allocation\n\n    IF (\n        SELECT COUNT(*)\n        FROM dbo.UsrPointTransaction\n        WHERE UsrContractId = @ContractId\n          AND UsrTransactionTypeId = @InitialAllocationType\n    ) <> 1\n\n        THROW 51510,\n            'Initial allocation verification failed.',\n            1;\n\n    IF NOT EXISTS (\n        SELECT 1\n        FROM dbo.UsrPointTransaction\n        WHERE UsrContractId = @ContractId\n          AND UsrTransactionTypeId = @InitialAllocationType\n          AND UsrSourceBalanceId = @AvailableBalanceType\n          AND UsrConfigVersionId = @ConfigVersionId\n          AND UsrQuantity = @Points\n    )\n\n        THROW 51511,\n            'Initial points quantity verification failed.',\n            1;\n\nEND;\n\n-- 9. Activate contract\n\nUPDATE dbo.UsrMCITContract\nSET\n    UsrStatusId = @ActiveContractId,\n    ModifiedOn = @Now,\n    ModifiedById = @ActorContact\nWHERE Id = @ContractId\n  AND UsrStatusId = @DraftId;\n\nIF @@ROWCOUNT <> 1\n\n    THROW 51505,\n        'Concurrent contract activation detected.',\n        1;\n\n-- 10. Confirm final status\n\nIF NOT EXISTS (\n    SELECT 1\n    FROM dbo.UsrMCITContract\n    WHERE Id = @ContractId\n      AND UsrStatusId = @ActiveContractId\n)\n\n    THROW 51512,\n        'Contract activation verification failed.',\n        1;\n\nSELECT CAST(1 AS int);\n\n\";\n\n    // Execute activation and initial allocation\n    // within a single atomic transaction.\n\n    using (var db = UserConnection.EnsureDBConnection()) {\n\n        db.StartTransaction(\n            System.Data.IsolationLevel.Serializable\n        );\n\n        try {\n\n            var confirmed = new CustomQuery(\n                UserConnection,\n                sql\n            )\n            .WithParameter(\"ContractId\", contractId)\n            .WithParameter(\"ActorContact\", owner)\n            .ExecuteScalar<int>(db);\n\n            if (confirmed != 1)\n            {\n                throw new InvalidOperationException(\n                    \"Activation not confirmed.\"\n                );\n            }\n\n            db.CommitTransaction();\n\n        }\n        catch {\n\n            db.RollbackTransaction();\n            throw;\n        }\n    }\n\n    Set<bool>(\"Success\", true);\n\n    Set<string>(\n        \"ResultMessage\",\n        \"Contract activated and initial points initialized successfully.\"\n    );\n\n}\ncatch (Exception) {\n\n    Set<bool>(\"Success\", false);\n\n    Set<string>(\n        \"ResultMessage\",\n        \"Contract activation rejected; no activation changes committed.\"\n    );\n\n    // Temporary diagnostic for acceptance testing.\n\n    throw;\n}\n\nreturn true;\n",
           "CH2": true
         },
         {
@@ -173,6 +185,24 @@
           "FC1": []
         },
         {
+          "BL1": "Terrasoft.Core.Process.ProcessSchemaFormulaTask",
+          "UId": "50e29ca9-c52b-4b9e-b6fd-f095da5ed627",
+          "A2": "FormulaTask1",
+          "A3": "c6636e41-a3e1-4e87-ad2a-af1274a653c0",
+          "A4": "c6636e41-a3e1-4e87-ad2a-af1274a653c0",
+          "A5": "5dcca910-bc4c-42b7-bfe0-2ad5c8cc3965",
+          "IL2": "0f0d7c35-779d-425f-903e-97ce7f4f15de",
+          "BL3": "129;172",
+          "BL7": "d334d28f-b11a-477e-9ff0-0a95fa73d53b",
+          "BL8": "c6636e41-a3e1-4e87-ad2a-af1274a653c0",
+          "BN2": "69;55",
+          "BO3": true,
+          "BP2": [],
+          "CL2": "FFFFFFFF",
+          "CH1": "[#SysVariable.CurrentUserContact#]",
+          "HS1": "d5435c7f-607f-4d37-9491-e1dff206edb5"
+        },
+        {
           "BL1": "Terrasoft.Core.Process.ProcessSchemaSequenceFlow",
           "UId": "d489a536-8dc8-47c8-bcc5-90da8aea9dd1",
           "A2": "SequenceFlow_StartContractActivation_CheckContractInput",
@@ -181,14 +211,12 @@
           "A5": "0a07faf7-f6e2-439e-ab7c-961d7c56566e",
           "BL7": "0d8351f6-c2f4-4737-bdd9-6fbfe0837fec",
           "CI1": "dba6542b-5158-48df-88cc-b047139996ba",
-          "CI2": "bd12cc39-4dbb-400f-97d4-0c643a6f5aaa",
+          "CI2": "50e29ca9-c52b-4b9e-b6fd-f095da5ed627",
           "CI3": "null",
           "CI5": "FF939598",
           "CI6": 1,
-          "CI7": "1;0",
-          "CI8": "-1;0",
           "CI11": "91;200",
-          "CI12": "240;200"
+          "CI12": "129;200"
         },
         {
           "BL1": "Terrasoft.Core.Process.ProcessSchemaConditionalFlow",
@@ -271,6 +299,23 @@
           "CI8": "-1;0",
           "CI11": "489;200",
           "CI12": "600;200"
+        },
+        {
+          "BL1": "Terrasoft.Core.Process.ProcessSchemaSequenceFlow",
+          "UId": "c0fa4902-8d57-41cc-ab03-a2037d973450",
+          "A2": "SequenceFlow1",
+          "A3": "c6636e41-a3e1-4e87-ad2a-af1274a653c0",
+          "A4": "c6636e41-a3e1-4e87-ad2a-af1274a653c0",
+          "A5": "5dcca910-bc4c-42b7-bfe0-2ad5c8cc3965",
+          "BL7": "0d8351f6-c2f4-4737-bdd9-6fbfe0837fec",
+          "BL8": "c6636e41-a3e1-4e87-ad2a-af1274a653c0",
+          "CI1": "50e29ca9-c52b-4b9e-b6fd-f095da5ed627",
+          "CI2": "bd12cc39-4dbb-400f-97d4-0c643a6f5aaa",
+          "CI3": "null",
+          "CI5": "FF939598",
+          "CI6": 1,
+          "CI11": "198;200",
+          "CI12": "240;200"
         }
       ],
       "BK9": [],

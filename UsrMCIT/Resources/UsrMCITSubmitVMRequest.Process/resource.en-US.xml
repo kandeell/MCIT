@@ -108,7 +108,7 @@
 			<Item Name="BaseElements.ApprovalUserTask1.Parameters.RecordId.DisplayValue" Value="[#StartSignal1.Unique identifier of record#]" />
 			<Item Name="BaseElements.ApprovalUserTask1.Parameters.ResultParameter.Caption" Value="Result parameter" />
 			<Item Name="BaseElements.ApprovalUserTask1.Parameters.RoleId.Caption" Value="Role" />
-			<Item Name="BaseElements.ApprovalUserTask1.Parameters.RoleId.DisplayValue" Value="[#Lookup.Roles (view).TE Financial Reviewer.c3f50b6c-ccae-403c-9252-b8ae7310a4e0#]" />
+			<Item Name="BaseElements.ApprovalUserTask1.Parameters.RoleId.DisplayValue" Value="[#Lookup.Roles (view).trial123.416ccf57-b04b-49a6-a86a-180b641adf6f#]" />
 			<Item Name="BaseElements.ApprovalUserTask1.Parameters.SectionId.Caption" Value="Section" />
 			<Item Name="BaseElements.ApprovalUserTask1.Parameters.SectionId.DisplayValue" Value="4e522026-5a07-40c5-a00c-2ede430c712b" />
 			<Item Name="BaseElements.ApprovalUserTask2.Caption" Value="Technical Approval" />
@@ -139,7 +139,7 @@
 			<Item Name="BaseElements.ApprovalUserTask2.Parameters.RecordId.DisplayValue" Value="[#StartSignal1.Unique identifier of record#]" />
 			<Item Name="BaseElements.ApprovalUserTask2.Parameters.ResultParameter.Caption" Value="Result parameter" />
 			<Item Name="BaseElements.ApprovalUserTask2.Parameters.RoleId.Caption" Value="Role" />
-			<Item Name="BaseElements.ApprovalUserTask2.Parameters.RoleId.DisplayValue" Value="[#Lookup.Roles (view).TE Technical Reviewer.c3822d0b-1f48-46ff-8e13-3b1524b7199d#]" />
+			<Item Name="BaseElements.ApprovalUserTask2.Parameters.RoleId.DisplayValue" Value="[#Lookup.Roles (view).trial123.416ccf57-b04b-49a6-a86a-180b641adf6f#]" />
 			<Item Name="BaseElements.ApprovalUserTask2.Parameters.SectionId.Caption" Value="Section" />
 			<Item Name="BaseElements.ApprovalUserTask2.Parameters.SectionId.DisplayValue" Value="4e522026-5a07-40c5-a00c-2ede430c712b" />
 			<Item Name="BaseElements.ChangeDataUserTask1.Caption" Value="Modify Request" />
@@ -552,11 +552,11 @@
 			<Item Name="NotificationCaption.Caption" Value="Process instance caption" />
 			<Item Name="NotificationCaption.DisplayValue" Value="[#Process name#]" />
 			<Item Name="Parameters.AllocationPreviewAvailable.Caption" Value="Preview available points" />
-			<Item Name="Parameters.AllocationPreviewAvailable.DisplayValue" Value="PreviewAvailablePoints" />
+			<Item Name="Parameters.AllocationPreviewAvailable.DisplayValue" Value="[#Preview points allocation.PreviewAvailablePoints#]" />
 			<Item Name="Parameters.AllocationPreviewReady.Caption" Value="Allocation preview ready" />
-			<Item Name="Parameters.AllocationPreviewReady.DisplayValue" Value="PreviewReady" />
+			<Item Name="Parameters.AllocationPreviewReady.DisplayValue" Value="[#Preview points allocation.PreviewReady#]" />
 			<Item Name="Parameters.AllocationPreviewRestored.Caption" Value="Preview restored points" />
-			<Item Name="Parameters.AllocationPreviewRestored.DisplayValue" Value="PreviewRestoredPoints" />
+			<Item Name="Parameters.AllocationPreviewRestored.DisplayValue" Value="[#Preview points allocation.PreviewRestoredPoints#]" />
 			<Item Name="Parameters.RequestId.Caption" Value="Request ID" />
 		</Items>
 	</Group>

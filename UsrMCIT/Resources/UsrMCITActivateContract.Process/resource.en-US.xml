@@ -7,10 +7,13 @@
 			<Item Name="BaseElements.ConditionalFlow_CheckContractInput_CommitContractActivation.Caption" Value="Contract supplied" />
 			<Item Name="BaseElements.DefaultFlow_CheckContractInput_SetInvalidContractInput.Caption" Value="Contract missing" />
 			<Item Name="BaseElements.EndContractActivation.Caption" Value="Contract activation complete" />
+			<Item Name="BaseElements.FormulaTask1.Caption" Value="Capture activation initiator" />
 			<Item Name="BaseElements.SetInvalidContractInput.Caption" Value="Report missing contract" />
 			<Item Name="BaseElements.StartContractActivation.Caption" Value="Contract activation requested" />
 			<Item Name="Caption" Value="MCIT activate contract" />
+			<Item Name="NotificationCaption.DisplayValue" Value="[#[PropertyValue:Caption]#]" />
 			<Item Name="Parameters.ContractId.Caption" Value="Contract ID" />
+			<Item Name="Parameters.InitiatorContact.Caption" Value="InitiatorContact" />
 			<Item Name="Parameters.ResultMessage.Caption" Value="Result message" />
 			<Item Name="Parameters.Success.Caption" Value="Activation succeeded" />
 			<Item Name="Parameters.Success.DisplayValue" Value="false" />

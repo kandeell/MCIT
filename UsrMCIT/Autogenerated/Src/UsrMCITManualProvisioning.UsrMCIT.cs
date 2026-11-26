@@ -101,12 +101,20 @@
 			       instanceId==Guid.Empty || UserConnection.CurrentUser==null)
 			        throw new UnauthorizedAccessException("Resize execution identity cannot be verified.");
 			    Guid ownerId;
+			    string ownerName;
 			    Guid contractId=Guid.Empty,vmId=Guid.Empty,itemId=Guid.Empty;
 			    decimal additional=0,reduction=0;
 			    using(var db=UserConnection.EnsureDBConnection()) {
 			        ownerId=new Terrasoft.Core.DB.CustomQuery(UserConnection,
 			            "SELECT OwnerId FROM dbo.SysProcessLog WHERE Id=@Id")
 			            .WithParameter("Id",instanceId).ExecuteScalar<Guid>(db);
+			        if(ownerId==Guid.Empty || new Terrasoft.Core.DB.CustomQuery(UserConnection,
+			            "SELECT COUNT(*) FROM dbo.SysAdminUnit WHERE ContactId=@Owner AND Active=1 AND SysAdminUnitTypeValue=4")
+			            .WithParameter("Owner",ownerId).ExecuteScalar<int>(db)!=1)
+			            throw new UnauthorizedAccessException("Active process owner identity is unavailable.");
+			        ownerName=new Terrasoft.Core.DB.CustomQuery(UserConnection,
+			            "SELECT Name FROM dbo.SysAdminUnit WHERE ContactId=@Owner AND Active=1 AND SysAdminUnitTypeValue=4")
+			            .WithParameter("Owner",ownerId).ExecuteScalar<string>(db);
 			        using(var reader=new Terrasoft.Core.DB.CustomQuery(UserConnection,"SELECT r.UsrContractId,r.UsrTargetVirtualMachineId, r.UsrResizeAdditionalPointsPreview,r.UsrResizeReductionPointsPreview,i.Id FROM dbo.UsrVMRequest r JOIN dbo.UsrVMRequestItem i ON i.UsrRequestId=r.Id WHERE r.Id=@RequestId AND r.UsrTargetVirtualMachineId IS NOT NULL AND r.UsrTargetVirtualMachineId<>@Zero AND (SELECT COUNT(*) FROM dbo.UsrVMRequestItem WHERE UsrRequestId=r.Id)=1")
 			            .WithParameter("RequestId",requestId)
 			            .WithParameter("Zero",Guid.Empty).ExecuteReader(db)) {
@@ -118,20 +126,24 @@
 			            itemId=reader.GetGuid(4);
 			        }
 			    }
-			    if(ownerId==Guid.Empty || ownerId!=UserConnection.CurrentUser.ContactId ||
-			       allowedContractId!=contractId)
+			    if(string.IsNullOrWhiteSpace(ownerName) || allowedContractId!=contractId)
 			        throw new UnauthorizedAccessException("Resize owner or isolated contract mismatch.");
-			    var service=new Terrasoft.Configuration.UsrMCITAtomicCommitmentService(UserConnection);
-			    bool done;
-			    if(additional>0 && reduction==0)
-			        done=service.CommitApprovedResize(requestId,ownerId,vmId,itemId,
-			            allowedContractId,Get<bool>("ResizeMonetaryPostingEnabled"));
-			    else if(reduction>0 && additional==0)
-			        done=service.ApplyApprovedDowngrade(requestId,ownerId,vmId,itemId,
-			            allowedContractId,Get<bool>("DowngradeRestorationEnabled"));
-			    else
-			        throw new InvalidOperationException("Approved upgrade or downgrade preview is required.");
-			    Set<bool>("RetryCommitmentSucceeded",done);
+			    using(var initiator=new Terrasoft.Core.UserConnection(UserConnection.AppConnection)) {
+			        initiator.Login(ownerName,System.TimeZoneInfo.Utc,false);
+			        if(initiator.CurrentUser==null || initiator.CurrentUser.ContactId!=ownerId)
+			            throw new UnauthorizedAccessException("Process owner login did not match the recorded initiator.");
+			        var service=new Terrasoft.Configuration.UsrMCITAtomicCommitmentService(initiator);
+			        bool done;
+			        if(additional>0 && reduction==0)
+			            done=service.CommitApprovedResize(requestId,ownerId,vmId,itemId,
+			                allowedContractId,Get<bool>("ResizeMonetaryPostingEnabled"));
+			        else if(reduction>0 && additional==0)
+			            done=service.ApplyApprovedDowngrade(requestId,ownerId,vmId,itemId,
+			                allowedContractId,Get<bool>("DowngradeRestorationEnabled"));
+			        else
+			            throw new InvalidOperationException("Approved upgrade or downgrade preview is required.");
+			        Set<bool>("RetryCommitmentSucceeded",done);
+			    }
 			} catch(Exception ex) {
 			    Set<string>("CommitmentError", ex.Message);
 			    global::Common.Logging.LogManager.GetLogger("UsrMCITManualProvisioning")

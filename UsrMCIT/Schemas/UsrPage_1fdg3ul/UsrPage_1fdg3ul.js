@@ -121,6 +121,31 @@ define("UsrPage_1fdg3ul", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHEMA_
 			},
 			{
 				"operation": "insert",
+				"name": "Button_dro59fp",
+				"values": {
+					"type": "crt.Button",
+					"caption": "#ResourceString(Button_dro59fp_caption)#",
+					"color": "primary",
+					"size": "large",
+					"iconPosition": "only-text",
+					"clicked": {
+						"request": "crt.RunBusinessProcessRequest",
+						"params": {
+							"processName": "UsrMCITActivateContract",
+							"processRunType": "ForTheSelectedPage",
+							"saveAtProcessStart": true,
+							"showNotification": true,
+							"recordIdProcessParameterName": "ContractId"
+						}
+					},
+					"clickMode": "default"
+				},
+				"parentName": "CardToggleContainer",
+				"propertyName": "items",
+				"index": 0
+			},
+			{
+				"operation": "insert",
 				"name": "GridContainer_s5q5rok",
 				"values": {
 					"type": "crt.GridContainer",
@@ -488,82 +513,6 @@ define("UsrPage_1fdg3ul", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHEMA_
 			},
 			{
 				"operation": "insert",
-				"name": "GridContainer_m5nge9n",
-				"values": {
-					"layoutConfig": {
-						"column": 1,
-						"colSpan": 2,
-						"row": 7,
-						"rowSpan": 1
-					},
-					"type": "crt.GridContainer",
-					"columns": [
-						"minmax(32px, 1fr)"
-					],
-					"rows": "minmax(max-content, 32px)",
-					"items": [],
-					"color": "primary",
-					"borderRadius": "medium",
-					"padding": {
-						"top": "medium",
-						"bottom": "medium",
-						"right": "medium",
-						"left": "medium"
-					}
-				},
-				"parentName": "MCITContractFields",
-				"propertyName": "items",
-				"index": 11
-			},
-			{
-				"operation": "insert",
-				"name": "Label_9j2qyrf",
-				"values": {
-					"layoutConfig": {
-						"column": 1,
-						"colSpan": 1,
-						"row": 1,
-						"rowSpan": 1
-					},
-					"type": "crt.Label",
-					"caption": "#MacrosTemplateString(#ResourceString(Label_9j2qyrf_caption)#)#",
-					"labelType": "body",
-					"labelThickness": "default",
-					"labelEllipsis": false,
-					"labelColor": "#5B21A5",
-					"labelBackgroundColor": "transparent",
-					"labelTextAlign": "start",
-					"headingLevel": "label"
-				},
-				"parentName": "GridContainer_m5nge9n",
-				"propertyName": "items",
-				"index": 0
-			},
-			{
-				"operation": "insert",
-				"name": "MCITContractDescription",
-				"values": {
-					"type": "crt.Input",
-					"label": "Description",
-					"control": "$MCITContractDescription",
-					"labelPosition": "above",
-					"multiline": true,
-					"styles": {
-						"grid-column": "1 / -1"
-					},
-					"layoutConfig": {
-						"column": 1,
-						"colSpan": 1,
-						"row": 2,
-						"rowSpan": 1
-					}
-				},
-				"parentName": "GridContainer_m5nge9n",
-				"propertyName": "items",
-				"index": 1
-			},
-			{
-				"operation": "insert",
 				"name": "MCITContactsCard",
 				"values": {
 					"type": "crt.GridContainer",
@@ -834,6 +783,82 @@ define("UsrPage_1fdg3ul", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHEMA_
 				"parentName": "GridContainer_v0a7kkc",
 				"propertyName": "items",
 				"index": 2
+			},
+			{
+				"operation": "insert",
+				"name": "GridContainer_m5nge9n",
+				"values": {
+					"layoutConfig": {
+						"column": 1,
+						"colSpan": 1,
+						"row": 1,
+						"rowSpan": 1
+					},
+					"type": "crt.GridContainer",
+					"columns": [
+						"minmax(32px, 1fr)"
+					],
+					"rows": "minmax(max-content, 32px)",
+					"items": [],
+					"color": "primary",
+					"borderRadius": "medium",
+					"padding": {
+						"top": "medium",
+						"bottom": "medium",
+						"right": "medium",
+						"left": "medium"
+					}
+				},
+				"parentName": "GridContainer_3mow0v5",
+				"propertyName": "items",
+				"index": 0
+			},
+			{
+				"operation": "insert",
+				"name": "Label_9j2qyrf",
+				"values": {
+					"layoutConfig": {
+						"column": 1,
+						"colSpan": 1,
+						"row": 1,
+						"rowSpan": 1
+					},
+					"type": "crt.Label",
+					"caption": "#MacrosTemplateString(#ResourceString(Label_9j2qyrf_caption)#)#",
+					"labelType": "body",
+					"labelThickness": "default",
+					"labelEllipsis": false,
+					"labelColor": "#5B21A5",
+					"labelBackgroundColor": "transparent",
+					"labelTextAlign": "start",
+					"headingLevel": "label"
+				},
+				"parentName": "GridContainer_m5nge9n",
+				"propertyName": "items",
+				"index": 0
+			},
+			{
+				"operation": "insert",
+				"name": "MCITContractDescription",
+				"values": {
+					"type": "crt.Input",
+					"label": "Description",
+					"control": "$MCITContractDescription",
+					"labelPosition": "above",
+					"multiline": true,
+					"styles": {
+						"grid-column": "1 / -1"
+					},
+					"layoutConfig": {
+						"column": 1,
+						"colSpan": 1,
+						"row": 2,
+						"rowSpan": 1
+					}
+				},
+				"parentName": "GridContainer_m5nge9n",
+				"propertyName": "items",
+				"index": 1
 			},
 			{
 				"operation": "insert",
@@ -1832,7 +1857,12 @@ define("UsrPage_1fdg3ul", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHEMA_
 										}
 									}
 								},
-								"dependencies": []
+								"dependencies": [
+									{
+										"attributePath": "UsrContract",
+										"relationPath": "UsrMCITContractDS.Id"
+									}
+								]
 							}
 						},
 						"comparison": {

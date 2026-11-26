@@ -386,6 +386,13 @@
   "A4": "826de05f-f107-4df8-9427-f1a1e32ae4be",
   "A5": "0a07faf7-f6e2-439e-ab7c-961d7c56566e"
 }
++ MetaData.Schema.B2 {
+  "UId": "1799f33e-4340-f5a9-6087-f536785603bd",
+  "A2": "Button_dro59fp_caption",
+  "A3": "826de05f-f107-4df8-9427-f1a1e32ae4be",
+  "A4": "826de05f-f107-4df8-9427-f1a1e32ae4be",
+  "A5": "0a07faf7-f6e2-439e-ab7c-961d7c56566e"
+}
 = MetaData.Schema.B2.["fd9e5bd2-19ad-68b5-1356-fe7b39d36f28"].A4 "826de05f-f107-4df8-9427-f1a1e32ae4be"
 = MetaData.Schema.B2.["a77180d7-a9d0-5c7d-a47b-74c0545a1774"].A4 "826de05f-f107-4df8-9427-f1a1e32ae4be"
 = MetaData.Schema.B2.["a53e6c9a-741a-21de-9293-9d87d6014595"].A4 "826de05f-f107-4df8-9427-f1a1e32ae4be"
@@ -455,6 +462,7 @@
   "bbedd116-40e5-f42e-44ae-ff694f3b5b50",
   "ee51d61e-ef80-ce8e-decc-bfd147d80f27",
   "e93d5037-b419-f34d-138a-ef0b22ba36bd",
+  "1799f33e-4340-f5a9-6087-f536785603bd",
   "fd9e5bd2-19ad-68b5-1356-fe7b39d36f28",
   "a77180d7-a9d0-5c7d-a47b-74c0545a1774",
   "a53e6c9a-741a-21de-9293-9d87d6014595",
